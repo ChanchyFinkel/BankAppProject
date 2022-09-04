@@ -1,0 +1,6 @@
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.csproj.AssemblyReference.cache
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.AssemblyInfoInputs.cache
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.AssemblyInfo.cs
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.csproj.CoreCompileInputs.cache
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.WebApi\obj\Debug\net6.0\CustomerAccount.WebApi.MvcApplicationPartsAssemblyInfo.cache

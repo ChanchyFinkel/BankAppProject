@@ -1,0 +1,15 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AccountService {
+
+  constructor(private _http: HttpClient) {
+  }
+
+  getAllVolunteers(): Observable<Volunteer[]> {
+      return this._http.get<Volunteer[]>("/api/volunteer")
+  }
+}

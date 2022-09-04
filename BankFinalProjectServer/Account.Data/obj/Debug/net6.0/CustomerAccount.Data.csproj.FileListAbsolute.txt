@@ -1,0 +1,5 @@
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.AssemblyReference.cache
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfoInputs.cache
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfo.cs
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.CoreCompileInputs.cache
