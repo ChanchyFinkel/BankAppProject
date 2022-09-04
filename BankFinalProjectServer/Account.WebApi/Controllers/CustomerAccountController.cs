@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿
 
 namespace CustomerAccount.WebApi.Controllers
 {
@@ -26,12 +25,19 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
         [HttpGet]
         [Route("GetAccountInfo/{accountID}")]
-        public async Task<AccountDTO> GetAccountInfo(string accountID)
+        public async Task<ActionResult<AccountDTO>> GetAccountInfo(int accountID)
         {
-
+            try
+            {
+                AccountDTO accountDTO = await _customerAccountService.GetAccountInfo(accountID);
+                return accountDTO == null ? Ok(accountDTO) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
     }

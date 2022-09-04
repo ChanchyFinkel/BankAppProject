@@ -1,5 +1,4 @@
 ﻿namespace CustomerAccount.Service.Classes;
-
 public class AuthService : IAuthService
 {
     private readonly IAuthData _authData;
@@ -7,8 +6,8 @@ public class AuthService : IAuthService
     {
         _authData = authData;
     }
-    public async Task<int> Login(LoginDTO loginDTO)
+    public Task<int> Login(LoginDTO loginDTO)
     {
-
+        return _authData.Login(loginDTO.Email, loginDTO.Password);
     }
 }

@@ -9,11 +9,19 @@
         {
             _authService = authService;
         }
-        [HttpGet]
+        [HttpPost]
         [Route("Login")]
-        public async Task<int> Login([FromBody] LoginDTO loginDTO)
+        public async Task<ActionResult<int>> Login([FromBody] LoginDTO loginDTO)
         {
-
+            try
+            {
+                int accountID = await _authService.Login(loginDTO);
+                return accountID != 0 ? Ok(accountID) : StatusCode(401,"not authorized");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

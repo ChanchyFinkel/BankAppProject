@@ -3,8 +3,8 @@
     public interface ICustomerAccountData
     {
         Task<bool> CreateAccount(Account account);
-        Task<bool> CreateCustomer(Customer customer);
-        Task<Account> GetAccountInfo(string customerID);
+        Task CreateCustomer(Customer customer);
+        Task<Account> GetAccountInfo(int accountID);
         Task<bool> ExistsAccount(string email);
     }
 }

@@ -3,3 +3,17 @@ C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\A
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfoInputs.cache
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfo.cs
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.CoreCompileInputs.cache
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.deps.json
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.runtimeconfig.json
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.dll
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.pdb
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.AssemblyReference.cache
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfoInputs.cache
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfo.cs
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.CoreCompileInputs.cache
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.dll
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\refint\CustomerAccount.Data.dll
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.pdb
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.genruntimeconfig.cache
+C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\ref\CustomerAccount.Data.dll
