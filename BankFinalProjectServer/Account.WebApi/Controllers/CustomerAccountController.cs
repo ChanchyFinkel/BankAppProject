@@ -14,9 +14,17 @@ namespace CustomerAccount.WebApi.Controllers
         }
         [HttpPost]
         [Route("CreateAccount")]
-        public async Task<bool> CreateAccount([FromBody] CustomerAccountDTO customerAccountDTO)
+        public async Task<ActionResult<bool>> CreateAccount([FromBody] CustomerAccountDTO customerAccountDTO)
         {
-
+            try
+            {
+                bool succsess = await _customerAccountService.CreateAccount(customerAccountDTO);
+                return !succsess ? BadRequest(succsess) : Ok(succsess);
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
         }
 
         [HttpGet]

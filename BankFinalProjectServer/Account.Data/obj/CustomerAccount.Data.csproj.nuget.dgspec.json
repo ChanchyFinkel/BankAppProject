@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {}
+    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
+    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+        "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
         "projectName": "CustomerAccount.Data",
-        "projectPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
-        "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\obj\\",
+        "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+        "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
+        "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

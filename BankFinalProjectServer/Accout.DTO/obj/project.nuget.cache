@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "naj1vO6KClpSHWn3w+osLGdI8beLQ84j2sC+IHBNejqqUSp8Zl6exRjLybEkSnshqad3X7Z0QAQ3y9om98P63A==",
+  "dgSpecHash": "sTg+wRk2Q10AMELR9NfXCWmGXTuvCtTuRyzyCC36xpt7kA4D9Dwzk64/cA9+cdL7djXQG3M1bzQPUxWnlx0B2A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
+  "projectFilePath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
