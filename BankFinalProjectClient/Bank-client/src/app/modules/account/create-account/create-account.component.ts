@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { AccountService } from '../account.service';
 export class CreateAccountComponent implements OnInit {
 
   customerForm!: FormGroup
-  constructor(private _accuntService: AccountService) { }
+  hide = true;
+
+  constructor(private _accuntService: AccountService,private _router:Router) { }
 
   ngOnInit(): void {
     this.buildForm();
@@ -25,14 +28,13 @@ export class CreateAccountComponent implements OnInit {
     })
   }
 
-  createAccount(): void {
-    this._accuntService.createAccount(this.customerForm.value).subscribe(data => {
-      if (data) {
+  createAnAccount(): void {
+    this._accuntService.createAnAccount(this.customerForm.value).subscribe((data: any) => {
+      if(data){
         alert("Account created successfully!");
+        this._router.navigate(['/login']);
       }
-      else {
-        alert("oops..., something went wrong try agin!");
-      }
-    });
+     // data ? alert("Account created successfully!"):alert("oops..., something went wrong try again");
+    },(error: { message: string; }) => alert("Error creating account: " + error.message));
   }
 }
