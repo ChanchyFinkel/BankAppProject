@@ -10,14 +10,14 @@ import { Account } from 'src/app/models/account.model';
 })
 export class AccountService {
   
-  baseUrl: string = "/api/CustomerAccount";
+  baseUrl: string = "/api/CustomerAccount/";
 
   constructor(private _http:HttpClient) { }
 
-  createAccount(newCustomer: Customer):Observable<boolean>{
+  createAnAccount(newCustomer: Customer):Observable<boolean>{
     return this._http.post<boolean>(`${this.baseUrl}CreateAccount`,newCustomer)
   }
   getAccountInfo(accountID: Number):Observable<Account>{
-    return this._http.get<Account>(`${this.baseUrl}/GetAccountInfo/${accountID}`)
+    return this._http.get<Account>(`${this.baseUrl}GetAccountInfo/${accountID}`)
   }
 }
