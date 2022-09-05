@@ -1,1 +1,36 @@
-<p>login works!</p>
+<div class="body">
+  <div class="login-form">
+    <div class="login-form-text">
+      <!-- Sign in title -->
+      <div class="sign-in-title">
+        <mat-icon class="user-icon">account_circle</mat-icon>
+        <h1>Sign In</h1>
+      </div>
+      <br>
+      <!-- Login Form -->
+      <form [formGroup]="loginForm">
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your email address</mat-label>
+            <input matInput type="text" id="userName" formControlName="email">
+            <mat-icon matSuffix> mail</mat-icon>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="fill">
+            <mat-label>Enter your Password</mat-label>
+
+            <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password">
+            <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </mat-form-field>
+        </div>
+        <button [disabled]="!loginForm.valid" (click)="Login()" class="login-btn">Login</button>
+        <h3>or</h3>
+        <button routerLink="" class="login-btn">Create an account</button>
+
+        <!-- Remind Passowrd -->
+      </form>
+    </div>
+  </div>
+</div>
