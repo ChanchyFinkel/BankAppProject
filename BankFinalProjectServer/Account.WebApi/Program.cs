@@ -61,8 +61,8 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
-using (var context = new CustomerAccountContext())
-    context.Database.Migrate();
+//using (var context = new CustomerAccountContext())
+//    context.Database.Migrate();
 
 var app = builder.Build();
 
