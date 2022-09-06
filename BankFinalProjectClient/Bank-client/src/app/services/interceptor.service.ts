@@ -16,7 +16,6 @@ export class InterceptorService implements HttpInterceptor {
   token: string="";
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     this._userServicr.getAuthUser().subscribe(data => {
       if (data) {
         this.token = data.token;

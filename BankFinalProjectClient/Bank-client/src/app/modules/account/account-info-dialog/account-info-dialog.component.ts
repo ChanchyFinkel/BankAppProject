@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AccountInfoComponent } from '../account-info/account-info.component';
-
 @Component({
   selector: 'app-account-info-dialog',
   template: '',

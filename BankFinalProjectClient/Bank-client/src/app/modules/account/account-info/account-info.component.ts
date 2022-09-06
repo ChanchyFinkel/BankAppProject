@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Account } from 'src/app/models/account.model';
 import { AccountService } from '../account.service';
-// import { DialogElementsExampleDialog } from './DialogElementsExampleDialog';
 
 @Component({
   selector: 'app-account-info',
@@ -12,6 +10,7 @@ import { AccountService } from '../account.service';
 export class AccountInfoComponent implements OnInit {
 
   accountInfo!: Account;
+  
   constructor(private _accountService: AccountService) { }
 
   ngOnInit(): void {
@@ -19,5 +18,4 @@ export class AccountInfoComponent implements OnInit {
       this.accountInfo = data;
     },error=>alert("An error has occurred :(")) ;
   }
-
 }
