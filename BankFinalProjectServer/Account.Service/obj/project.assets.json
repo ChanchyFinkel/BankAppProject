@@ -1834,24 +1834,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\user1\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\chanchy\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+      "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
       "projectName": "CustomerAccount.Service",
-      "projectPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
-      "packagesPath": "C:\\Users\\user1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Service\\obj\\",
+      "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+      "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
+      "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user1\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1865,11 +1860,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
-              "projectPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
+            "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
+              "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
             },
-            "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
-              "projectPath": "C:\\Users\\user1\\Documents\\בוטקמפ\\Bank-FinalProject\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
+            "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
+              "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
             }
           }
         }

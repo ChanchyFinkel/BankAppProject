@@ -15,10 +15,9 @@ export class AccountInfoComponent implements OnInit {
   constructor(private _accountService: AccountService) { }
 
   ngOnInit(): void {
-    const accountId = sessionStorage.getItem("accountId")?.toString();
-    accountId ? this._accountService.getAccountInfo().subscribe(data => {
+    this._accountService.getAccountInfo().subscribe(data => {
       this.accountInfo = data;
-    }) : alert("An error has occurred :(");
+    },error=>alert("An error has occurred :(")) ;
   }
 
 }

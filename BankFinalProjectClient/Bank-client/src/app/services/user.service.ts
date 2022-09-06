@@ -17,7 +17,7 @@ export class UserService {
   getAuthUser(): Observable<Auth | any> {
 
     if (!this.authUser.value) {
-      const user = localStorage.getItem(this.userDetailsKey);
+      const user = sessionStorage.getItem(this.userDetailsKey);
       if (user) {
         this.authUser.next(JSON.parse(user));
       }
@@ -28,9 +28,9 @@ export class UserService {
   setAuthUser(_auth: Auth | any): void {
     this.authUser.next(_auth);
     if (_auth) {
-      localStorage.setItem(this.userDetailsKey, JSON.stringify(_auth))
+      sessionStorage.setItem(this.userDetailsKey, JSON.stringify(_auth))
     } else {
-      localStorage.removeItem(this.userDetailsKey)
+      sessionStorage.removeItem(this.userDetailsKey)
     }
   }
 }

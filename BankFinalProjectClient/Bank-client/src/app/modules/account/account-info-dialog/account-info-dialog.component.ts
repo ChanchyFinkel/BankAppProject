@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AccountInfoComponent } from '../account-info/account-info.component';
 
 @Component({
   selector: 'app-account-info-dialog',
-  templateUrl: './account-info-dialog.component.html',
-  styleUrls: ['./account-info-dialog.component.css']
+  template: '',
 })
 export class AccountInfoDialogComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this._dialog.open(AccountInfoComponent);
   }
-
 }

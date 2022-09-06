@@ -1,4 +1,4 @@
-<app-menu class="nav"></app-menu>
-<div [class.router]>
+<app-menu class="nav" *ngIf="_authorized"></app-menu>
+<div [class.router]="_authorized">
   <router-outlet></router-outlet>
 </div>

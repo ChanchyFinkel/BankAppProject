@@ -26,3 +26,17 @@ C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\A
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.pdb
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.genruntimeconfig.cache
 C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\ref\CustomerAccount.Data.dll
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.deps.json
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.runtimeconfig.json
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.dll
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\bin\Debug\net6.0\CustomerAccount.Data.pdb
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.AssemblyReference.cache
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfoInputs.cache
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.AssemblyInfo.cs
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.csproj.CoreCompileInputs.cache
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.dll
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\refint\CustomerAccount.Data.dll
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.pdb
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\CustomerAccount.Data.genruntimeconfig.cache
+C:\CrossRiver-FinalProject - Angular\group8\BankFinalProjectServer\Account.Data\obj\Debug\net6.0\ref\CustomerAccount.Data.dll
