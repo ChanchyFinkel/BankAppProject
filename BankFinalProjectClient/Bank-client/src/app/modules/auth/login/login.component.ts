@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Login } from 'src/app/models/login.model';
+// import { Login } from 'src/app/models/login.model';
 import { UserService } from 'src/app/services/user.service';
-import { threadId } from 'worker_threads';
 import { AuthService } from '../auth.service';
 
 @Component({
