@@ -58,7 +58,7 @@
                     <mat-form-field appearance="outline">
                         <mat-label>Enter your Password</mat-label>
 
-                        <input matInput placeholder="enter your password" type="password" formControlName="password">
+                <input matInput [type]="hide ? 'password' : 'text'" id="password" placeholder="enter your password" formControlName="password">
                         <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                             [attr.aria-pressed]="hide">
                             {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>

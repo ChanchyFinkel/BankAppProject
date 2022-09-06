@@ -15,17 +15,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAccount.DTO", "Acco
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Transaction", "Transaction", "{87E904F2-7643-4F2C-8E1C-124CE0CC92B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.WebApi", "Transaction.WebApi\Transaction.WebApi.csproj", "{53E01A8E-3567-4C4C-8723-C206DC5CA793}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction.WebApi", "Transaction.WebApi\Transaction.WebApi.csproj", "{53E01A8E-3567-4C4C-8723-C206DC5CA793}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Data", "Transaction.Data\Transaction.Data.csproj", "{EDBE6811-17CD-4A2E-A030-B3B5F44D4F02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction.Data", "Transaction.Data\Transaction.Data.csproj", "{EDBE6811-17CD-4A2E-A030-B3B5F44D4F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.Service", "Transaction.Service\Transaction.Service.csproj", "{4698331F-3F94-4D09-94D4-F0910FA88D1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction.Service", "Transaction.Service\Transaction.Service.csproj", "{4698331F-3F94-4D09-94D4-F0910FA88D1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transection.DTO", "Transection.DTO\Transection.DTO.csproj", "{CDD77FBB-67A8-4E07-85C3-01980ACBFC5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transection.DTO", "Transection.DTO\Transection.DTO.csproj", "{CDD77FBB-67A8-4E07-85C3-01980ACBFC5A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transaction.NSB", "Transaction.NSB\Transaction.NSB.csproj", "{FFD604FF-9285-4EA5-B856-925746D72691}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transaction.NSB", "Transaction.NSB\Transaction.NSB.csproj", "{FFD604FF-9285-4EA5-B856-925746D72691}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerAccount.NSB", "CustomerAccount.NSB\CustomerAccount.NSB.csproj", "{3D3F20C9-C93B-4521-8996-8E46E41311DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerAccount.NSB", "CustomerAccount.NSB\CustomerAccount.NSB.csproj", "{3D3F20C9-C93B-4521-8996-8E46E41311DC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messages.NSB", "Messages.NSB", "{E56EC394-D182-4C49-9A14-3D11DF2CE859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Messages.NSB", "Messages.NSB\Messages.NSB.csproj", "{AAF70D38-ADEF-4B31-B131-855BE56DB668}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,10 @@ Global
 		{3D3F20C9-C93B-4521-8996-8E46E41311DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D3F20C9-C93B-4521-8996-8E46E41311DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D3F20C9-C93B-4521-8996-8E46E41311DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAF70D38-ADEF-4B31-B131-855BE56DB668}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAF70D38-ADEF-4B31-B131-855BE56DB668}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAF70D38-ADEF-4B31-B131-855BE56DB668}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAF70D38-ADEF-4B31-B131-855BE56DB668}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,6 +96,7 @@ Global
 		{CDD77FBB-67A8-4E07-85C3-01980ACBFC5A} = {87E904F2-7643-4F2C-8E1C-124CE0CC92B6}
 		{FFD604FF-9285-4EA5-B856-925746D72691} = {87E904F2-7643-4F2C-8E1C-124CE0CC92B6}
 		{3D3F20C9-C93B-4521-8996-8E46E41311DC} = {FBEE6655-8D27-47AA-8C33-06F27242B222}
+		{AAF70D38-ADEF-4B31-B131-855BE56DB668} = {E56EC394-D182-4C49-9A14-3D11DF2CE859}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4C7BB159-5CB7-43E8-BE12-EC8E00A0F648}
