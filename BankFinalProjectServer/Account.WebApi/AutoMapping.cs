@@ -1,6 +1,4 @@
-﻿
-
-namespace CustomerAccount.Service;
+﻿namespace CustomerAccount.Service;
 public class AutoMapping:Profile
 {
     public AutoMapping()

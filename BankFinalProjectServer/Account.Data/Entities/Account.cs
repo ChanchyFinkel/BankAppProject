@@ -1,5 +1,4 @@
 ﻿namespace CustomerAccount.Data.Entities;
-
 public class Account
 {
     [Key,DatabaseGenerated(DatabaseGeneratedOption.Identity)]

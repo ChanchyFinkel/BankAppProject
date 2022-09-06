@@ -27,8 +27,7 @@
         </div>
         <button [disabled]="!loginForm.valid" (click)="Login()" class="login-btn">Login</button>
         <h3>or</h3>
-        <button routerLink="" class="login-btn">Create an account</button>
-
+        <button (click)="createAnAccount()" class="create-btn">Create an account</button>
         <!-- Remind Passowrd -->
       </form>
     </div>

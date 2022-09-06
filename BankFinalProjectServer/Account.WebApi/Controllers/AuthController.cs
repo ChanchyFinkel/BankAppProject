@@ -16,7 +16,7 @@
             try
             {
                 int accountID = await _authService.Login(loginDTO);
-                return accountID != 0 ? Ok(accountID) : StatusCode(401,"not authorized");
+                return accountID != 0 ? Ok(accountID) : Unauthorized();
             }
             catch (Exception ex)
             {

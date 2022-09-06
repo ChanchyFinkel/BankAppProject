@@ -1,5 +1,3 @@
-
-
 namespace CustomerAccount.WebApi.Controllers
 {
     [Route("api/[controller]")]
@@ -32,7 +30,7 @@ namespace CustomerAccount.WebApi.Controllers
             try
             {
                 AccountDTO accountDTO = await _customerAccountService.GetAccountInfo(accountID);
-                return accountDTO == null ? Ok(accountDTO) : BadRequest();
+                return accountDTO != null ? Ok(accountDTO) : BadRequest();
             }
             catch (Exception ex)
             {
