@@ -1,6 +1,6 @@
-
-
 var builder = WebApplication.CreateBuilder(args);
+
+var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
 // Add services to the container.
 builder.Services.AddControllers();
@@ -8,16 +8,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-IConfigurationRoot configuration = new
-            ConfigurationBuilder().AddJsonFile("appsettings.json",
-            optional: false, reloadOnChange: true).Build();
-
 //var connectionString= builder.Configuration.GetConnectionString("chanchy_dbConnection");
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthData, AuthData>();
 builder.Services.AddScoped<ICustomerAccountService, CustomerAccountService>();
 builder.Services.AddScoped<ICustomerAccountData, CustomerAccountData>();
-builder.Services.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer("server=DESKTOP-R5RADSP; database=Bank;Trusted_Connection=True;"));
+builder.Services.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
