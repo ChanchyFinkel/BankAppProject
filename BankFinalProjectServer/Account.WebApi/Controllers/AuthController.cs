@@ -11,12 +11,12 @@
         }
         [HttpPost]
         [Route("Login")]
-        public async Task<ActionResult<int>> Login([FromBody] LoginDTO loginDTO)
+        public async Task<ActionResult<AuthDTO>> Login([FromBody] LoginDTO loginDTO)
         {
             try
             {
-                int accountID = await _authService.Login(loginDTO);
-                return accountID != 0 ? Ok(accountID) : Unauthorized();
+                AuthDTO authDTO = await _authService.Login(loginDTO);
+                return authDTO != null ? Ok(authDTO) : Unauthorized();
             }
             catch (Exception ex)
             {

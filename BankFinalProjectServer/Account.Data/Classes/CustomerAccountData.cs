@@ -30,7 +30,7 @@ public class CustomerAccountData : ICustomerAccountData
         using var context = _factory.CreateDbContext();
         return await context.Account.Where(account => account.ID==accountID).Include(account => account.Customer).FirstAsync();
     }
-    public async Task<bool> ExistsAccount(string email)
+    public async Task<bool> ExistsCustomerName(string email)
     {
         using var context = _factory.CreateDbContext();
         return await context.Customer.AnyAsync(c=>c.Email.Equals(email));

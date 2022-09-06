@@ -2,6 +2,7 @@
 {
     public interface IAuthService
     {
-        Task<int> Login(LoginDTO loginDTO);
+        Task<AuthDTO> Login(LoginDTO loginDTO);
+        int getAccountIDFromToken(ClaimsPrincipal User);
     }
 }

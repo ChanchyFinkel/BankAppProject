@@ -29,7 +29,7 @@ namespace CustomerAccount.Data.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                        .Annotation("SqlServer:Identity", "100000, 1"),
                     CustomerID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     OpenDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Balance = table.Column<decimal>(type: "decimal(18,2)", nullable: false)

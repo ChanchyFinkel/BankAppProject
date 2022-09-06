@@ -5,6 +5,6 @@
         Task<bool> CreateAccount(Account account);
         Task CreateCustomer(Customer customer);
         Task<Account> GetAccountInfo(int accountID);
-        Task<bool> ExistsAccount(string email);
+        Task<bool> ExistsCustomerName(string email);
     }
 }

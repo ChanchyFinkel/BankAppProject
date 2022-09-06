@@ -3,3 +3,8 @@ global using CustomerAccount.Service.Interfaces;
 global using CustomerAccount.DTO;
 global using AutoMapper;
 global using CustomerAccount.Data.Entities;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using System.Text;

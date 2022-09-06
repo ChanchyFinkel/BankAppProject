@@ -12,7 +12,7 @@ public class CustomerAccountService : ICustomerAccountService
     }
     public async Task<bool> CreateAccount(CustomerAccountDTO customerAccountDTO)
     {
-        bool existAccount = await _customerAccountData.ExistsAccount(customerAccountDTO.Email);
+        bool existAccount = await _customerAccountData.ExistsCustomerName(customerAccountDTO.Email);
         if (existAccount)
             return false;
         Customer newCustomer = _mapper.Map<CustomerAccountDTO,Customer>(customerAccountDTO);

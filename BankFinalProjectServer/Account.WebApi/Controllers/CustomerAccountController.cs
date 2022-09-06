@@ -5,9 +5,11 @@ namespace CustomerAccount.WebApi.Controllers
     public class CustomerAccountController : ControllerBase
     {
         private readonly ICustomerAccountService _customerAccountService;
-        public CustomerAccountController(ICustomerAccountService customerAccountService)
+        private readonly IAuthService _authService;
+        public CustomerAccountController(ICustomerAccountService customerAccountService,IAuthService authService)
         {
             _customerAccountService = customerAccountService;
+            _authService = authService;
         }
         [HttpPost]
         [Route("CreateAccount")]
@@ -23,12 +25,15 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
+        [Authorize]
         [HttpGet]
-        [Route("GetAccountInfo/{accountID}")]
-        public async Task<ActionResult<AccountDTO>> GetAccountInfo(int accountID)
+        [Route("GetAccountInfo")]
+        public async Task<ActionResult<AccountDTO>> GetAccountInfo()
         {
             try
             {
+                int accountID=_authService.getAccountIDFromToken(User);
                 AccountDTO accountDTO = await _customerAccountService.GetAccountInfo(accountID);
                 return accountDTO != null ? Ok(accountDTO) : BadRequest();
             }
@@ -37,6 +42,5 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
-
     }
 }
