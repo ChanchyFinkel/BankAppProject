@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/models/login.model';
+import { UserService } from 'src/app/services/user.service';
+import { threadId } from 'worker_threads';
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -11,7 +13,7 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _authService: AuthService, private _router: Router) { }
+  constructor(private _authService: AuthService, private _router: Router,private _userService: UserService) { }
 
   hide = true;
   // login:Login=new Login();
@@ -23,7 +25,9 @@ export class LoginComponent implements OnInit {
 
   Login() {
     this._authService.login(this.loginForm.value).subscribe(data => {
-      sessionStorage.setItem("accountId", JSON.stringify(data));//todo encrypted
+
+      //sessionStorage.setItem("authUser", JSON.stringify(data));//todo encrypted
+      this._userService.setAuthUser(data)
       alert("success login!");
       this._router.navigate(['/accountInfo']);
     }, error => {

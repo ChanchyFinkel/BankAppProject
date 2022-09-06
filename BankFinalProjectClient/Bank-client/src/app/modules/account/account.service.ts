@@ -17,7 +17,7 @@ export class AccountService {
   createAnAccount(newCustomer: Customer):Observable<boolean>{
     return this._http.post<boolean>(`${this.baseUrl}CreateAccount`,newCustomer)
   }
-  getAccountInfo(accountID: Number):Observable<Account>{
-    return this._http.get<Account>(`${this.baseUrl}GetAccountInfo/${accountID}`)
+  getAccountInfo():Observable<Account>{
+    return this._http.get<Account>(`${this.baseUrl}GetAccountInfo`)
   }
 }

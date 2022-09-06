@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AccountModule } from './modules/account/account.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+import { UserService } from './services/user.service';
+import { InterceptorService } from './services/interceptor.service';
+import { AccountInfoDialogComponent } from './account-info-dialog/account-info-dialog.component';
 // import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    AccountInfoDialogComponent,
     // AccountInfoDialogComponent
   ],
   imports: [
@@ -22,8 +26,12 @@ import { MenuComponent } from './menu/menu.component';
     HttpClientModule,
     AccountModule,
     AuthModule
-  ],
-  providers: [],
+  ],  providers: [
+    UserService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: InterceptorService,
+    multi: true
+   }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
