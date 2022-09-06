@@ -14,7 +14,6 @@ export class LoginComponent implements OnInit {
   constructor(private _authService: AuthService, private _router: Router) { }
 
   hide = true;
-  // login:Login=new Login();
 
   loginForm: FormGroup = new FormGroup({
     "email": new FormControl("", [Validators.required, Validators.email, Validators.maxLength(40)]),

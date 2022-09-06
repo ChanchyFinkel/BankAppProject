@@ -20,3 +20,15 @@ C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Serv
 C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\refint\CustomerAccount.Service.dll
 C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\CustomerAccount.Service.pdb
 C:\CrrossRiver-Final Project-External\group8\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\ref\CustomerAccount.Service.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.Service.deps.json
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.Service.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.Service.pdb
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.Data.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.DTO.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.Data.pdb
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\bin\Debug\net6.0\CustomerAccount.DTO.pdb
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\CustomerAccount.Service.csproj.CopyComplete
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\CustomerAccount.Service.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\refint\CustomerAccount.Service.dll
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\CustomerAccount.Service.pdb
+C:\Users\user1\Documents\בוטקמפ\Bank-FinalProject\BankFinalProjectServer\Account.Service\obj\Debug\net6.0\ref\CustomerAccount.Service.dll
