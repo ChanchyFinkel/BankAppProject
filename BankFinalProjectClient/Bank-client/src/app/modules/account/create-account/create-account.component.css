@@ -5,10 +5,10 @@ html {
     background-color: #56baed;
   }
   
-  body {
+  .body {
     font-family: "Poppins", sans-serif;
-    height: 100vh;
-    /* background-image: url('src/imgs/hotel.jpg'); */
+    height: 100vh;   
+     background-image: url('src/assets/images/img-4.jpg');
     background-size: cover;
     position: fixed;
     width: 100%;
