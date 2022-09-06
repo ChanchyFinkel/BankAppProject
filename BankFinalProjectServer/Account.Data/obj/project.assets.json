@@ -1871,11 +1871,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+      "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
       "projectName": "CustomerAccount.Data",
-      "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+      "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
       "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-      "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\obj\\",
+      "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",

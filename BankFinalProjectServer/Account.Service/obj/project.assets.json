@@ -1839,11 +1839,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+      "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
       "projectName": "CustomerAccount.Service",
-      "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+      "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
       "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-      "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\obj\\",
+      "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1860,11 +1860,11 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
-              "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
+            "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
+              "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
             },
-            "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
-              "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
+            "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
+              "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
             }
           }
         }

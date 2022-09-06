@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "fP51CS1qk1yOCNOIGxMN9cl7GME1w80y8tF2LhN6ysQh2AfFm9Lh+lINqCZaWHv44pSYiRyINVO018emsiUh2A==",
+  "dgSpecHash": "TgVj8j7MeSxyq8Km5wSa0zlQEpnOkQMs4E816/kmbkjexKuZMJ54aibBwRAILbKgdj+JiP7GZdwcQAfXcZWH5A==",
   "success": true,
-  "projectFilePath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
+  "projectFilePath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chanchy\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\chanchy\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj": {}
+    "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj": {}
   },
   "projects": {
-    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
+    "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+        "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
         "projectName": "CustomerAccount.Data",
-        "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
+        "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj",
         "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-        "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\obj\\",
+        "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -80,14 +80,14 @@
         }
       }
     },
-    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj": {
+    "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+        "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
         "projectName": "CustomerAccount.Service",
-        "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+        "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
         "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-        "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\obj\\",
+        "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -104,11 +104,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
-                "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
+              "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj": {
+                "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Data\\CustomerAccount.Data.csproj"
               },
-              "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
-                "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
+              "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
+                "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
               }
             }
           }
@@ -147,14 +147,14 @@
         }
       }
     },
-    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj": {
+    "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
+        "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
         "projectName": "CustomerAccount.WebApi",
-        "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
+        "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\CustomerAccount.WebApi.csproj",
         "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-        "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.WebApi\\obj\\",
+        "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.WebApi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -171,11 +171,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj": {
-                "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj"
+              "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj": {
+                "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj"
               },
-              "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
-                "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
+              "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
+                "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj"
               }
             }
           }
@@ -227,14 +227,14 @@
         }
       }
     },
-    "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
+    "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
+        "projectUniqueName": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
         "projectName": "CustomerAccount.DTO",
-        "projectPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
+        "projectPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\CustomerAccount.DTO.csproj",
         "packagesPath": "C:\\Users\\chanchy\\.nuget\\packages\\",
-        "outputPath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Accout.DTO\\obj\\",
+        "outputPath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Accout.DTO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chanchy\\AppData\\Roaming\\NuGet\\NuGet.Config",

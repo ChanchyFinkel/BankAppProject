@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mzXS7rfUvmKH9ge0y15XhTw5pO/yF1oDjEHc+H1RFw4aPo8qmrG96jKySD0xQvDW/W70DRCNozHDV0bjuc1xiw==",
+  "dgSpecHash": "RNRr39/WnSHFhEdiMaT0HfpLl7DPiMUTax1XYs3HI3afXXzZ/k3XAutm8u/ho3lRDvBF0s0hY19Meg2L6UOtXQ==",
   "success": true,
-  "projectFilePath": "C:\\CrrossRiver-Final Project-External\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
+  "projectFilePath": "C:\\CrossRiver-FinalProject - Angular\\group8\\BankFinalProjectServer\\Account.Service\\CustomerAccount.Service.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chanchy\\.nuget\\packages\\automapper\\11.0.1\\automapper.11.0.1.nupkg.sha512",
     "C:\\Users\\chanchy\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
