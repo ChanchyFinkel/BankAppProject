@@ -1,31 +1,22 @@
-
-body{
-    background-size: cover;
-    position: fixed;
-    width: 100%;
-}
-
-
-
-/* classes */
-
-
 .mat-icon{
-    font-size: 150%;
+    font-size: 20%;
     color: white;
 }
 
-ul {
+ ul {
   z-index: 2;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #333;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  top: 1vw;
+  left:1vw;
+  right:1vw;
+  width:98vw;
+  border-radius: 15px;
+  background-color: #cacaca;
 }
   
 
@@ -34,7 +25,7 @@ ul {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 6px;
     text-decoration: none;
   }
   
@@ -45,18 +36,24 @@ ul {
   .active {
     background-color: rgb(141,194, 249);
   } 
+
   .left-element{
     float: left;
     }
+
     li button {
       float: left;
       display: block;
       color: white;
       text-align: center;
-      padding: 14px 16px;
+      padding: 8px 6px;
       text-decoration: none;
     }
     
     li button:hover:not(.active) {
       color: #000;
+    }
+
+    ul{
+
     }

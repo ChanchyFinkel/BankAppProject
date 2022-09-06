@@ -11,41 +11,29 @@ import { AuthService } from '../auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private _authService: AuthService, private router: Router) { }
+  constructor(private _authService: AuthService, private _router: Router) { }
 
   hide = true;
   // login:Login=new Login();
 
   loginForm: FormGroup = new FormGroup({
-    "email": new FormControl("", [Validators.required,Validators.email,Validators.maxLength(40)]),
+    "email": new FormControl("", [Validators.required, Validators.email, Validators.maxLength(40)]),
     "password": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(25)]),
   })
 
   Login() {
     this._authService.login(this.loginForm.value).subscribe(data => {
-      alert(data);
+      sessionStorage.setItem("accountId", JSON.stringify(data));//todo encrypted
+      alert("success login!");
+      this._router.navigate(['/accountInfo']);
+    }, error => {
+      error.status == 401 ? alert("The identification process failed, if you are a new customer - create a new account, otherwise try again") : alert("Login failed,Try again later");
     });
-    // this.userAdmin = this.loginForm.value;
-    // this.userAdmin.name = this.userAdmin.name.replace(/\s/g, '');
-    // this.userAdmin.password = this.userAdmin.password.replace(/\s/g, '');
-    // this._loginService.getAdmin(this.userAdmin).subscribe((data: any) => {
-    //   if (data) {
-    //     this.userAdminDTO = data;
-    //     console.log(this.userAdminDTO);
-    //     alert("Welcome to " + this.userAdminDTO.name);
-    //     // this._userService.setAuthorized(true);
-    //     // this._userService.setUserAdmin(data);
-     
-    //     this.router.navigate(['/calendar']);
-    //   } 
-    //   else { console.log("no such user"); }
-    // })
   };
+  createAnAccount() {
+    this._router.navigate(['/createAnAccount']);
+  }
 
   ngOnInit(): void {
-    // this.loginForm = new FormGroup({
-    //   name: new FormControl("", [Validators.required, Validators.email]),
-    //   password: new FormControl("", [Validators.required, Validators.minLength(8)]),
-    // });
   }
 }

@@ -8,10 +8,12 @@ import { AccountModule } from './modules/account/account.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
+// import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    // AccountInfoDialogComponent
   ],
   imports: [
     BrowserModule,
