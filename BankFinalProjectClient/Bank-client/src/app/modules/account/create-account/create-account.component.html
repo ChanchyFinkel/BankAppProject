@@ -65,7 +65,10 @@
                     </mat-form-field>
                 </div>
                 <button [disabled]="!customerForm.valid" (click)="createAnAccount()" class="login-btn">Sign Up</button>
-                <!-- Remind Passowrd -->
+                <div *ngIf="loading">
+                    <div class="statusProcces">Create a new account...</div>
+                    <mat-progress-bar mode="buffer"></mat-progress-bar>
+                  </div>
             </form>
         </div>
     </div>

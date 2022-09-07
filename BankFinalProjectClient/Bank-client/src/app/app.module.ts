@@ -10,13 +10,15 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MenuComponent } from './menu/menu.component';
 import { UserService } from './services/user.service';
 import { InterceptorService } from './services/interceptor.service';
-import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
+import { TransactionModule } from './modules/transaction/transaction.module';
+// import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 // import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    AccountInfoDialogComponent,
+    // AccountInfoDialogComponent,
+    // TransactionComponent,
     // AccountInfoDialogComponent
   ],
   imports: [
@@ -25,7 +27,8 @@ import { AccountInfoDialogComponent } from './modules/account/account-info-dialo
     BrowserAnimationsModule,
     HttpClientModule,
     AccountModule,
-    AuthModule
+    AuthModule,
+    TransactionModule
   ],  providers: [
     UserService,{
     provide: HTTP_INTERCEPTORS,

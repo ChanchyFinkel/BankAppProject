@@ -1,33 +1,23 @@
-mat-card-title{
-    border-bottom: 1.5px ridge #6bafe9;
-    font-size: 25px;
-    white-space: nowrap;
-    margin-top: 20px;
-    text-align: center;
-}
-mat-card-header{
-    margin-bottom: 20px;
-}
-mat-card-content{
-    font-size: 14px;
-    letter-spacing: 0.3px;
-    line-height: 1.5;
-}
-.title{
-    display: inline;
-    font-weight: 500;
-    font-size: 15px;
-}
 .mat-card {
     width: 300px;
-    height: 220px;
+    height: 500px;
     text-align: center;
 }
 .body{
+
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
+    /* background-image: url('./../../../../assets/images/background/background-4.jpg');
+    background-size: cover; */
+}
+mat-card-title{
+    font-size: 25px;
+    white-space: nowrap;
+    margin-top: 20px;
+    text-align: center;
+    /* margin-left: 0; */
 }
 .mat-card>:first-child{
     justify-content: center;
@@ -37,10 +27,13 @@ button{
     border-radius: 8px;
     border-color: darkgray;
     line-height: 2;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-right: 14px;
     font-weight: 500;
 }
 .mat-card:not([class*=mat-elevation-z]) {
     box-shadow: 2px -1px 20px 3px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+.comment{
+    color: gray;
+    font-size: 12px;
 }

@@ -28,7 +28,13 @@
         <button [disabled]="!loginForm.valid" (click)="Login()" class="login-btn">Login</button>
         <h3>or</h3>
         <button (click)="createAnAccount()" class="create-btn">Create an account</button>
-        <!-- Remind Passowrd -->
+        <div *ngIf="loading">
+          <div class="statusProcces">Loading...</div>
+          <mat-progress-bar mode="buffer"></mat-progress-bar>
+        </div>
+        <!-- <div *ngIf="!loading">
+          <div class="statusProcces">Login procees successfully!</div>
+        </div> -->
       </form>
     </div>
   </div>

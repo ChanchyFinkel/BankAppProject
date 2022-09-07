@@ -150,7 +150,6 @@ h1 {
   font-size: 600%;
   margin: 30% 50% 5px 28%; 
   color: rgb(141,194, 249);
- 
   /* color: #cccccc; */
 }
 .mail-icon{
@@ -182,7 +181,17 @@ button:disabled{
 .login-btn ,.create-btn{
   cursor: pointer;
 }
+
 .create-btn{
   line-height: 1.3;
   font-size: 24px;
+}
+
+.statusProcces{
+  color: #b1b1b1;
+}
+
+mat-progress-bar{
+  margin-left: 115px;
+  width: 70px;
 }

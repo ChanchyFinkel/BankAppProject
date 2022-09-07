@@ -28,8 +28,12 @@ export class CreateAccountComponent implements OnInit {
     })
   }
 
+  loading!:boolean;
+
   createAnAccount(): void {
+    this.loading = true;
     this._accuntService.createAnAccount(this.customerForm.value).subscribe((data: any) => {
+      this.loading = false;
       if(data){
         alert("Account created successfully!");
         this._router.navigate(['/login']);
