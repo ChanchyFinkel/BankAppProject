@@ -1,8 +1,0 @@
-{
-  "ConnectionStrings": {
-    "chanchy_dbConnection": "server=DESKTOP-R5RADSP; database=BankAccount;Trusted_Connection=True;",
-    "reut_dbConnection": "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=BankAccount;Trusted_Connection=True;",
-    "SQLConnection": "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=BankAccount;Trusted_Connection=True;",
-    "RabbitMQConnection": "host=localhost"
-  }
-}
