@@ -1,9 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Transaction.Service.Interfaces;
-
-namespace Transaction.WebApi.Controllers
+﻿namespace Transaction.WebApi.Controllers
 {
-  
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -17,11 +14,11 @@ namespace Transaction.WebApi.Controllers
         }
         [HttpPost]
         [Route("AddTransaction")]
-        public async Task<ActionResult> AddTransaction([FromBody] Data.Entities.Transaction transaction)
+        public async Task<ActionResult> AddTransaction([FromBody] TransactionDTO transaction)
         {
             try
             {
-                await _transactionService.AddTransaction(transaction, _messageSession);
+                await _transactionService.AddTransaction(transaction, _messageSession,null);
                 return Ok();
             }
             catch (Exception ex)

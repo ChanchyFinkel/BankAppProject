@@ -20,6 +20,6 @@ public class Transaction
     [Required]
     public DateTime Date { get; set; }
     [Required]
-    public Status Status { get; set; }
+    public Status Status { get; set; }=Status.PROCESSING;
     public string? FailureReason { get; set; }
 }

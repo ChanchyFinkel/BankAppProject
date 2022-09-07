@@ -1,0 +1,9 @@
+﻿global using CustomerAccount.Data.Classes;
+global using CustomerAccount.Data.Interfaces;
+global using CustomerAccount.Service.Classes;
+global using CustomerAccount.Service.Interfaces;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.DependencyInjection;
+global using NServiceBus;
+global using NServiceBus.Logging;
+global using System.Data.SqlClient;

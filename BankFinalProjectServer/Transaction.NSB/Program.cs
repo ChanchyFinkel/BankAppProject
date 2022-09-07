@@ -8,12 +8,12 @@
 
         var endpointConfiguration = new EndpointConfiguration("Transaction");
 
-        var databaseConnection = "Server=DESKTOP-R5RADSP;Database=WeightWatchers;Trusted_Connection=True;";
-        var rabbitMQConnection = @"host=localhost";
+        var databaseConnection = "server=DESKTOP-R5RADSP; database=Transaction;Trusted_Connection=True;";
+        var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
-        containerSettings.ServiceCollection.AddScoped<ITransactionData, TransactionData>();
         containerSettings.ServiceCollection.AddScoped<ITransactionService, TransactionService>();
+        containerSettings.ServiceCollection.AddScoped<ITransactionData, TransactionData>();
         containerSettings.ServiceCollection.AddDbContextFactory<TransactionContext>(opt => opt.UseSqlServer(databaseConnection));
 
         #region ReceiverConfiguration

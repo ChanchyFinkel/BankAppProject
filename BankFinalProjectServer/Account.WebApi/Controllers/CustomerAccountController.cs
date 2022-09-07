@@ -42,5 +42,20 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        [Authorize]
+        [HttpGet]
+        [Route("GetAccountBalance")]
+        public async Task<ActionResult<int>> GetAccountBalance(int accountID)
+        {
+            try
+            {
+                int accountBalance = await _customerAccountService.GetAccountBalance(accountID);
+                return accountBalance != 0 ? Ok(accountBalance) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

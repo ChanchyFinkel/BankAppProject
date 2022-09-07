@@ -1,5 +1,7 @@
-﻿namespace Transaction.Service.Interfaces;
+﻿
+namespace Transaction.Service.Interfaces;
 public interface ITransactionService
 {
-    public Task AddTransaction(Data.Entities.Transaction transaction, IMessageSession messageSession);
+    Task AddTransaction(TransactionDTO transaction, IMessageSession messageSession, ClaimsPrincipal? User);
+    Task UpdateTransactionStatus(int transactionID, bool success, string? failureReason);
 }

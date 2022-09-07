@@ -2,7 +2,7 @@
 public class CustomerAccountService : ICustomerAccountService
 {
     private readonly ICustomerAccountData _customerAccountData;
-    private IMapper _mapper;
+    private readonly IMapper _mapper;
 
     public CustomerAccountService(ICustomerAccountData customerAccountData, IMapper mapper)
     {
@@ -12,10 +12,10 @@ public class CustomerAccountService : ICustomerAccountService
     }
     public async Task<bool> CreateAccount(CustomerAccountDTO customerAccountDTO)
     {
-        bool existAccount = await _customerAccountData.ExistsCustomerName(customerAccountDTO.Email);
+        bool existAccount = await _customerAccountData.ExistsAccountEmail(customerAccountDTO.Email);
         if (existAccount)
             return false;
-        Customer newCustomer = _mapper.Map<CustomerAccountDTO,Customer>(customerAccountDTO);
+        Customer newCustomer = _mapper.Map<CustomerAccountDTO, Customer>(customerAccountDTO);
         await _customerAccountData.CreateCustomer(newCustomer);
         Account newAccount = new Account();
         newAccount.Customer = newCustomer;
@@ -26,4 +26,24 @@ public class CustomerAccountService : ICustomerAccountService
     {
         return _mapper.Map<AccountDTO>(await _customerAccountData.GetAccountInfo(accountID));
     }
+    public Task<bool> ExistsAccountId(int accountID)
+    {
+        return _customerAccountData.ExistsAccountId(accountID);
+    }
+    public async Task<bool> CheckSenderBalance(int accountID,int amount)
+    {
+        int balance = await _customerAccountData.GetAccountBalance(accountID);
+        return balance >= amount;
+    }
+
+    public Task<int> GetAccountBalance(int accountID)
+    {
+        return _customerAccountData.GetAccountBalance(accountID);
+    }
+
+    public Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID,  int ammount)
+    {
+        return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID,  ammount);
+    }
+
 }

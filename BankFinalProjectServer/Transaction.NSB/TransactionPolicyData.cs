@@ -10,6 +10,6 @@ namespace Transaction.NSB;
 public class TransactionPolicyData : ContainSagaData
 {
     public int TransactionID { get; set; }
-    public bool IsTransactionDone { get; set; }
-    public bool IsTransactionStatusUpdated { get; set; }
+    //public bool IsTransactionStarted { get; set; }
+    //public bool IsTransfortDone { get; set; }
 }
