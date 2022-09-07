@@ -4,13 +4,15 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { AccountInfoComponent } from './account-info/account-info.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AccountInfoDialogComponent } from './account-info-dialog/account-info-dialog.component';
 
 
 
 @NgModule({
-  declarations: [CreateAccountComponent,AccountInfoComponent],
+  declarations: [CreateAccountComponent,AccountInfoComponent,AccountInfoDialogComponent],
   imports: [
     CommonModule,MaterialModule,ReactiveFormsModule,FormsModule
-  ],exports:[CreateAccountComponent,AccountInfoComponent]
+  ],
+  exports:[]
 })
 export class AccountModule { }

@@ -4,11 +4,13 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatInputModule } from '@angular/material/input';
-import{MatIconModule} from '@angular/material/icon';
-import{MatDatepickerModule} from '@angular/material/datepicker';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [],
@@ -23,7 +25,8 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
     MatDialogModule,
     MatFormFieldModule,
     MatNativeDateModule,
-
+    MatCardModule,
+    MatProgressBarModule
   ],
   exports: [
     MatTableModule,
@@ -34,6 +37,9 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
     MatDatepickerModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatNativeDateModule,]
+    MatNativeDateModule,
+    MatCardModule,
+    MatProgressBarModule
+  ]
 })
 export class MaterialModule { }

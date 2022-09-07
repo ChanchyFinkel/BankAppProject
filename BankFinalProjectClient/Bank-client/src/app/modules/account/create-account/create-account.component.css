@@ -175,3 +175,13 @@ button:disabled{
 .login-btn {
   cursor: pointer;
 }
+
+.statusProcces{
+  color: #8f8f8f;
+  margin: 10px;
+}
+
+mat-progress-bar{
+  margin-left: 115px;
+  width: 70px;
+}

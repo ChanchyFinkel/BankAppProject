@@ -5,6 +5,8 @@ public class CustomerAccountData : ICustomerAccountData
     public CustomerAccountData(IDbContextFactory<CustomerAccountContext> factory)
     {
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        using var db = _factory.CreateDbContext();
+        db.Database.Migrate();
     }
     public async Task<bool> CreateAccount(Account account)
     {

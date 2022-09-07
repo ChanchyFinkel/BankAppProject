@@ -5,6 +5,8 @@ public class AuthData : IAuthData
     public AuthData(IDbContextFactory<CustomerAccountContext> factory)
     {
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        using var db = _factory.CreateDbContext();
+        db.Database.Migrate();
     }
     public async Task<int> Login(string email, string password)
     {

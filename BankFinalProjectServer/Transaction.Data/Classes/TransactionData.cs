@@ -7,6 +7,8 @@ public class TransactionData : ITransactionData
     public TransactionData(IDbContextFactory<TransactionContext> factory)
     {
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
+        using var db = _factory.CreateDbContext();
+        db.Database.Migrate();
     }
     public async Task<int> AddTransaction(Entities.Transaction transaction)
     {
