@@ -8,7 +8,7 @@ public class Program
     {
         Console.Title = "CustommerAccount";
 
-        var endpointConfiguration = new EndpointConfiguration("CustommerAccount");
+        var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
 
         var databaseConnection = "Server=DESKTOP-R5RADSP;Database=Transaction;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
