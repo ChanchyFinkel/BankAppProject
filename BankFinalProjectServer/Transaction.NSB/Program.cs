@@ -20,6 +20,7 @@ public class Program
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
         containerSettings.ServiceCollection.AddScoped<ITransactionService, TransactionService>();
         containerSettings.ServiceCollection.AddScoped<ITransactionData, TransactionData>();
+        containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
         containerSettings.ServiceCollection.AddDbContextFactory<TransactionContext>(opt => opt.UseSqlServer(databaseConnection));
 
         #region ReceiverConfiguration

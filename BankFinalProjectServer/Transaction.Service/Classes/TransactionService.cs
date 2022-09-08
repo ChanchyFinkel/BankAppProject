@@ -1,8 +1,4 @@
-﻿
-
-using System.Security.Claims;
-
-namespace Transaction.Service.Classes;
+﻿namespace Transaction.Service.Classes;
 public class TransactionService : ITransactionService
 {
     private readonly ITransactionData _transactionData;

@@ -1,6 +1,4 @@
-﻿using Transaction.Data.Interfaces;
-
-namespace Transaction.Data.Classes;
+﻿namespace Transaction.Data.Classes;
 public class TransactionData : ITransactionData
 {
     private readonly IDbContextFactory<TransactionContext> _factory;

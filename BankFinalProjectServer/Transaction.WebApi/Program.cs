@@ -1,9 +1,6 @@
-
-
 var builder = WebApplication.CreateBuilder(args);
 var databaseConnection = builder.Configuration.GetConnectionString("chanchy_dbConnection");
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
-
 
 #region back-end-use-nservicebus
 builder.Host.UseNServiceBus(hostBuilderContext =>
@@ -87,7 +84,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", p =>
@@ -100,13 +96,16 @@ builder.Services.AddCors(options =>
 #endregion
 #region Adding middlewares
 var app = builder.Build();
+
 // Configure the HTTP request pipeline.	
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
 //app.UseHttpsRedirection();//?	
+
 app.UseCors("AllowAll");
 
 
