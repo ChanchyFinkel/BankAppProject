@@ -1,5 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
-var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
+var databaseConnection = builder.Configuration.GetConnectionString("chanchy_dbConnection");
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
 
 #region back-end-use-nservicebus
@@ -22,11 +22,13 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
     transport.ConnectionString(rabbitMQConnection);
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
     var conventions = endpointConfiguration.Conventions();
+    conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
     conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
     return endpointConfiguration;
 });
 #endregion
 // Add services to the container.
+#region Adding services to the container.
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -91,7 +93,8 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod();
     });
 });
-
+#endregion
+#region Adding middlewares
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.	
@@ -113,3 +116,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+#endregion

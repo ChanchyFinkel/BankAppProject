@@ -1,6 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
-var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
+var databaseConnection = builder.Configuration.GetConnectionString("chanchy_dbConnection");
+
 
 builder.Services.AddAuthentication(x =>
 {

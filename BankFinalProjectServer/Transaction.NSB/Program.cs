@@ -1,4 +1,6 @@
-﻿public class Program
+﻿using Microsoft.Extensions.Configuration;
+
+public class Program
 {
     static ILog log = LogManager.GetLogger<Program>();
     static async Task Main()
@@ -6,9 +8,13 @@
         Console.Title = "Transaction";
 
         var endpointConfiguration = new EndpointConfiguration("Transaction");
+        var configuration = new ConfigurationBuilder()
+          .SetBasePath(Directory.GetCurrentDirectory())
+          .AddJsonFile($"appsettings.json");
 
-        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=Transaction;Trusted_Connection=True;";
-        var rabbitMQConnection = "host=localhost";
+        var config = configuration.Build();
+        var databaseConnection = config.GetConnectionString("chanchy_dbConnection");
+        var rabbitMQConnection = config.GetConnectionString("RabbitMQConnection");
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
         containerSettings.ServiceCollection.AddScoped<ITransactionService, TransactionService>();
