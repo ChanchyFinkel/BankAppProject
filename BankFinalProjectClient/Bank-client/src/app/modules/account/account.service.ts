@@ -22,6 +22,6 @@ export class AccountService {
   }
 
   getBalanceAccount():Observable<number>{
-    return this._http.get<number>(`${this.baseUrl}GetBalanceAccount`)
+    return this._http.get<number>(`${this.baseUrl}GetAccountBalance`)
   }
 }

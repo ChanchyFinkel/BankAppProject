@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Transaction } from 'src/app/models/transaction.model';
 import { AccountService } from '../../account/account.service';
 import { TransactionService } from '../transaction.service';
 
@@ -29,8 +30,18 @@ export class TransactionComponent implements OnInit {
     }
   }
 
+  fromAccount:number = 0;
+  transaction!:Transaction;
+
   addTransaction() {
-    this._transactionService.addTransaction(this.transactionForm.value).subscribe(
+    let authUser=sessionStorage.getItem('authUser');
+    if(authUser) 
+      this.fromAccount =JSON.parse(authUser).accountID;
+    this.transaction=this.transactionForm.value;
+    // this.transaction.ammount=this.transactionForm.controls['ammount'].value;
+    // this.transaction.toAccount = this.transactionForm.controls['toAccount'].value;
+    this.transaction.fromAccount = this.fromAccount;
+    this._transactionService.addTransaction(this.transaction).subscribe(
       () => { alert("transaction done!"); },
       () => { alert("transaction failed!"); })
   }
