@@ -13,18 +13,9 @@ public class TransactionService : ITransactionService
     public async Task AddTransaction(TransactionDTO newTransaction, IMessageSession messageSession, ClaimsPrincipal? User)
     {
         Data.Entities.Transaction transaction = _mapper.Map<Data.Entities.Transaction>(newTransaction);
-      //  int accountID = getAccountIDFromToken(User);
-        //transaction.FromAccount=accountID;
-        transaction.FromAccount = 100001;
         transaction.Date = DateTime.UtcNow;
-        int transactionId = await _transactionData.AddTransaction(transaction);
-        transaction.ID = transactionId; //to check if need it
+        await _transactionData.AddTransaction(transaction);
         await PublishMessage(transaction, messageSession);
-    }
-    public int getAccountIDFromToken(ClaimsPrincipal User)
-    {
-        var accountID = User.Claims.First(x => x.Type.Equals("AccountID", StringComparison.InvariantCultureIgnoreCase)).Value;
-        return int.Parse(accountID);
     }
     private Task PublishMessage(Data.Entities.Transaction transaction, IMessageSession context)
     {

@@ -1,5 +1,4 @@
-﻿
-namespace Messages.NSB.Events;
+﻿namespace Messages.NSB.Events;
 
 public class TransfortDone
 {

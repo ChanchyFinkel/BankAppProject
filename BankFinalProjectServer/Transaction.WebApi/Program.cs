@@ -102,9 +102,11 @@ if (app.Environment.IsDevelopment())
 }
 
 //app.UseHttpsRedirection();//?	
+app.UseHandlerExecptionMiddleware();
 
 app.UseCors("AllowAll");
 
+app.UseAuthentication();
 
 app.UseAuthorization();
 

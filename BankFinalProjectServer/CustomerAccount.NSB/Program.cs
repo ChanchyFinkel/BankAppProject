@@ -7,7 +7,7 @@
 
         var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
 
-        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=Transaction;Trusted_Connection=True;";
+        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=BankAccount;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
@@ -15,6 +15,7 @@
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountData, CustomerAccountData>();
         containerSettings.ServiceCollection.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
         containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
+
         #region ReceiverConfiguration
 
         endpointConfiguration.EnableInstallers();
@@ -42,6 +43,10 @@
         conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
 
         var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
+
+
+        Console.WriteLine("waiting for messages...");
+        Console.ReadLine();
 
         await endpointInstance.Stop();
     }

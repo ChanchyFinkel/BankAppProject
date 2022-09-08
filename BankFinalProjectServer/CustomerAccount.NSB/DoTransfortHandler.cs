@@ -1,7 +1,4 @@
-﻿using Messages.NSB.Commands;
-using Messages.NSB.Events;
-
-namespace CustomerAccount.NSB;
+﻿namespace CustomerAccount.NSB;
 public class DoTransfortHandler : IHandleMessages<DoTransfort>
 {
     static ILog log = LogManager.GetLogger<DoTransfort>();

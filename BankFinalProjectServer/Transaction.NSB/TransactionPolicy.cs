@@ -1,5 +1,4 @@
-﻿using Messages.NSB.Events;
-namespace Transaction.NSB;
+﻿namespace Transaction.NSB;
 public class TransactionPolicy : Saga<TransactionPolicyData>, IAmStartedByMessages<TransactionStarted>, IHandleMessages<TransfortDone>
 {
     static ILog log = LogManager.GetLogger<TransactionPolicy>();

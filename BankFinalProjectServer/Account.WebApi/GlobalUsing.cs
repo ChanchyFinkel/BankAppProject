@@ -13,5 +13,3 @@ global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
 global using System.Text;
 global using Microsoft.AspNetCore.Authorization;
-
-

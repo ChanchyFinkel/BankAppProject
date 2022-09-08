@@ -1,8 +1,4 @@
-﻿using AutoMapper;
-using CustomerAccount.Data.Entities;
-using CustomerAccount.DTO;
-
-namespace CustomerAccount.NSB;
+﻿namespace CustomerAccount.NSB;
 public class AutoMapping:Profile
 {
     public AutoMapping()

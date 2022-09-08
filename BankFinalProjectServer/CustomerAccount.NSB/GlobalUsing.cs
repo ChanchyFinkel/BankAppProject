@@ -7,3 +7,8 @@ global using Microsoft.Extensions.DependencyInjection;
 global using NServiceBus;
 global using NServiceBus.Logging;
 global using System.Data.SqlClient;
+global using AutoMapper;
+global using CustomerAccount.Data.Entities;
+global using CustomerAccount.DTO;
+global using Messages.NSB.Commands;
+global using Messages.NSB.Events;

@@ -1,5 +1,4 @@
 ﻿namespace Messages.NSB.Events;
-
 public class TransactionStarted
 {
     public int TransactionID { get; set; }

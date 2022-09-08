@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Transaction.Data.Entities;
+﻿namespace Transaction.Data.Entities;
 public enum Status
 {
     PROCESSING,SUCCESS,FAIL

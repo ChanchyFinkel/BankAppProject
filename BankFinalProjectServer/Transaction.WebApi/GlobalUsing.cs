@@ -12,3 +12,4 @@ global using Microsoft.IdentityModel.Tokens;
 global using Microsoft.OpenApi.Models;
 global using System.Text;
 global using AutoMapper;
+global using Transaction.WebApi.Middlewares;

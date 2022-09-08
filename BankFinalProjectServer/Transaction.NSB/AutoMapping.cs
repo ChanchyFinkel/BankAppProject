@@ -1,7 +1,4 @@
-﻿using AutoMapper;
-using Transection.DTO;
-
-namespace Transaction.NSB;
+﻿namespace Transaction.NSB;
 public class AutoMapping:Profile
 {
     public AutoMapping()

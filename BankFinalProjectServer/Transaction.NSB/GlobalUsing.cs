@@ -8,3 +8,6 @@ global using Transaction.Service.Classes;
 global using Transaction.Service.Interfaces;
 global using Messages.NSB.Commands;
 global using System.Data.SqlClient;
+global using AutoMapper;
+global using Transection.DTO;
+global using Messages.NSB.Events;

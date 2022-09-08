@@ -45,10 +45,11 @@ namespace CustomerAccount.WebApi.Controllers
         [Authorize]
         [HttpGet]
         [Route("GetAccountBalance")]
-        public async Task<ActionResult<int>> GetAccountBalance(int accountID)
+        public async Task<ActionResult<int>> GetAccountBalance()
         {
             try
             {
+                int accountID = _authService.getAccountIDFromToken(User);
                 int accountBalance = await _customerAccountService.GetAccountBalance(accountID);
                 return accountBalance != 0 ? Ok(accountBalance) : BadRequest();
             }
