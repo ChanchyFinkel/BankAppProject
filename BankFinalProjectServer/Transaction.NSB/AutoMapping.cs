@@ -1,4 +1,7 @@
-﻿namespace Transaction.WebApi;
+﻿using AutoMapper;
+using Transection.DTO;
+
+namespace Transaction.NSB;
 public class AutoMapping:Profile
 {
     public AutoMapping()

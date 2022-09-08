@@ -1,23 +1,20 @@
-﻿
-
-public class Program
+﻿public class Program
 {
     static ILog log = LogManager.GetLogger<Program>();
-
     static async Task Main()
     {
-        Console.Title = "CustommerAccount";
+        Console.Title = "CustomerAccount";
 
-        var endpointConfiguration = new EndpointConfiguration("CustommerAccount");
+        var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
 
-        var databaseConnection = "Server=DESKTOP-R5RADSP;Database=Transaction;Trusted_Connection=True;";
+        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=Transaction;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountService, CustomerAccountService>();
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountData, CustomerAccountData>();
         containerSettings.ServiceCollection.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
-
+        containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
         #region ReceiverConfiguration
 
         endpointConfiguration.EnableInstallers();

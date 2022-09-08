@@ -8,7 +8,6 @@ public class CustomerAccountData : ICustomerAccountData
         using var db = _factory.CreateDbContext();
         db.Database.Migrate();
     }
-
     public async Task CreateCustomer(Customer customer)
     {
         using var context = _factory.CreateDbContext();

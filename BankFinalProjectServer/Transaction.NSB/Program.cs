@@ -8,12 +8,13 @@
 
         var endpointConfiguration = new EndpointConfiguration("Transaction");
 
-        var databaseConnection = "server=DESKTOP-R5RADSP; database=Transaction;Trusted_Connection=True;";
+        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=Transaction;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
         containerSettings.ServiceCollection.AddScoped<ITransactionService, TransactionService>();
         containerSettings.ServiceCollection.AddScoped<ITransactionData, TransactionData>();
+        containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
         containerSettings.ServiceCollection.AddDbContextFactory<TransactionContext>(opt => opt.UseSqlServer(databaseConnection));
 
         #region ReceiverConfiguration
