@@ -12,7 +12,7 @@ public class OperationsHistoryController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetOperationsHistories/{accountID}/{pageSize}/{page}")]
+    [Route("GetOperationsHistories/{pageSize}/{page}")]
     public async Task<ActionResult<OperationDataListDTO>> GetOperationsHistories( int pageSize, int page)
     {
         try

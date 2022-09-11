@@ -43,8 +43,8 @@ namespace CustomerAccount.WebApi.Controllers
             }
         }
         [Authorize]
-        [HttpGet("{accountNumber}")]
-        [Route("GetAccountHolderInfo")]
+        [HttpGet]
+        [Route("GetAccountHolderInfo/{accountNumber}")]
         public async Task<ActionResult<AccountHolderDTO>> GetAccountHolderInfo(int accountNumber)
         {
             try
