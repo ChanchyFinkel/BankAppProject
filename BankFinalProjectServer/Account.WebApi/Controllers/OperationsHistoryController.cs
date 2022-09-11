@@ -1,5 +1,6 @@
 ﻿namespace CustomerAccount.WebApi.Controllers;
 
+[Authorize]
 [Route("api/[controller]")]
 [ApiController]
 public class OperationsHistoryController : ControllerBase
@@ -12,11 +13,11 @@ public class OperationsHistoryController : ControllerBase
 
     [HttpGet]
     [Route("GetOperationsHistories/{accountID}/{pageSize}/{page}")]
-    public async Task<ActionResult<OperationDataListDTO>> GetOperationsHistories(int accountID, int pageSize, int page)
+    public async Task<ActionResult<OperationDataListDTO>> GetOperationsHistories( int pageSize, int page)
     {
         try
         {
-            return Ok(await _operationsHistoryService.GetOperationsHistories(accountID, pageSize, page));
+            return Ok(await _operationsHistoryService.GetOperationsHistories(User, pageSize, page));
         }
         catch (Exception ex)
         {

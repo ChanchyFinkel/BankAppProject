@@ -3,13 +3,17 @@ public class OperationsHistoryService : IOperationsHistoryService
 {
     private readonly IOperationsHistoryData _operationsHistoryData;
     private readonly IMapper _mapper;
-    public OperationsHistoryService(IOperationsHistoryData operationsHistoryData, IMapper mapper)
+    private readonly IAuthService _authService;
+
+    public OperationsHistoryService(IOperationsHistoryData operationsHistoryData, IMapper mapper, IAuthService authService)
     {
         _operationsHistoryData = operationsHistoryData;
         _mapper = mapper;
+        _authService = authService;
     }
-    public async Task<OperationDataListDTO> GetOperationsHistories(int accountID, int pageSize, int page)
+    public async Task<OperationDataListDTO> GetOperationsHistories(ClaimsPrincipal User, int pageSize, int page)
     {
+        int accountID = _authService.getAccountIDFromToken(User);
         List<OperationsHistory> operationsHistories = await _operationsHistoryData.GetOperationsHistories(accountID);
         OperationDataListDTO operationsDataListDTO = new OperationDataListDTO();
         operationsDataListDTO.TotalRows = operationsHistories.Count;

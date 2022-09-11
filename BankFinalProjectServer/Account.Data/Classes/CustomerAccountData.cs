@@ -32,6 +32,11 @@ public class CustomerAccountData : ICustomerAccountData
         using var context = _factory.CreateDbContext();
         return await context.Account.Where(account => account.ID == accountID).Include(account => account.Customer).FirstAsync();
     }
+    public async Task<Account> GetAccountHolderInfo(int accountNumber)
+    {
+        using var context = _factory.CreateDbContext();
+        return await context.Account.Where(account => account.ID == accountNumber).Include(account => account.Customer).FirstAsync();
+    }
     public async Task<bool> ExistsAccountEmail(string email)
     {
         using var context = _factory.CreateDbContext();

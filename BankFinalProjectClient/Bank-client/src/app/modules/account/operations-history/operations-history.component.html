@@ -6,17 +6,13 @@
 <div class="mat-elevation-z8 demo-table">
     <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- FirstName Column -->
         <ng-container matColumnDef="operationDate">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-            <!-- sortActionDescription="Sort by firstname" -->
             <td mat-cell *matCellDef="let row"> {{row.date}} </td>
         </ng-container>
 
-        <!-- FirstName Column -->
         <ng-container matColumnDef="operationAccountId">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Number</th>
-            <!-- sortActionDescription="Sort by firstname" -->
             <td mat-cell *matCellDef="let row"> {{row.operationAccountId}} </td>
         </ng-container>
 
