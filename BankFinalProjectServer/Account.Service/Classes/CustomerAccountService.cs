@@ -45,5 +45,4 @@ public class CustomerAccountService : ICustomerAccountService
     {
         return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID,  ammount);
     }
-
 }

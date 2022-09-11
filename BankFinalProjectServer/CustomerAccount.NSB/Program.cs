@@ -7,7 +7,7 @@
 
         var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
 
-        var databaseConnection = "server=DESKTOP-R5RADSP; database=BankAccount;Trusted_Connection=True;";
+        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=BankAccount;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
@@ -44,8 +44,7 @@
         conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
         conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
 
-        var endpointInstance = await Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
-
+        var endpointInstance = await Endpoint.Start(endpointConfiguration);
 
         Console.WriteLine("waiting for messages...");
         Console.ReadLine();
