@@ -15,6 +15,8 @@
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountData, CustomerAccountData>();
         containerSettings.ServiceCollection.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
         containerSettings.ServiceCollection.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
+        containerSettings.ServiceCollection.AddScoped<IAuthData, AuthData>();
+        containerSettings.ServiceCollection.AddScoped<IAuthService, AuthService>();
         containerSettings.ServiceCollection.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
         containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
 

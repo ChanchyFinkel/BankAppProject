@@ -14,7 +14,7 @@ import { AccoutHolderInfoComponent } from '../accout-holder-info/accout-holder-i
 })
 export class OperationsHistoryComponent implements OnInit {
 
-  columnsToDisplay: string[] = ['Date', 'From/to Account', 'Debit/Credit', 'Balance'];
+  columnsToDisplay: string[] = ['IconType','Date', 'From/to Account', 'Debit/Credit', 'Balance'];
   dataSource: MatTableDataSource<OperationHistory> = new MatTableDataSource();
   operationsList: OperationHistory[] = [];
   totalRows = 0;
@@ -63,7 +63,11 @@ export class OperationsHistoryComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  openDialog(){
-    this.dialog.open(AccoutHolderInfoComponent);
+  openDialog(accountNumber: number){
+    this.dialog.open(AccoutHolderInfoComponent, {
+      // width: '80%',
+      // height:'80%',
+      data: accountNumber,
+    });
   }
 }

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Customer } from 'src/app/models/customer.model';
 import { Account } from 'src/app/models/account.model';
 import { OperationDataList } from 'src/app/models/operationsDataList.model';
+import { AccountHolderInfo } from 'src/app/models/account-holder-info.model';
 
 
 @Injectable({
@@ -23,10 +24,14 @@ export class AccountService {
   }
 
   getOperationsHistory(currentPage: number, pageSize: number): Observable<OperationDataList> {
-    return this._http.get<OperationDataList>(`${this.baseUrl}lastOrders?page=${currentPage}&pageSize=${pageSize}`)
+    return this._http.get<OperationDataList>(`api/OperationsHistory/GetOperationsHistories/${pageSize}/${currentPage}`)
   }
 
   getBalanceAccount(): Observable<number> {
     return this._http.get<number>(`${this.baseUrl}GetAccountBalance`)
+  }
+
+  getAccountHolderInfo(accountNumber:number): Observable<AccountHolderInfo> {
+    return this._http.get<AccountHolderInfo>(`${this.baseUrl}GetAccountHolderInfo/${accountNumber}`)
   }
 }

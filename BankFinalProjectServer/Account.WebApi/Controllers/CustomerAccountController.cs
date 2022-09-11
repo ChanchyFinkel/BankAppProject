@@ -49,7 +49,6 @@ namespace CustomerAccount.WebApi.Controllers
         {
             try
             {
-                //int accountID = _authService.getAccountIDFromToken(User);
                 AccountHolderDTO accountHolderDTO = await _customerAccountService.GetAccountHolderInfo(accountNumber);
                 return accountHolderDTO != null ? Ok(accountHolderDTO) : BadRequest();
             }
