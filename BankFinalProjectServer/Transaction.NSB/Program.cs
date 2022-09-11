@@ -13,7 +13,7 @@ public class Program
           .AddJsonFile($"appsettings.json");
 
         var config = configuration.Build();
-        var databaseConnection = config.GetConnectionString("chanchy_dbConnection");
+        var databaseConnection = config.GetConnectionString("SQLConnection");
         var rabbitMQConnection = config.GetConnectionString("RabbitMQConnection");
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());

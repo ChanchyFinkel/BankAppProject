@@ -13,5 +13,11 @@ public class AutoMapping:Profile
         .ForMember(dest =>
             dest.LastName,
             opt => opt.MapFrom(src => src.Customer.LastName));
+        CreateMap<OperationsHistory, OperationsHistoryDTO>().ForMember(dest =>
+            dest.Amount,
+            opt => opt.MapFrom(src => src.TransactionAmount))
+            .ForMember(dest =>
+            dest.Date,
+            opt => opt.MapFrom(src => src.OperationTime)).ReverseMap();
     }
 }
