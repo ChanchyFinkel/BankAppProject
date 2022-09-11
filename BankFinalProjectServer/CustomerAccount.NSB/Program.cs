@@ -7,7 +7,7 @@
 
         var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
 
-        var databaseConnection = "Server=DESKTOP-H7OUJ7M\\SQLEXPRESS;Database=BankAccount;Trusted_Connection=True;";
+        var databaseConnection = "server=DESKTOP-R5RADSP; database=BankAccount;Trusted_Connection=True;";
         var rabbitMQConnection = "host=localhost";
 
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());

@@ -1,3 +1,4 @@
+
 var builder = WebApplication.CreateBuilder(args);
 var databaseConnection = builder.Configuration.GetConnectionString("chanchy_dbConnection");
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");

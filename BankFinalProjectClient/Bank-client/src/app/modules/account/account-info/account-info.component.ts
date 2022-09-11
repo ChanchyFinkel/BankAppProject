@@ -10,12 +10,17 @@ import { AccountService } from '../account.service';
 export class AccountInfoComponent implements OnInit {
 
   accountInfo!: Account;
-  
+  loading=false;
+
   constructor(private _accountService: AccountService) { }
 
   ngOnInit(): void {
+    this.getAccountInfo();
+  }
+  getAccountInfo(): void {
     this._accountService.getAccountInfo().subscribe(data => {
+      this.loading=true;
       this.accountInfo = data;
-    },error=>alert("An error has occurred :(")) ;
+    }, error => alert("An error has occurred :("));
   }
 }

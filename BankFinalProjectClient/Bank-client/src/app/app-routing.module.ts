@@ -6,8 +6,9 @@ import { AccountInfoComponent } from './modules/account/account-info/account-inf
 // import { AccountInfoComponent } from './modules/account/account-info/account-info.component';
 // import { DialogElementsExampleDialog } from './modules/account/account-info/DialogElementsExampleDialog';
 import { CreateAccountComponent } from './modules/account/create-account/create-account.component';
+import { OperationsHistoryComponent } from './modules/account/operations-history/operations-history.component';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { TransactionComponent } from './modules/transaction/transaction/transaction.component';
+import { CreateTransactionComponent } from './modules/transaction/create-transaction/create-transaction.component';
 import { WrongRouteComponent } from './modules/wrong-route/wrong-route.component';
 
 const APP_ROUTES: Routes = [
@@ -16,7 +17,8 @@ const APP_ROUTES: Routes = [
   { path: "login", component: LoginComponent },
   { path: "createAnAccount", component: CreateAccountComponent},
   { path: "accountInfo", component: AccountInfoComponent},
-  { path: "createTransaction", component:TransactionComponent},
+  { path: "createTransaction", component:CreateTransactionComponent},
+  { path: "operationsHistory", component:OperationsHistoryComponent},
   { path: "**",pathMatch:"full", component: WrongRouteComponent}
 ];
 

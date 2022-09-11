@@ -5,11 +5,12 @@ import { AccountInfoComponent } from './account-info/account-info.component';
 import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountInfoDialogComponent } from './account-info-dialog/account-info-dialog.component';
+import { OperationsHistoryComponent } from './operations-history/operations-history.component';
 
 
 
 @NgModule({
-  declarations: [CreateAccountComponent,AccountInfoComponent,AccountInfoDialogComponent],
+  declarations: [CreateAccountComponent,AccountInfoComponent,AccountInfoDialogComponent,OperationsHistoryComponent],
   imports: [
     CommonModule,MaterialModule,ReactiveFormsModule,FormsModule
   ],

@@ -11,7 +11,11 @@
     </div>
 </div> -->
 <div class="body">
-    <mat-card class="example-card">
+    <div *ngIf="!loading">
+        <h2>loading...</h2>
+        <mat-spinner></mat-spinner>
+      </div>
+    <mat-card class="example-card" *ngIf="loading">
         <mat-card-header>
             <mat-card-title>Customer account details</mat-card-title>
         </mat-card-header>

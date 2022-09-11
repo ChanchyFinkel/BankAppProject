@@ -11,15 +11,14 @@ import { MenuComponent } from './menu/menu.component';
 import { UserService } from './services/user.service';
 import { InterceptorService } from './services/interceptor.service';
 import { TransactionModule } from './modules/transaction/transaction.module';
+import { AccountNumberDetailsComponent } from './modules/account/account-number-details/account-number-details.component';
 // import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 // import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    // AccountInfoDialogComponent,
-    // TransactionComponent,
-    // AccountInfoDialogComponent
+    AccountNumberDetailsComponent,
   ],
   imports: [
     BrowserModule,

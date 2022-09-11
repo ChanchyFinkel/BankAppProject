@@ -3,14 +3,12 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Transaction } from 'src/app/models/transaction.model';
 import { AccountService } from '../../account/account.service';
 import { TransactionService } from '../transaction.service';
-
 @Component({
-  selector: 'app-transaction',
-  templateUrl: './transaction.component.html',
-  styleUrls: ['./transaction.component.css']
+  selector: 'app-create-transaction',
+  templateUrl: './create-transaction.component.html',
+  styleUrls: ['./create-transaction.component.css']
 })
-export class TransactionComponent implements OnInit {
-
+export class CreateTransactionComponent implements OnInit {
   constructor(private _transactionService: TransactionService, private _accountService: AccountService) { }
 
   balance: number = 1000000;
@@ -45,4 +43,5 @@ export class TransactionComponent implements OnInit {
       () => { alert("transaction done!"); },
       () => { alert("transaction failed!"); })
   }
+
 }

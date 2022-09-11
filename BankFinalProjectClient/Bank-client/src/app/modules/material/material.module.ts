@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatCardModule } from '@angular/material/card';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [],
@@ -26,7 +27,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatFormFieldModule,
     MatNativeDateModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatTableModule,
@@ -39,7 +41,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatFormFieldModule,
     MatNativeDateModule,
     MatCardModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ]
 })
 export class MaterialModule { }
