@@ -1,12 +1,13 @@
 namespace CustomerAccount.WebApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerAccountController : ControllerBase
     {
         private readonly ICustomerAccountService _customerAccountService;
         private readonly IAuthService _authService;
-        public CustomerAccountController(ICustomerAccountService customerAccountService,IAuthService authService)
+        public CustomerAccountController(ICustomerAccountService customerAccountService, IAuthService authService)
         {
             _customerAccountService = customerAccountService;
             _authService = authService;
@@ -20,7 +21,7 @@ namespace CustomerAccount.WebApi.Controllers
                 bool succsess = await _customerAccountService.CreateAccount(customerAccountDTO);
                 return !succsess ? BadRequest(succsess) : Ok(succsess);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, ex.Message);
             }
@@ -33,9 +34,24 @@ namespace CustomerAccount.WebApi.Controllers
         {
             try
             {
-                int accountID=_authService.getAccountIDFromToken(User);
-                AccountDTO accountDTO = await _customerAccountService.GetAccountInfo(accountID);
+                AccountDTO accountDTO = await _customerAccountService.GetAccountInfo(User);
                 return accountDTO != null ? Ok(accountDTO) : BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [Authorize]
+        [HttpGet("{accountNumber}")]
+        [Route("GetAccountHolderInfo")]
+        public async Task<ActionResult<AccountHolderDTO>> GetAccountHolderInfo(int accountNumber)
+        {
+            try
+            {
+                //int accountID = _authService.getAccountIDFromToken(User);
+                AccountHolderDTO accountHolderDTO = await _customerAccountService.GetAccountHolderInfo(accountNumber);
+                return accountHolderDTO != null ? Ok(accountHolderDTO) : BadRequest();
             }
             catch (Exception ex)
             {

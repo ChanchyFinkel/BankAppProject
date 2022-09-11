@@ -13,6 +13,17 @@ public class AutoMapping:Profile
         .ForMember(dest =>
             dest.LastName,
             opt => opt.MapFrom(src => src.Customer.LastName));
+        CreateMap<Account, AccountHolderDTO>()
+           .ForMember(dest =>
+           dest.FirstName,
+           opt => opt.MapFrom(src => src.Customer.FirstName))
+       .ForMember(dest =>
+           dest.LastName,
+           opt => opt.MapFrom(src => src.Customer.LastName))
+       .ForMember(dest =>
+           dest.Email,
+           opt => opt.MapFrom(src => src.Customer.Email));
+
         CreateMap<OperationsHistory, OperationsHistoryDTO>().ForMember(dest =>
             dest.Amount,
             opt => opt.MapFrom(src => src.TransactionAmount))

@@ -3,6 +3,6 @@
     public interface IOperationsHistoryService
     {
         Task<bool> AddOperation(OperationsHistory operation);
-        Task<OperationDataListDTO> GetOperationsHistories(int accountID, int pageSize, int page);
+        Task<OperationDataListDTO> GetOperationsHistories(ClaimsPrincipal User,int pageSize, int page);
     }
 }

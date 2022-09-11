@@ -3,12 +3,13 @@ public class CustomerAccountService : ICustomerAccountService
 {
     private readonly ICustomerAccountData _customerAccountData;
     private readonly IMapper _mapper;
+    private readonly IAuthService _authService;
 
-    public CustomerAccountService(ICustomerAccountData customerAccountData, IMapper mapper)
+    public CustomerAccountService(ICustomerAccountData customerAccountData, IMapper mapper, IAuthService authService)
     {
         _customerAccountData = customerAccountData;
         _mapper = mapper;
-
+        _authService = authService;
     }
     public async Task<bool> CreateAccount(CustomerAccountDTO customerAccountDTO)
     {
@@ -22,8 +23,9 @@ public class CustomerAccountService : ICustomerAccountService
         newAccount.OpenDate = DateTime.UtcNow;
         return await _customerAccountData.CreateAccount(newAccount);
     }
-    public async Task<AccountDTO> GetAccountInfo(int accountID)
+    public async Task<AccountDTO> GetAccountInfo(ClaimsPrincipal user)
     {
+        int accountID=_authService.getAccountIDFromToken(user);
         return _mapper.Map<AccountDTO>(await _customerAccountData.GetAccountInfo(accountID));
     }
     public Task<bool> ExistsAccountId(int accountID)
@@ -45,4 +47,10 @@ public class CustomerAccountService : ICustomerAccountService
     {
         return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID,  ammount);
     }
+
+    public async Task<AccountHolderDTO> GetAccountHolderInfo(int accountNumber)
+    {
+        return _mapper.Map<AccountHolderDTO>(_customerAccountData.GetAccountHolderInfo(accountNumber));
+    }
+
 }
