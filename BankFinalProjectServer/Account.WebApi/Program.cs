@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-var databaseConnection = builder.Configuration.GetConnectionString("chanchy_dbConnection");
+var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
 
 builder.Services.AddAuthentication(x =>
@@ -30,6 +30,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthData, AuthData>();
 builder.Services.AddScoped<ICustomerAccountService, CustomerAccountService>();
 builder.Services.AddScoped<ICustomerAccountData, CustomerAccountData>();
+builder.Services.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
+builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
 builder.Services.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
 builder.Services.AddAutoMapper(typeof(Program));
 

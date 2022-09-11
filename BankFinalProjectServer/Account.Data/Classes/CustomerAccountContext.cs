@@ -4,6 +4,7 @@ public class CustomerAccountContext : DbContext
     public CustomerAccountContext(DbContextOptions<CustomerAccountContext> options) : base(options) { }
     public virtual DbSet<Account> Account { get; set; }
     public virtual DbSet<Customer> Customer { get; set; }
+    public virtual DbSet<OperationsHistory> OperationsHistory { get; set; }
 }
 
 

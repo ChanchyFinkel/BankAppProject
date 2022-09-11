@@ -13,6 +13,8 @@
         var containerSettings = endpointConfiguration.UseContainer(new DefaultServiceProviderFactory());
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountService, CustomerAccountService>();
         containerSettings.ServiceCollection.AddScoped<ICustomerAccountData, CustomerAccountData>();
+        containerSettings.ServiceCollection.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
+        containerSettings.ServiceCollection.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
         containerSettings.ServiceCollection.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
         containerSettings.ServiceCollection.AddAutoMapper(typeof(Program));
 
