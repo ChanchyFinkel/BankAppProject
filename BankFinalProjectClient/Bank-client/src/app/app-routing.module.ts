@@ -1,10 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
 import { AccountInfoComponent } from './modules/account/account-info/account-info.component';
-// import { AccountInfoDialogComponent } from './modules/account/account-info/account-info-dialog.component';
-// import { AccountInfoComponent } from './modules/account/account-info/account-info.component';
-// import { DialogElementsExampleDialog } from './modules/account/account-info/DialogElementsExampleDialog';
 import { CreateAccountComponent } from './modules/account/create-account/create-account.component';
 import { OperationsHistoryComponent } from './modules/account/operations-history/operations-history.component';
 import { LoginComponent } from './modules/auth/login/login.component';

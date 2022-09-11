@@ -6,33 +6,25 @@
 <div class="mat-elevation-z8 demo-table">
     <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- FirstName Column -->
-        <ng-container matColumnDef="operationDate">
+        <ng-container matColumnDef="Date">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-            <!-- sortActionDescription="Sort by firstname" -->
             <td mat-cell *matCellDef="let row"> {{row.date}} </td>
         </ng-container>
 
-        <!-- FirstName Column -->
-        <ng-container matColumnDef="operationAccountId">
+        <ng-container matColumnDef="From/to Account" (click)="openDialog()">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Number</th>
-            <!-- sortActionDescription="Sort by firstname" -->
             <td mat-cell *matCellDef="let row"> {{row.operationAccountId}} </td>
         </ng-container>
 
-        <!-- LastName Column -->
-        <ng-container matColumnDef="debit/credit">
+        <ng-container matColumnDef="Debit/Credit">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Debit/Credit</th>
             <td mat-cell *matCellDef="let row"> {{row.amount}} </td>
         </ng-container>
 
-        <!-- EmailAddress Column -->
-        <ng-container matColumnDef="balance">
+        <ng-container matColumnDef="Balance">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
             <td mat-cell *matCellDef="let row"> {{row.balance}} </td>
         </ng-container>
-
-
 
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>

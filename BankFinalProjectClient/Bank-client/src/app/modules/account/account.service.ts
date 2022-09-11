@@ -10,23 +10,23 @@ import { OperationDataList } from 'src/app/models/operationsDataList.model';
   providedIn: 'root'
 })
 export class AccountService {
-  
+
   baseUrl: string = "/api/CustomerAccount/";
 
-  constructor(private _http:HttpClient) { }
+  constructor(private _http: HttpClient) { }
 
-  createAnAccount(newCustomer: Customer):Observable<boolean>{
-    return this._http.post<boolean>(`${this.baseUrl}CreateAccount`,newCustomer)
+  createAnAccount(newCustomer: Customer): Observable<boolean> {
+    return this._http.post<boolean>(`${this.baseUrl}CreateAccount`, newCustomer)
   }
-  getAccountInfo():Observable<Account>{
+  getAccountInfo(): Observable<Account> {
     return this._http.get<Account>(`${this.baseUrl}GetAccountInfo`)
   }
-  
-  getOperationsHistory(currentPage:number,pageSize:number):Observable<OperationDataList>{
-    return this._http.get<OperationDataList>(`${this.baseUrl}lastOrders?page=${currentPage}&pageSize=${pageSize}`)
-}
 
-  getBalanceAccount():Observable<number>{
+  getOperationsHistory(currentPage: number, pageSize: number): Observable<OperationDataList> {
+    return this._http.get<OperationDataList>(`${this.baseUrl}lastOrders?page=${currentPage}&pageSize=${pageSize}`)
+  }
+
+  getBalanceAccount(): Observable<number> {
     return this._http.get<number>(`${this.baseUrl}GetAccountBalance`)
   }
 }

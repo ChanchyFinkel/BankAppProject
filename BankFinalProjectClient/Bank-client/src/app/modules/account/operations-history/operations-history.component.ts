@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { OperationHistory } from 'src/app/models/operationHistory.model';
 import { AccountService } from '../account.service';
+import { AccoutHolderInfoComponent } from '../accout-holder-info/accout-holder-info.component';
 
 @Component({
   selector: 'app-operations-history',
@@ -23,10 +25,10 @@ export class OperationsHistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private _accountService: AccountService) { }
+  constructor(private _accountService: AccountService,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-  //  this.getOpeartionsHistory();
+    this.getOpeartionsHistory();
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -59,5 +61,9 @@ export class OperationsHistoryComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  openDialog(){
+    this.dialog.open(AccoutHolderInfoComponent);
   }
 }
