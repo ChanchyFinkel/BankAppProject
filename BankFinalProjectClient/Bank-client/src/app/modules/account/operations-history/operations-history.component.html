@@ -1,37 +1,49 @@
 <mat-form-field appearance="standard">
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
-  </mat-form-field>
+</mat-form-field>
 
 <div class="mat-elevation-z8 demo-table">
     <table mat-table [dataSource]="dataSource" matSort>
 
-        <ng-container matColumnDef="operationDate">
+        <ng-container matColumnDef="IconType">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <td mat-cell *matCellDef="let row">
+                <div *ngIf="!row.debit" class="credit"><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8"/>
+                  </svg></div>
+                <div *ngIf="row.debit" class="debit"><svg xmlns="http://www.w3.org/2000/svg" width="5" height="5" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                    <circle cx="8" cy="8" r="8"/>
+                  </svg></div>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Date">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Date</th>
-            <td mat-cell *matCellDef="let row"> {{row.date}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.date| date:'d-MMM-yyyy'}} </td>
         </ng-container>
 
-        <ng-container matColumnDef="operationAccountId">
+        <ng-container matColumnDef="From/to Account">
             <th mat-header-cell *matHeaderCellDef mat-sort-header> Account Number</th>
-            <td mat-cell *matCellDef="let row"> {{row.operationAccountId}} </td>
+            <td mat-cell *matCellDef="let row"> {{row.accountNumber}} </td>
         </ng-container>
 
-        <!-- LastName Column -->
-        <ng-container matColumnDef="debit/credit">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Debit/Credit</th>
-            <td mat-cell *matCellDef="let row"> {{row.amount}} </td>
+        <ng-container matColumnDef="Debit/Credit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Debit/Credit $</th>
+            <td mat-cell *matCellDef="let row">
+                <div *ngIf="!row.debit" class="credit">{{row.amount}}</div>
+                <div *ngIf="row.debit">-{{row.amount}}</div>
+            </td>
+
         </ng-container>
 
-        <!-- EmailAddress Column -->
-        <ng-container matColumnDef="balance">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance </th>
+        <ng-container matColumnDef="Balance">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Balance $ </th>
             <td mat-cell *matCellDef="let row"> {{row.balance}} </td>
         </ng-container>
 
-
-
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+        <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (dblclick)="openDialog(row.accountNumber)"></tr>
 
         <tr class="mat-row" *matNoDataRow>
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>

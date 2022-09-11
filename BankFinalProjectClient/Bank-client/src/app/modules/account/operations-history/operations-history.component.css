@@ -53,3 +53,11 @@
     font-size: 14px;
     width: 100%;
   }
+
+  .credit{
+    color: #1dab6a;
+  }
+
+  .debit{
+    color: red;
+  }

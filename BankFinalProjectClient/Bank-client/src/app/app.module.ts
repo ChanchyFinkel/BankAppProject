@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -12,8 +11,7 @@ import { UserService } from './services/user.service';
 import { InterceptorService } from './services/interceptor.service';
 import { TransactionModule } from './modules/transaction/transaction.module';
 import { AccountNumberDetailsComponent } from './modules/account/account-number-details/account-number-details.component';
-// import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
-// import { AccountInfoDialogComponent } from './modules/account/account-info-dialog/account-info-dialog.component';
+
 @NgModule({
   declarations: [
     AppComponent,
