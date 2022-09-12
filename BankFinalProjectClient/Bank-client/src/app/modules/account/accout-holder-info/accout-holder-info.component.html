@@ -1,15 +1,17 @@
-<div *ngIf="!loading">
-    <div class="statusProcces">Loading...</div>
-    <mat-progress-bar mode="buffer"></mat-progress-bar>
-</div>
-<div *ngIf="loading">
-    <h1 mat-dialog-title>Account holder information</h1>
-    <div mat-dialog-content>
-        <div class="title">first name:</div> {{accountHolderInfo?.firstName}}<br>
-        <div class="title">last name:</div> {{accountHolderInfo?.lastName}}<br>
-        <div class="title">email:</div> {{accountHolderInfo?.email}}<br>
+<div class="body">
+    <div *ngIf="!loading">
+        <div class="statusProcces">Loading...</div>
+        <mat-progress-bar mode="buffer"></mat-progress-bar>
     </div>
-</div>
-<div mat-dialog-actions>
-    <button mat-button mat-dialog-close>Close</button>
+    <div *ngIf="loading">
+        <h1 mat-dialog-title>Account holder information</h1>
+        <div mat-dialog-content>
+            <div class="title">first name:</div> {{accountHolderInfo?.firstName}}<br>
+            <div class="title">last name:</div> {{accountHolderInfo?.lastName}}<br>
+            <div class="title">email:</div> {{accountHolderInfo?.email}}<br>
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+    </div>
 </div>

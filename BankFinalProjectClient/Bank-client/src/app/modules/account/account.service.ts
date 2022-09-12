@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Customer } from 'src/app/models/customer.model';
 import { Account } from 'src/app/models/account.model';
-import { OperationDataList } from 'src/app/models/operationsDataList.model';
+import { OperationDataList } from 'src/app/models/operations-data-list.model';
 import { AccountHolderInfo } from 'src/app/models/account-holder-info.model';
 
 

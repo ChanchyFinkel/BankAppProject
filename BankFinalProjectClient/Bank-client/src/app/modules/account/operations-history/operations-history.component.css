@@ -1,3 +1,8 @@
+.body {
+  width: 80vw;
+  margin-top: 120px;
+  margin-left: 10vw;
+}
 .demo-table {
     width: 100%;
   }

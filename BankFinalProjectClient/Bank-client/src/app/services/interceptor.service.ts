@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { HttpInterceptor } from '@angular/common/http';
 import { HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { HttpHandler } from '@angular/common/http';
 import { HttpEvent } from '@angular/common/http';
 import { UserService } from './user.service';
@@ -9,14 +9,15 @@ import { UserService } from './user.service';
 @Injectable({
   providedIn: 'root'
 })
-export class InterceptorService implements HttpInterceptor {
+export class InterceptorService implements HttpInterceptor, OnDestroy {
 
-  constructor(private _userServicr: UserService) { }
+  constructor(private _userService: UserService) { }
 
   token: string="";
+  subscription!: Subscription;
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    this._userServicr.getAuthUser().subscribe(data => {
+    this.subscription=this._userService.getAuthUser().subscribe(data => {
       if (data) {
         this.token = data.token;
       }
@@ -28,4 +29,7 @@ export class InterceptorService implements HttpInterceptor {
     return next.handle(req);
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 }

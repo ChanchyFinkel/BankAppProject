@@ -8,14 +8,13 @@ import { Auth } from '../models/auth.model';
 })
 export class UserService {
 
+  constructor() { }
+
   private authUser: BehaviorSubject<Auth | any> = new BehaviorSubject(null);
 
   userDetailsKey = 'authUser'
 
-  constructor() { }
-
   getAuthUser(): Observable<Auth | any> {
-
     if (!this.authUser.value) {
       const user = sessionStorage.getItem(this.userDetailsKey);
       if (user) {

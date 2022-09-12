@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './wrong-route.component.html',
   styleUrls: ['./wrong-route.component.css']
 })
-export class WrongRouteComponent implements OnInit {
+export class WrongRouteComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

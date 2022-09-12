@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AccountService } from '../account.service';
 
 @Component({
@@ -8,10 +9,11 @@ import { AccountService } from '../account.service';
   templateUrl: './create-account.component.html',
   styleUrls: ['./create-account.component.css']
 })
-export class CreateAccountComponent implements OnInit {
+export class CreateAccountComponent implements OnInit, OnDestroy {
 
   customerForm!: FormGroup
   hide = true;
+  subscription!:Subscription;
 
   constructor(private _accuntService: AccountService,private _router:Router) { }
 
@@ -32,13 +34,16 @@ export class CreateAccountComponent implements OnInit {
 
   createAnAccount(): void {
     this.loading = true;
-    this._accuntService.createAnAccount(this.customerForm.value).subscribe((data: any) => {
+    this.subscription = this._accuntService.createAnAccount(this.customerForm.value).subscribe((data: any) => {
       this.loading = false;
       if(data){
         alert("Account created successfully!");
         this._router.navigate(['/login']);
       }
-     // data ? alert("Account created successfully!"):alert("oops..., something went wrong try again");
     },(error: { message: string; }) => alert("Error creating account: " + error.message));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }

@@ -10,13 +10,11 @@ import { MenuComponent } from './menu/menu.component';
 import { UserService } from './services/user.service';
 import { InterceptorService } from './services/interceptor.service';
 import { TransactionModule } from './modules/transaction/transaction.module';
-import { AccountNumberDetailsComponent } from './modules/account/account-number-details/account-number-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    AccountNumberDetailsComponent,
   ],
   imports: [
     BrowserModule,
