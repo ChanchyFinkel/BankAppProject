@@ -1,26 +1,29 @@
 mat-card-title{
     border-bottom: 1.5px ridge #6bafe9;
-    font-size: 25px;
     white-space: nowrap;
-    margin-top: 20px;
+    margin-top: 40px;
     text-align: center;
+}
+.mat-card-header .mat-card-title{
+    font-size: 25px;
+    border-bottom: 1.5px ridge #6bafe9;
 }
 mat-card-header{
     margin-bottom: 20px;
 }
 mat-card-content{
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 0.3px;
     line-height: 1.5;
 }
 .title{
     display: inline;
     font-weight: 500;
-    font-size: 15px;
+    font-size: 18px;
 }
 .mat-card {
-    width: 300px;
-    height: 220px;
+    width: 370px;
+    height: 280px;
     text-align: center;
 }
 .body{
