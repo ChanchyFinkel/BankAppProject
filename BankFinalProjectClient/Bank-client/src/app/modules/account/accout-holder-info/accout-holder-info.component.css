@@ -13,21 +13,22 @@ button{
     font-weight: 500;
 }
 .body{
-    height: 45vh;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-mat-dialog-title{
+.mat-dialog-title{
     border-bottom: 1.5px ridge #6bafe9;
     font-size: 25px;
     white-space: nowrap;
     margin-top: 20px;
     text-align: center;
 }
-mat-dialog-content{
+.mat-dialog-content{
     font-size: 14px;
     letter-spacing: 0.3px;
     line-height: 1.5;
+    text-align: center;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 import { Transaction } from 'src/app/models/transaction.model';
 import { AccountService } from '../../account/account.service';
@@ -12,13 +13,14 @@ import { TransactionService } from '../transaction.service';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  constructor(private _transactionService: TransactionService, private _accountService: AccountService) { }
+  constructor(private _transactionService: TransactionService, private _accountService: AccountService,private _snackBar: MatSnackBar) { }
 
   balance: number = 1000000;
   transactionSubscribtion!: Subscription;
   accountSubscribtion!: Subscription;
   fromAccount: number = 0;
   transaction!: Transaction;
+  durationInSeconds:number = 5;
 
   ngOnInit(): void {
     this.accountSubscribtion = this._accountService.getBalanceAccount().subscribe(balance => balance < this.balance ? this.balance = balance : '')
@@ -35,19 +37,30 @@ export class CreateTransactionComponent implements OnInit {
     }
   }
 
+  // openSnackBar(message: string) {
+  //   this._snackBar.open(message), {
+  //     duration: 0,
+  //   };
+  // }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
   addTransaction() {
     let authUser = sessionStorage.getItem('authUser');
     if (authUser)
       this.fromAccount = JSON.parse(authUser).accountID;
     this.transaction = this.transactionForm.value;
     this.transaction.fromAccount = this.fromAccount;
+    this.transactionForm.reset();
     this.transactionSubscribtion = this._transactionService.addTransaction(this.transaction).subscribe(
-      () => { alert("transaction done!"); },
-      () => { alert("transaction failed!"); })
+      () => { this.openSnackBar("The operation was successfully received","close") },
+      () => { this.openSnackBar("The operation was failed :(","close") })
   }
 
   ngOnDestroy(): void {
-    this.transactionSubscribtion.unsubscribe();
+    this.transactionSubscribtion?.unsubscribe();
     this.accountSubscribtion.unsubscribe();
   }
 

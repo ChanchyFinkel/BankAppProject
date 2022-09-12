@@ -40,10 +40,10 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
         alert("Account created successfully!");
         this._router.navigate(['/login']);
       }
-    },(error: { message: string; }) => alert("Error creating account: " + error.message));
+    },(error: { message: string; }) => alert("Oops! Something went wrong! try again later!"));
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }

@@ -2,67 +2,77 @@
   width: 80vw;
   margin-top: 120px;
   margin-left: 10vw;
+  padding-bottom: 60px;
 }
+
 .demo-table {
-    width: 100%;
-  }
-  
-  .mat-row .mat-cell {
-    border-bottom: 1px solid transparent;
-    border-top: 1px solid transparent;
-    cursor: pointer;
-  }
-  
-  .mat-row:hover .mat-cell {
-    border-color: currentColor;
-  }
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  
-  
-  .demo-row-is-clicked {
-    font-weight: bold;
-  }
-  table {
-    width: 1150px;
-  }
-  
-  .example-container {
-    width: 100%;
-    max-width: 100%;
-    overflow: auto;
-  }
-  
-  .mat-row:nth-child(even) {
-    background-color: #F8F8F8;
-  }
-  
-  .mat-row:nth-child(odd) {
-    background-color: #FFFFFF;
-  }
-  
-  table {
-    width: 100%;
-  }
-  
-  th.mat-sort-header-sorted {
-    color: black;
-  }
-  table {
-    width: 100%;
-  }
-  
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-  }
+  width: 100%;
+}
 
-  .credit{
-    color: #1dab6a;
-  }
+.mat-row .mat-cell {
+  border-bottom: 1px solid transparent;
+  border-top: 1px solid transparent;
+  cursor: pointer;
+}
 
-  .debit{
-    color: red;
-  }
+.mat-row:hover .mat-cell {
+  border-color: currentColor;
+}
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+
+.demo-row-is-clicked {
+  font-weight: bold;
+}
+
+table {
+  width: 1150px;
+}
+
+.example-container {
+  width: 100%;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.mat-row:nth-child(even) {
+  background-color: #F8F8F8;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: #FFFFFF;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.credit {
+  color: #1dab6a;
+}
+
+.debit {
+  color: red;
+}
+
+h1 {
+  color: #0a6289;
+  text-align: center;
+  font-size: 27px;
+}

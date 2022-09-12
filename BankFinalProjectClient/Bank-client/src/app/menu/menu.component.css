@@ -1,9 +1,9 @@
-.mat-icon{
-    font-size: 20%;
-    color: white;
+.mat-icon {
+  font-size: 20%;
+  color: white;
 }
 
- ul {
+ul {
   z-index: 2;
   list-style-type: none;
   margin: 0;
@@ -12,48 +12,45 @@
   position: fixed;
   width: 100%;
   top: 1vw;
-  left:1vw;
-  right:1vw;
-  width:98vw;
+  left: 1vw;
+  right: 1vw;
+  width: 98vw;
   border-radius: 15px;
   background-color: #cacaca;
 }
-  
 
-  li a {
-    float: right;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 8px 6px;
-    text-decoration: none;
-  }
-  
-  li a:hover:not(.active) {
-    color: #000;
-  }
-  
-  .active {
-    background-color: rgb(141,194, 249);
-  } 
 
-  .left-element{
-    float: left;
-    }
+li a {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px 6px;
+  text-decoration: none;
+  font-weight: 300;
+}
 
-    li button {
-      float: left;
-      display: block;
-      color: white;
-      text-align: center;
-      padding: 8px 6px;
-      text-decoration: none;
-    }
-    
-    li button:hover:not(.active) {
-      color: #000;
-    }
+li a:hover:not(.active) {
+  color: #000;
+}
 
-    ul{
+.active {
+  background-color: rgb(141, 194, 249);
+}
 
-    }
+.left-element {
+  float: left;
+}
+
+li button {
+  float: left;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 8px 6px;
+  text-decoration: none;
+}
+
+li button:hover:not(.active) {
+  color: #000;
+}
