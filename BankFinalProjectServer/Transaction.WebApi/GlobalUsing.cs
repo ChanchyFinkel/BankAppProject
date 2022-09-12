@@ -16,3 +16,4 @@ global using Transaction.WebApi.Middlewares;
 global using Messages.NSB.Commands;
 global using Messages.NSB.Events;
 global using NServiceBus.Logging;
+global using Microsoft.AspNetCore.Authorization;

@@ -1,44 +1,35 @@
 
-
 var builder = WebApplication.CreateBuilder();
 var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
-
-
 #region NSB configuration
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
-var NSBConnection = builder.Configuration.GetConnectionString("NSBConnection");
 
-builder.Host.UseNServiceBus(hostBuilderContext=>
+builder.Host.UseNServiceBus(hostBuilderContext =>
 {
-var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
+    var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
+    endpointConfiguration.EnableInstallers();
+    endpointConfiguration.EnableOutbox();
 
+    var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
+    persistence.ConnectionBuilder(
+        connectionBuilder: () =>
+        {
+            return new SqlConnection(databaseConnection);
+        });
+    var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
+    dialect.Schema("nsb");
 
-endpointConfiguration.EnableInstallers();
-endpointConfiguration.EnableOutbox();
+    var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
+    transport.ConnectionString(rabbitMQConnection);
+    transport.UseConventionalRoutingTopology(QueueType.Quorum);
 
+    //var subscriptions = persistence.SubscriptionSettings();
+    //subscriptions.CacheFor(TimeSpan.FromMinutes(1));
 
-var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
-persistence.ConnectionBuilder(
-    connectionBuilder: () =>
-    {
-        return new SqlConnection(NSBConnection);
-    });
-var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
-
-
-var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
-transport.ConnectionString(rabbitMQConnection);
-transport.UseConventionalRoutingTopology(QueueType.Quorum);
-
-//var subscriptions = persistence.SubscriptionSettings();
-//subscriptions.CacheFor(TimeSpan.FromMinutes(1));
-//dialect.Schema("dbo");
-
-var conventions = endpointConfiguration.Conventions();
-conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
-conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
-
+    var conventions = endpointConfiguration.Conventions();
+    conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
+    conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
 
     return endpointConfiguration;
 });
@@ -55,18 +46,18 @@ conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
 
 builder.Services.AddAuthentication(x =>
 {
-x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 })
 .AddJwtBearer(x =>
 {
-x.TokenValidationParameters = new TokenValidationParameters
-{
-ValidateIssuerSigningKey = true,
-IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
-ValidateIssuer = false,
-ValidateAudience = false
-};
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        ValidateIssuer = false,
+        ValidateAudience = false
+    };
 });
 
 #region Add services to the container.

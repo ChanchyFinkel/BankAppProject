@@ -1,43 +1,39 @@
-
 var builder = WebApplication.CreateBuilder(args);
 var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
-
-
 #region NSB configuration
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
-var NSBConnection = builder.Configuration.GetConnectionString("NSBConnection");
 
 builder.Host.UseNServiceBus(hostBuilderContext =>
 {
     //Console.Title = "Transaction";
 
     var endpointConfiguration = new EndpointConfiguration("Transaction");
-
-
     endpointConfiguration.EnableInstallers();
     endpointConfiguration.EnableOutbox();
-
 
     var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
     persistence.ConnectionBuilder(
         connectionBuilder: () =>
         {
-            return new SqlConnection(NSBConnection);
+            return new SqlConnection(databaseConnection);
         });
     var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
-
+    dialect.Schema("nsb");
 
     var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
     transport.ConnectionString(rabbitMQConnection);
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
 
+    var routing = transport.Routing();
+    routing.RouteToEndpoint(typeof(DoTransfort), "CustomerAccount");
 
+    //var subscriptions = persistence.SubscriptionSettings();
+    //subscriptions.CacheFor(TimeSpan.FromMinutes(1));
 
     var conventions = endpointConfiguration.Conventions();
     conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
     conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
-
 
     return endpointConfiguration;
 });

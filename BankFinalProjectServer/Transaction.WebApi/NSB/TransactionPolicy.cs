@@ -1,5 +1,4 @@
-﻿
-namespace Transaction.WebApi.NSB;
+﻿namespace Transaction.WebApi.NSB;
 
 public class TransactionPolicy : Saga<TransactionPolicyData>, IAmStartedByMessages<TransactionStarted>, IHandleMessages<TransfortDone>
 {

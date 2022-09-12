@@ -1,6 +1,4 @@
-﻿
-
-namespace CustomerAccount.NSB;
+﻿namespace CustomerAccount.NSB;
 public class DoTransfortHandler : IHandleMessages<DoTransfort>
 {
     static ILog log = LogManager.GetLogger<DoTransfort>();
@@ -31,18 +29,18 @@ public class DoTransfortHandler : IHandleMessages<DoTransfort>
                 operationFromAccount.Debit = true;
                 operationFromAccount.OperationTime = DateTime.UtcNow;
                 operationFromAccount.Balance = await _customerAccountService.GetAccountBalance(operationFromAccount.AccountID);
-                bool operationFromAccountRes= await _operationsHistoryService.AddOperation(operationFromAccount);
+                bool operationFromAccountRes = await _operationsHistoryService.AddOperation(operationFromAccount);
                 operationToAccount.AccountID = message.ToAccount;
                 operationToAccount.Debit = false;
                 operationToAccount.OperationTime = DateTime.UtcNow;
                 operationToAccount.Balance = await _customerAccountService.GetAccountBalance(operationToAccount.AccountID);
-                bool operationToAccountRes=await _operationsHistoryService.AddOperation(operationToAccount);
-                if(operationToAccountRes&&operationFromAccountRes)
+                bool operationToAccountRes = await _operationsHistoryService.AddOperation(operationToAccount);
+                if (operationToAccountRes && operationFromAccountRes)
                     transfortDone.Success = true;
                 else
                 {
                     transfortDone.Success = false;
-                    transfortDone.FailureReason = !operationToAccountRes && !operationFromAccountRes ? 
+                    transfortDone.FailureReason = !operationToAccountRes && !operationFromAccountRes ?
                         "Adding an entry to the operation history failed for the 2 accounts" : !operationToAccountRes ?
                         "Adding an entry to the operation history failed for reciever account" :
                         "Adding an entry to the operation history failed for sender account";
@@ -59,7 +57,6 @@ public class DoTransfortHandler : IHandleMessages<DoTransfort>
             transfortDone.Success = false;
             transfortDone.FailureReason = !senderAccountIDIsValid ? "sender account ID is invalid!" :
             !receiverAccountIDIsValid ? "reciever account ID is invalid!" : "you don't have enough balance!";
-
         }
         await context.Publish(transfortDone);
     }

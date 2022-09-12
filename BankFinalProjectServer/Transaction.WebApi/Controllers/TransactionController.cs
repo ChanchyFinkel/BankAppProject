@@ -1,6 +1,6 @@
 ﻿namespace Transaction.WebApi.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TransactionController : ControllerBase
@@ -12,6 +12,7 @@
             _transactionService = transactionService;
             _messageSession = messageSession;
         }
+
         [HttpPost]
         [Route("AddTransaction")]
         public async Task<ActionResult> AddTransaction([FromBody] TransactionDTO transaction)

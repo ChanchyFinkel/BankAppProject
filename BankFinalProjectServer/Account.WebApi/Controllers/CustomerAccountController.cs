@@ -1,6 +1,5 @@
 namespace CustomerAccount.WebApi.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerAccountController : ControllerBase
@@ -12,6 +11,7 @@ namespace CustomerAccount.WebApi.Controllers
             _customerAccountService = customerAccountService;
             _authService = authService;
         }
+
         [HttpPost]
         [Route("CreateAccount")]
         public async Task<ActionResult<bool>> CreateAccount([FromBody] CustomerAccountDTO customerAccountDTO)
@@ -42,6 +42,7 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
         [Authorize]
         [HttpGet]
         [Route("GetAccountHolderInfo/{accountNumber}")]
@@ -57,6 +58,7 @@ namespace CustomerAccount.WebApi.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
         [Authorize]
         [HttpGet]
         [Route("GetAccountBalance")]

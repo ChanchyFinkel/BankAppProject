@@ -43,14 +43,60 @@ public class CustomerAccountService : ICustomerAccountService
         return _customerAccountData.GetAccountBalance(accountID);
     }
 
-    public Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID,  int ammount)
+    public Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount)
     {
-        return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID,  ammount);
+        return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
     }
+    //public async Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount)
+    //{
+    //    bool senderAccountIDIsValid = await _customerAccountData.ExistsAccountId(senderAccountID);
+    //    bool receiverAccountIDIsValid = await _customerAccountData.ExistsAccountId(recieverAccountID);
+    //    bool senderBalanceIsEnough = await _customerAccountData.GetAccountBalance(senderAccountID) >= ammount;
+    //    if (senderAccountIDIsValid && receiverAccountIDIsValid && senderBalanceIsEnough)
+    //    {
+    //        bool updateBalanceSuccess = await _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
+    //        if (updateBalanceSuccess)
+    //        {
+    //            OperationsHistory operationFromAccount = _mapper.Map<OperationsHistory>(message);
+    //            OperationsHistory operationToAccount = _mapper.Map<OperationsHistory>(message);
+    //            operationFromAccount.AccountID = senderAccountID;
+    //            operationFromAccount.Debit = true;
+    //            operationFromAccount.OperationTime = DateTime.UtcNow;
+    //            operationFromAccount.Balance = await _customerAccountData.GetAccountBalance(operationFromAccount.AccountID);
+    //            bool operationFromAccountRes = await _operationsHistoryService.AddOperation(operationFromAccount);
+    //            operationToAccount.AccountID = recieverAccountID;
+    //            operationToAccount.Debit = false;
+    //            operationToAccount.OperationTime = DateTime.UtcNow;
+    //            operationToAccount.Balance = await _customerAccountData.GetAccountBalance(operationToAccount.AccountID);
+    //            bool operationToAccountRes = await _operationsHistoryService.AddOperation(operationToAccount);
+    //            if (operationToAccountRes && operationFromAccountRes)
+    //                transfortDone.Success = true;
+    //            else
+    //            {
+    //                transfortDone.Success = false;
+    //                transfortDone.FailureReason = !operationToAccountRes && !operationFromAccountRes ?
+    //                    "Adding an entry to the operation history failed for the 2 accounts" : !operationToAccountRes ?
+    //                    "Adding an entry to the operation history failed for reciever account" :
+    //                    "Adding an entry to the operation history failed for sender account";
+    //            }
+    //        }
+    //        else
+    //        {
+    //            transfortDone.Success = false;
+    //            transfortDone.FailureReason = "update balance failed!";
+    //        }
+    //    }
+    //    else
+    //    {
+    //        transfortDone.Success = false;
+    //        transfortDone.FailureReason = !senderAccountIDIsValid ? "sender account ID is invalid!" :
+    //        !receiverAccountIDIsValid ? "reciever account ID is invalid!" : "you don't have enough balance!";
+    //    }
+    //    return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
+    //}
 
     public async Task<AccountHolderDTO> GetAccountHolderInfo(int accountNumber)
     {
-        return _mapper.Map<AccountHolderDTO>(_customerAccountData.GetAccountHolderInfo(accountNumber));
+        return _mapper.Map<AccountHolderDTO>(await _customerAccountData.GetAccountHolderInfo(accountNumber));
     }
-
 }
