@@ -41,9 +41,13 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
       if (data) {
         // this.operationsList = data.operations;
         this.dataSource.data = data.operations;
-        this.paginator.pageIndex = this.currentPage;
-        this.totalRows = data.totalRows;
-        this.paginator.length = this.totalRows;
+        this.paginator.pageIndex = this.currentPage; 
+         setTimeout(() => {
+          // this.dataSource.paginator = this.paginator;
+          this.paginator.pageIndex = this.currentPage;
+          this.paginator.length = data.totalRows;
+          //console.log(this.ordersList);
+        }) 
       }
       else {
         alert("There is no operations to show")
