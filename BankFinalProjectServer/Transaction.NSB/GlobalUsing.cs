@@ -1,7 +1,6 @@
 ﻿global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using NServiceBus;
-global using NServiceBus.Logging;
 global using Transaction.Data.Classes;
 global using Transaction.Data.Interfaces;
 global using Transaction.Service.Classes;
@@ -10,4 +9,4 @@ global using Messages.NSB.Commands;
 global using System.Data.SqlClient;
 global using AutoMapper;
 global using Transection.DTO;
-global using Messages.NSB.Events;
+global using Microsoft.Extensions.Configuration;

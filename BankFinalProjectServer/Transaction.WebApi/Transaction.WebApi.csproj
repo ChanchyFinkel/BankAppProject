@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Messages.NSB\Messages.NSB.csproj" />
     <ProjectReference Include="..\Transaction.Service\Transaction.Service.csproj" />
     <ProjectReference Include="..\Transection.DTO\Transection.DTO.csproj" />
   </ItemGroup>

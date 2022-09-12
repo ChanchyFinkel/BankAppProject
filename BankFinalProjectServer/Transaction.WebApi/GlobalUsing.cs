@@ -13,3 +13,6 @@ global using Microsoft.OpenApi.Models;
 global using System.Text;
 global using AutoMapper;
 global using Transaction.WebApi.Middlewares;
+global using Messages.NSB.Commands;
+global using Messages.NSB.Events;
+global using NServiceBus.Logging;

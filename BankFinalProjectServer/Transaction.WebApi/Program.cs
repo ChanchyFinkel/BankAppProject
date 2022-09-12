@@ -1,35 +1,50 @@
 
 var builder = WebApplication.CreateBuilder(args);
 var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
-var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
 
-#region back-end-use-nservicebus
+
+
+#region NSB configuration
+var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
+var NSBConnection = builder.Configuration.GetConnectionString("NSBConnection");
+
 builder.Host.UseNServiceBus(hostBuilderContext =>
 {
-    var endpointConfiguration = new EndpointConfiguration("TransactionAPI");
+    //Console.Title = "Transaction";
+
+    var endpointConfiguration = new EndpointConfiguration("Transaction");
+
+
     endpointConfiguration.EnableInstallers();
     endpointConfiguration.EnableOutbox();
-    endpointConfiguration.SendOnly();
+
+
     var persistence = endpointConfiguration.UsePersistence<SqlPersistence>();
     persistence.ConnectionBuilder(
-    connectionBuilder: () =>
-    {
-        return new SqlConnection(databaseConnection);
-    });
-
+        connectionBuilder: () =>
+        {
+            return new SqlConnection(NSBConnection);
+        });
     var dialect = persistence.SqlDialect<SqlDialect.MsSqlServer>();
-    dialect.Schema("dbo");
+
+
     var transport = endpointConfiguration.UseTransport<RabbitMQTransport>();
     transport.ConnectionString(rabbitMQConnection);
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
+
+
+
     var conventions = endpointConfiguration.Conventions();
     conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
     conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
+
+
     return endpointConfiguration;
 });
+
 #endregion
-// Add services to the container.
-#region Adding services to the container.
+
+
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -46,14 +61,20 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
+#region Add services to the container.
+
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddScoped<ITransactionData, TransactionData>();
 builder.Services.AddDbContextFactory<TransactionContext>(opt => opt.UseSqlServer(databaseConnection));
 builder.Services.AddAutoMapper(typeof(Program));
-
+#endregion
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BankApp", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Transaction", Version = "v1" });
     // To Enable authorization using Swagger (JWT)
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
@@ -80,11 +101,6 @@ builder.Services.AddSwaggerGen(c =>
                 });
 });
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", p =>
@@ -94,21 +110,20 @@ builder.Services.AddCors(options =>
         .AllowAnyMethod();
     });
 });
-#endregion
-#region Adding middlewares
+
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.	
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-//app.UseHttpsRedirection();//?	
 app.UseHandlerExecptionMiddleware();
 
 app.UseCors("AllowAll");
+
+app.UseRouting();
 
 app.UseAuthentication();
 
@@ -118,4 +133,8 @@ app.MapControllers();
 
 app.Run();
 
-#endregion
+
+
+
+
+
