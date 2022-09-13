@@ -36,6 +36,6 @@ export class AccountService {
   }
 
   getVerificationCode(email:string): Observable<void>{
-    return this._http.post<void>(`api/EmailVerification/AddEmailVerification`, email);
+    return this._http.get<void>(`api/EmailVerification/SendEmailVerification/${email}`);
   }
 }

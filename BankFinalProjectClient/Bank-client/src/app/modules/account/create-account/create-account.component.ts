@@ -17,7 +17,7 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
   hide = true;
   customer!:Customer;
   loading!: boolean;
-  createAccountSubscription!: Subscription;
+  subscription!: Subscription;
 
   constructor(private _accountService: AccountService, private _router: Router,public dialog: MatDialog) { }
 
@@ -33,27 +33,19 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
 
   openDialogForVerificationCode() {
     const dialogRef = this.dialog.open(EmailVerificationDialogComponent, {
-      // width: '250px',
       data: this.customerForm.controls['email'].value,
     });
 
     dialogRef.afterClosed().subscribe(result => {
       this.customer=this.customerForm.value;
-      this.customer.email=result;
+      this.customer.verificationCode=result;
       this.createAnAccount();
-      console.log('The dialog was closed');
-      // this.animal = result;
     });
-    // this.getVerificationCode();
   }
-
-  // getVerificationCode() {
-  //   this.getVerificationCodeSubscription = this._accountService.getVerificationCode(this.customerForm.controls['email'].value).subscribe();
-  // }
 
   createAnAccount() {
     this.loading = true;
-    this.createAccountSubscription = this._accountService.createAnAccount(this.customer).subscribe((data: any) => {
+    this.subscription = this._accountService.createAnAccount(this.customer).subscribe((data: any) => {
       this.loading = false;
       if (data) {
         alert("Account created successfully!");
@@ -63,7 +55,6 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.getVerificationCodeSubscription?.unsubscribe();
-    this.createAccountSubscription?.unsubscribe();
+    this.subscription?.unsubscribe();
   }
 }
