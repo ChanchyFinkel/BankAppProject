@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.DTO;
+﻿namespace Account.DTO;
 public class AccountDTO
 {
     public int AccountID { get; set; }

@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.Data.Interfaces
+﻿namespace Account.Data.Interfaces
 {
     public interface IOperationsHistoryData
     {

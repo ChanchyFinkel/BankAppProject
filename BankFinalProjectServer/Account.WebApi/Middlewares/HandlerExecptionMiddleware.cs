@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.WebApi.Middlewares;
+﻿namespace Account.WebApi.Middlewares;
 public class HandlerExecptionMiddleware
 {
     private readonly RequestDelegate _next;

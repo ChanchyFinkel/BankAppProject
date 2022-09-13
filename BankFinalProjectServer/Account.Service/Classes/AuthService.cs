@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.Service.Classes;
+﻿namespace Account.Service.Classes;
 public class AuthService : IAuthService
 {
     private readonly IAuthData _authData;

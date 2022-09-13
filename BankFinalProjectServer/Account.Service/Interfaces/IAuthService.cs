@@ -1,8 +1,6 @@
-﻿namespace CustomerAccount.Service.Interfaces
+﻿namespace Account.Service.Interfaces;
+public interface IAuthService
 {
-    public interface IAuthService
-    {
-        Task<AuthDTO> Login(LoginDTO loginDTO);
-        int getAccountIDFromToken(ClaimsPrincipal User);
-    }
+    Task<AuthDTO> Login(LoginDTO loginDTO);
+    int getAccountIDFromToken(ClaimsPrincipal User);
 }

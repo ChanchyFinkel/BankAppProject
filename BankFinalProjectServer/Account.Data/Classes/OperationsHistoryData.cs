@@ -1,8 +1,8 @@
-﻿namespace CustomerAccount.Data.Classes;
+﻿namespace Account.Data.Classes;
 public class OperationsHistoryData : IOperationsHistoryData
 {
-    private readonly IDbContextFactory<CustomerAccountContext> _factory;
-    public OperationsHistoryData(IDbContextFactory<CustomerAccountContext> factory)
+    private readonly IDbContextFactory<AccountContext> _factory;
+    public OperationsHistoryData(IDbContextFactory<AccountContext> factory)
     {
         _factory = factory ?? throw new ArgumentNullException(nameof(factory));
         using var db = _factory.CreateDbContext();

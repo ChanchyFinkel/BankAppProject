@@ -1,27 +1,26 @@
-﻿namespace CustomerAccount.WebApi.Controllers
+﻿namespace Account.WebApi.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AuthController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    private readonly IAuthService _authService;
+    public AuthController(IAuthService authService)
     {
-        private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        _authService = authService;
+    }
+    [HttpPost]
+    [Route("Login")]
+    public async Task<ActionResult<AuthDTO>> Login([FromBody] LoginDTO loginDTO)
+    {
+        try
         {
-            _authService = authService;
+            AuthDTO authDTO = await _authService.Login(loginDTO);
+            return authDTO != null ? Ok(authDTO) : Unauthorized();
         }
-        [HttpPost]
-        [Route("Login")]
-        public async Task<ActionResult<AuthDTO>> Login([FromBody] LoginDTO loginDTO)
+        catch (Exception ex)
         {
-            try
-            {
-                AuthDTO authDTO = await _authService.Login(loginDTO);
-                return authDTO != null ? Ok(authDTO) : Unauthorized();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, ex.Message);
-            }
+            return StatusCode(500, ex.Message);
         }
     }
 }

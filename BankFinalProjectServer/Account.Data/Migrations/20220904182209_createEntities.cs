@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-namespace CustomerAccount.Data.Migrations;
+namespace Account.Data.Migrations;
 public partial class createEntities : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)

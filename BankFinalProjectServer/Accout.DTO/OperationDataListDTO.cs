@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.DTO;
+﻿namespace Account.DTO;
 public class OperationDataListDTO
 {
     public List<OperationsHistoryDTO> Operations { get; set; }

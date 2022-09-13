@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.Data.Entities;
+﻿namespace Account.Data.Entities;
 
 [Index("Email", IsUnique = true)]
 public class Customer

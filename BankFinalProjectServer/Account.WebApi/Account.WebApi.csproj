@@ -23,8 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Account.Service\CustomerAccount.Service.csproj" />
-    <ProjectReference Include="..\Accout.DTO\CustomerAccount.DTO.csproj" />
+    <ProjectReference Include="..\Account.Service\Account.Service.csproj" />
+    <ProjectReference Include="..\Accout.DTO\Account.DTO.csproj" />
     <ProjectReference Include="..\Messages.NSB\Messages.NSB.csproj" />
   </ItemGroup>
 

@@ -3,8 +3,8 @@
 namespace Account.Data.Migrations;
 
 [DbContext(typeof(AccountContext))]
-[Migration("20220904182209_createEntities")]
-partial class createEntities
+[Migration("20220913095320_addEmailVerifictionTable")]
+partial class addEmailVerifictionTable
 {
     protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
@@ -23,8 +23,8 @@ partial class createEntities
 
                 SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
-                b.Property<decimal>("Balance")
-                    .HasColumnType("decimal(18,2)");
+                b.Property<int>("Balance")
+                    .HasColumnType("int");
 
                 b.Property<Guid>("CustomerID")
                     .HasColumnType("uniqueidentifier");
@@ -73,6 +73,63 @@ partial class createEntities
                 b.ToTable("Customer");
             });
 
+        modelBuilder.Entity("Account.Data.Entities.EmailVerification", b =>
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                b.Property<string>("Email")
+                    .IsRequired()
+                    .HasMaxLength(40)
+                    .HasColumnType("nvarchar(40)");
+
+                b.Property<DateTime>("ExpirationTime")
+                    .HasColumnType("datetime2");
+
+                b.Property<int>("VerificationCode")
+                    .HasColumnType("int");
+
+                b.HasKey("ID");
+
+                b.ToTable("EmailVerification");
+            });
+
+        modelBuilder.Entity("Account.Data.Entities.OperationsHistory", b =>
+            {
+                b.Property<int>("ID")
+                    .ValueGeneratedOnAdd()
+                    .HasColumnType("int");
+
+                SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                b.Property<int>("AccountID")
+                    .HasColumnType("int");
+
+                b.Property<int>("Balance")
+                    .HasColumnType("int");
+
+                b.Property<bool>("Debit")
+                    .HasColumnType("bit");
+
+                b.Property<DateTime>("OperationTime")
+                    .HasColumnType("datetime2");
+
+                b.Property<int>("TransactionAmount")
+                    .HasColumnType("int");
+
+                b.Property<int>("TransactionID")
+                    .HasColumnType("int");
+
+                b.HasKey("ID");
+
+                b.HasIndex("AccountID");
+
+                b.ToTable("OperationsHistory");
+            });
+
         modelBuilder.Entity("Account.Data.Entities.Account", b =>
             {
                 b.HasOne("Account.Data.Entities.Customer", "Customer")
@@ -82,6 +139,17 @@ partial class createEntities
                     .IsRequired();
 
                 b.Navigation("Customer");
+            });
+
+        modelBuilder.Entity("Account.Data.Entities.OperationsHistory", b =>
+            {
+                b.HasOne("Account.Data.Entities.Account", "Account")
+                    .WithMany()
+                    .HasForeignKey("AccountID")
+                    .OnDelete(DeleteBehavior.Cascade)
+                    .IsRequired();
+
+                b.Navigation("Account");
             });
 #pragma warning restore 612, 618
     }
