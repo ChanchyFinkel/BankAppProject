@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.WebApi.Controllers;
+﻿namespace Account.WebApi.Controllers;
 
 [Authorize]
 [Route("api/[controller]")]

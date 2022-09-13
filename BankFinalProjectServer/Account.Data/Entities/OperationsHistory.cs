@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.Data.Entities;
+﻿namespace Account.Data.Entities;
 public class OperationsHistory
 {
     [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]

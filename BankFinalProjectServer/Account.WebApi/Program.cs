@@ -1,4 +1,3 @@
-
 var builder = WebApplication.CreateBuilder();
 var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
@@ -7,7 +6,7 @@ var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConn
 
 builder.Host.UseNServiceBus(hostBuilderContext =>
 {
-    var endpointConfiguration = new EndpointConfiguration("CustomerAccount");
+    var endpointConfiguration = new EndpointConfiguration("Account");
     endpointConfiguration.EnableInstallers();
     endpointConfiguration.EnableOutbox();
 
@@ -69,11 +68,13 @@ builder.Services.AddSwaggerGen();
 //var connectionString= builder.Configuration.GetConnectionString("chanchy_dbConnection");
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthData, AuthData>();
-builder.Services.AddScoped<ICustomerAccountService, CustomerAccountService>();
-builder.Services.AddScoped<ICustomerAccountData, CustomerAccountData>();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IAccountData, AccountData>();
 builder.Services.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
 builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
-builder.Services.AddDbContextFactory<CustomerAccountContext>(opt => opt.UseSqlServer(databaseConnection));
+builder.Services.AddScoped<IEmailVerificationData, EmailVerificationData>();
+builder.Services.AddScoped<IEmailVerificationService,EmailVerificationService>();
+builder.Services.AddDbContextFactory<AccountContext>(opt => opt.UseSqlServer(databaseConnection));
 builder.Services.AddAutoMapper(typeof(Program));
 #endregion
 builder.Services.AddSwaggerGen(c =>

@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.DTO;
+﻿namespace Account.DTO;
 public class OperationsHistoryDTO
 {
     public int AccountNumber { get; set; }

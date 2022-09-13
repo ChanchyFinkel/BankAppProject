@@ -1,10 +1,10 @@
-﻿namespace CustomerAccount.WebApi;
+﻿namespace Account.WebApi;
 public class AutoMapping:Profile
 {
     public AutoMapping()
     {
-        CreateMap<CustomerAccountDTO, Customer>();
-        CreateMap<Account,AccountDTO>().ForMember(dest =>
+        CreateMap<CustomerDTO, Customer>();
+        CreateMap<Data.Entities.Account,AccountDTO>().ForMember(dest =>
             dest.AccountID,
             opt => opt.MapFrom(src => src.ID))
             .ForMember(dest =>
@@ -13,7 +13,7 @@ public class AutoMapping:Profile
         .ForMember(dest =>
             dest.LastName,
             opt => opt.MapFrom(src => src.Customer.LastName));
-        CreateMap<Account, AccountHolderDTO>()
+        CreateMap<Data.Entities.Account, AccountHolderDTO>()
            .ForMember(dest =>
            dest.FirstName,
            opt => opt.MapFrom(src => src.Customer.FirstName))

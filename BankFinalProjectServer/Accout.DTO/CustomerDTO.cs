@@ -1,5 +1,5 @@
-﻿namespace CustomerAccount.DTO;
-public class CustomerAccountDTO
+﻿namespace Account.DTO;
+public class CustomerDTO
 {
     [Required]
     [MinLength(2)]
@@ -17,4 +17,6 @@ public class CustomerAccountDTO
     [MinLength(6)]
     [MaxLength(25)]
     public string Password { get; set; }
+    [Required]
+    public int VerificationCode { get; set; }
 }

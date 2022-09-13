@@ -26,7 +26,7 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
 
     var routing = transport.Routing();
-    routing.RouteToEndpoint(typeof(DoTransfort), "CustomerAccount");
+    routing.RouteToEndpoint(typeof(DoTransfort), "Account");
 
     //var subscriptions = persistence.SubscriptionSettings();
     //subscriptions.CacheFor(TimeSpan.FromMinutes(1));

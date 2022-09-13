@@ -1,60 +1,61 @@
-﻿namespace CustomerAccount.Service.Classes;
-public class CustomerAccountService : ICustomerAccountService
+﻿namespace Account.Service.Classes;
+public class AccountService : IAccountService
 {
-    private readonly ICustomerAccountData _customerAccountData;
+    private readonly IAccountData _AccountData;
     private readonly IMapper _mapper;
     private readonly IAuthService _authService;
 
-    public CustomerAccountService(ICustomerAccountData customerAccountData, IMapper mapper, IAuthService authService)
+    public AccountService(IAccountData AccountData, IMapper mapper, IAuthService authService)
     {
-        _customerAccountData = customerAccountData;
+        _AccountData = AccountData;
         _mapper = mapper;
         _authService = authService;
     }
-    public async Task<bool> CreateAccount(CustomerAccountDTO customerAccountDTO)
+    public Task<bool> IsExistAccountEmail(string email)
     {
-        bool existAccount = await _customerAccountData.ExistsAccountEmail(customerAccountDTO.Email);
-        if (existAccount)
-            return false;
-        Customer newCustomer = _mapper.Map<CustomerAccountDTO, Customer>(customerAccountDTO);
-        await _customerAccountData.CreateCustomer(newCustomer);
-        Account newAccount = new Account();
+        return _AccountData.ExistsAccountEmail(email);
+    }
+    public async Task<bool> CreateAccount(CustomerDTO customerDTO)
+    {
+        Customer newCustomer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
+        //await _AccountData.CreateCustomer(newCustomer);
+        Data.Entities.Account newAccount = new Data.Entities.Account();
         newAccount.Customer = newCustomer;
         newAccount.OpenDate = DateTime.UtcNow;
-        return await _customerAccountData.CreateAccount(newAccount);
+        return await _AccountData.CreateAccount(newAccount,newCustomer,customerDTO.VerificationCode);
     }
     public async Task<AccountDTO> GetAccountInfo(ClaimsPrincipal user)
     {
         int accountID=_authService.getAccountIDFromToken(user);
-        return _mapper.Map<AccountDTO>(await _customerAccountData.GetAccountInfo(accountID));
+        return _mapper.Map<AccountDTO>(await _AccountData.GetAccountInfo(accountID));
     }
     public Task<bool> ExistsAccountId(int accountID)
     {
-        return _customerAccountData.ExistsAccountId(accountID);
+        return _AccountData.ExistsAccountId(accountID);
     }
     public async Task<bool> CheckSenderBalance(int accountID,int amount)
     {
-        int balance = await _customerAccountData.GetAccountBalance(accountID);
+        int balance = await _AccountData.GetAccountBalance(accountID);
         return balance >= amount;
     }
 
     public Task<int> GetAccountBalance(int accountID)
     {
-        return _customerAccountData.GetAccountBalance(accountID);
+        return _AccountData.GetAccountBalance(accountID);
     }
 
     public Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount)
     {
-        return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
+        return _AccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
     }
     //public async Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount)
     //{
-    //    bool senderAccountIDIsValid = await _customerAccountData.ExistsAccountId(senderAccountID);
-    //    bool receiverAccountIDIsValid = await _customerAccountData.ExistsAccountId(recieverAccountID);
-    //    bool senderBalanceIsEnough = await _customerAccountData.GetAccountBalance(senderAccountID) >= ammount;
+    //    bool senderAccountIDIsValid = await _AccountData.ExistsAccountId(senderAccountID);
+    //    bool receiverAccountIDIsValid = await _AccountData.ExistsAccountId(recieverAccountID);
+    //    bool senderBalanceIsEnough = await _AccountData.GetAccountBalance(senderAccountID) >= ammount;
     //    if (senderAccountIDIsValid && receiverAccountIDIsValid && senderBalanceIsEnough)
     //    {
-    //        bool updateBalanceSuccess = await _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
+    //        bool updateBalanceSuccess = await _AccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
     //        if (updateBalanceSuccess)
     //        {
     //            OperationsHistory operationFromAccount = _mapper.Map<OperationsHistory>(message);
@@ -62,12 +63,12 @@ public class CustomerAccountService : ICustomerAccountService
     //            operationFromAccount.AccountID = senderAccountID;
     //            operationFromAccount.Debit = true;
     //            operationFromAccount.OperationTime = DateTime.UtcNow;
-    //            operationFromAccount.Balance = await _customerAccountData.GetAccountBalance(operationFromAccount.AccountID);
+    //            operationFromAccount.Balance = await _AccountData.GetAccountBalance(operationFromAccount.AccountID);
     //            bool operationFromAccountRes = await _operationsHistoryService.AddOperation(operationFromAccount);
     //            operationToAccount.AccountID = recieverAccountID;
     //            operationToAccount.Debit = false;
     //            operationToAccount.OperationTime = DateTime.UtcNow;
-    //            operationToAccount.Balance = await _customerAccountData.GetAccountBalance(operationToAccount.AccountID);
+    //            operationToAccount.Balance = await _AccountData.GetAccountBalance(operationToAccount.AccountID);
     //            bool operationToAccountRes = await _operationsHistoryService.AddOperation(operationToAccount);
     //            if (operationToAccountRes && operationFromAccountRes)
     //                transfortDone.Success = true;
@@ -92,11 +93,11 @@ public class CustomerAccountService : ICustomerAccountService
     //        transfortDone.FailureReason = !senderAccountIDIsValid ? "sender account ID is invalid!" :
     //        !receiverAccountIDIsValid ? "reciever account ID is invalid!" : "you don't have enough balance!";
     //    }
-    //    return _customerAccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
+    //    return _AccountData.UpdateReceiverAndSenderBalances(senderAccountID, recieverAccountID, ammount);
     //}
 
     public async Task<AccountHolderDTO> GetAccountHolderInfo(int accountNumber)
     {
-        return _mapper.Map<AccountHolderDTO>(await _customerAccountData.GetAccountHolderInfo(accountNumber));
+        return _mapper.Map<AccountHolderDTO>(await _AccountData.GetAccountHolderInfo(accountNumber));
     }
 }

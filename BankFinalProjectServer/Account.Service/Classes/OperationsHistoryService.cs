@@ -1,4 +1,4 @@
-﻿namespace CustomerAccount.Service.Classes;
+﻿namespace Account.Service.Classes;
 public class OperationsHistoryService : IOperationsHistoryService
 {
     private readonly IOperationsHistoryData _operationsHistoryData;
