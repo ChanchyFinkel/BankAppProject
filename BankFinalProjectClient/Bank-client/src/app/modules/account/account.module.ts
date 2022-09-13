@@ -6,11 +6,10 @@ import { MaterialModule } from '../material/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OperationsHistoryComponent } from './operations-history/operations-history.component';
 import { AccoutHolderInfoComponent } from './accout-holder-info/accout-holder-info.component';
-
-
+import { EmailVerificationDialogComponent } from './email-verification-dialog/email-verification-dialog.component';
 
 @NgModule({
-  declarations: [CreateAccountComponent,AccountInfoComponent,OperationsHistoryComponent,AccoutHolderInfoComponent],
+  declarations: [CreateAccountComponent,AccountInfoComponent,OperationsHistoryComponent,AccoutHolderInfoComponent,EmailVerificationDialogComponent],
   imports: [
     CommonModule,MaterialModule,ReactiveFormsModule,FormsModule
   ],

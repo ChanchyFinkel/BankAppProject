@@ -1,5 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AccountHolderInfo } from 'src/app/models/account-holder-info.model';
 import { AccountService } from '../account.service';
@@ -16,7 +17,7 @@ export class AccoutHolderInfoComponent implements OnInit , OnDestroy {
   subscription!:Subscription;
 
   constructor(private _accountService: AccountService, public dialogRef: MatDialogRef<AccoutHolderInfoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: number) { }
+    @Inject(MAT_DIALOG_DATA) public data: number, private _router: Router) { }
 
   ngOnInit(): void {
     this.getAccountHolderInfo(this.data);
@@ -24,7 +25,7 @@ export class AccoutHolderInfoComponent implements OnInit , OnDestroy {
 
   getAccountHolderInfo(accountNumber: number){
     this.subscription=this._accountService.getAccountHolderInfo(accountNumber).subscribe(data => { this.accountHolderInfo = data; this.loading=true; },error=>{
-      alert("An error has occurred :(");
+      error.status == 401 ? this._router.navigate(['/login']) : alert("An error has occurred :(");
     });
   }
 

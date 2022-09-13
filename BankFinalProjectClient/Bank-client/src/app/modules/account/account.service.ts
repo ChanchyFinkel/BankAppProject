@@ -12,7 +12,7 @@ import { AccountHolderInfo } from 'src/app/models/account-holder-info.model';
 })
 export class AccountService {
 
-  baseUrl: string = "/api/CustomerAccount/";
+  baseUrl: string = "/api/Account/";
 
   constructor(private _http: HttpClient) { }
 
@@ -33,5 +33,9 @@ export class AccountService {
 
   getAccountHolderInfo(accountNumber:number): Observable<AccountHolderInfo> {
     return this._http.get<AccountHolderInfo>(`${this.baseUrl}GetAccountHolderInfo/${accountNumber}`)
+  }
+
+  getVerificationCode(email:string): Observable<void>{
+    return this._http.post<void>(`api/EmailVerification/AddEmailVerification`, email);
   }
 }

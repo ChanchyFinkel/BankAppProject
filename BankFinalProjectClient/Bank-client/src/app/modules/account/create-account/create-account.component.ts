@@ -1,8 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { Customer } from 'src/app/models/customer.model';
 import { AccountService } from '../account.service';
+import { EmailVerificationDialogComponent } from '../email-verification-dialog/email-verification-dialog.component';
 
 @Component({
   selector: 'app-create-account',
@@ -11,39 +14,56 @@ import { AccountService } from '../account.service';
 })
 export class CreateAccountComponent implements OnInit, OnDestroy {
 
-  customerForm!: FormGroup
   hide = true;
-  subscription!:Subscription;
+  customer!:Customer;
+  loading!: boolean;
+  createAccountSubscription!: Subscription;
 
-  constructor(private _accuntService: AccountService,private _router:Router) { }
+  constructor(private _accountService: AccountService, private _router: Router,public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.buildForm();
   }
 
-  buildForm(): void {
-    this.customerForm = new FormGroup({
-      "firstName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-      "lastName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-      "email": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(100), Validators.email]),
-      "password": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(25)]),
-    })
+  customerForm: FormGroup = new FormGroup({
+    "firstName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    "lastName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+    "email": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(100), Validators.email]),
+    "password": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(25)]),
+  })
+
+  openDialogForVerificationCode() {
+    const dialogRef = this.dialog.open(EmailVerificationDialogComponent, {
+      // width: '250px',
+      data: this.customerForm.controls['email'].value,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.customer=this.customerForm.value;
+      this.customer.email=result;
+      this.createAnAccount();
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+    // this.getVerificationCode();
   }
 
-  loading!:boolean;
+  // getVerificationCode() {
+  //   this.getVerificationCodeSubscription = this._accountService.getVerificationCode(this.customerForm.controls['email'].value).subscribe();
+  // }
 
-  createAnAccount(): void {
+  createAnAccount() {
     this.loading = true;
-    this.subscription = this._accuntService.createAnAccount(this.customerForm.value).subscribe((data: any) => {
+    this.createAccountSubscription = this._accountService.createAnAccount(this.customer).subscribe((data: any) => {
       this.loading = false;
-      if(data){
+      if (data) {
         alert("Account created successfully!");
         this._router.navigate(['/login']);
       }
-    },(error: { message: string; }) => alert("Oops! Something went wrong! try again later!"));
+    }, (error: { message: string; }) => alert("Oops! Something went wrong! try again later!"));
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    // this.getVerificationCodeSubscription?.unsubscribe();
+    this.createAccountSubscription?.unsubscribe();
   }
 }

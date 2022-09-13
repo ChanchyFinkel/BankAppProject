@@ -64,9 +64,9 @@
                             {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
                     </mat-form-field>
                 </div>
-                <button [disabled]="!customerForm.valid" (click)="createAnAccount()" class="login-btn">Sign Up</button>
+                <button [disabled]="!customerForm.valid" (click)="openDialogForVerificationCode()" class="login-btn">Sign Up</button>
                 <div *ngIf="loading">
-                    <div class="statusProcces">Create a new account...</div>
+                    <div class="statusProcces">Sending a verification code to your email...</div>
                     <mat-progress-bar mode="buffer"></mat-progress-bar>
                   </div>
             </form>

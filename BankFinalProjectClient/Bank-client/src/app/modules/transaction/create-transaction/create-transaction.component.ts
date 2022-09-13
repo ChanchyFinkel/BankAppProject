@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Transaction } from 'src/app/models/transaction.model';
 import { AccountService } from '../../account/account.service';
@@ -13,7 +14,7 @@ import { TransactionService } from '../transaction.service';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  constructor(private _transactionService: TransactionService, private _accountService: AccountService,private _snackBar: MatSnackBar) { }
+  constructor(private _transactionService: TransactionService, private _accountService: AccountService,private _snackBar: MatSnackBar, private _router: Router) { }
 
   balance: number = 1000000;
   transactionSubscribtion!: Subscription;
@@ -56,7 +57,7 @@ export class CreateTransactionComponent implements OnInit {
     this.transactionForm.reset();
     this.transactionSubscribtion = this._transactionService.addTransaction(this.transaction).subscribe(
       () => { this.openSnackBar("The operation was successfully received","close") },
-      () => { this.openSnackBar("The operation was failed :(","close") })
+      error =>  error.status == 401 ? this._router.navigate(['/login']) : this.openSnackBar("The operation was failed :(","close") )
   }
 
   ngOnDestroy(): void {

@@ -1,0 +1,16 @@
+<div class="dialog-content">
+    <h1 mat-dialog-title>Enter the verification code</h1>
+    <div mat-dialog-content>
+        <!-- <form [formGroup]="VerificationForm"> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Verification code</mat-label>
+            <input matInput #email formControlName="verificationCode">
+        </mat-form-field><br>
+        <!-- </form> -->
+        <a (click)="getVerificationCode()">Didn't get a code? Click here to resend the verification code</a>
+    </div>
+    <div mat-dialog-actions>
+        <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+        <button mat-button [mat-dialog-close]="email.value" cdkFocusInitial>Send</button>
+    </div>
+</div>

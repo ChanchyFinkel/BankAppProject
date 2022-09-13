@@ -182,6 +182,6 @@ button:disabled{
 }
 
 mat-progress-bar{
-  margin-left: 115px;
-  width: 70px;
+  margin-left: 50px;
+  width: 200px;
 }
