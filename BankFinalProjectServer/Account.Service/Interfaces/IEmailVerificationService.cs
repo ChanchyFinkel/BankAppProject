@@ -2,6 +2,5 @@
 
 public interface IEmailVerificationService
 {
-    Task AddEmailVerification(string email);
-    Task<EmailVerification> GetEmailVerification(string email);
+    Task SendEmailVerification(string email);
 }

@@ -10,12 +10,13 @@ public class EmailVerificationController : ControllerBase
         _emailVerificationService = emailVerificationService;
     }
 
-    [HttpPost]
-    public ActionResult AddEmailVerification([FromBody] string email)
+    [HttpGet]
+    [Route("SendEmailVerification/{email}")]
+    public ActionResult SendEmailVerification(string email)
     {
         try
         {
-            _emailVerificationService.AddEmailVerification(email);
+            _emailVerificationService.SendEmailVerification(email);
             return Ok();
         }
         catch (Exception ex)

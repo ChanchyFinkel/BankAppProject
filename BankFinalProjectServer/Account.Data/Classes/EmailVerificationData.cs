@@ -15,9 +15,18 @@ public class EmailVerificationData : IEmailVerificationData
         {
             var context = _factory.CreateDbContext();
             bool existAccount = await context.Customer.AnyAsync(c => c.Email.Equals(emailVerification.Email));
-            if (!existAccount)
+            if (existAccount)
                 return false;
-            await context.AddAsync(emailVerification);
+            EmailVerification e= await context.EmailVerification.FirstOrDefaultAsync(c => c.Email.Equals(emailVerification.Email));
+            if (e != null)
+            {
+                e.ExpirationTime = emailVerification.ExpirationTime;
+                e.VerificationCode = emailVerification.VerificationCode;
+            }
+            else
+            {
+                await context.AddAsync(emailVerification);
+            }
             await context.SaveChangesAsync();
             return true;
         }
@@ -25,11 +34,5 @@ public class EmailVerificationData : IEmailVerificationData
         {
             return false;
         }
-    }
-    public async Task<EmailVerification> GetEmailVerification(string email)
-    {
-        var context = _factory.CreateDbContext();
-        EmailVerification emailVerification = await context.EmailVerification.Where(e => e.Email.Equals(email)).OrderByDescending(e => e.ExpirationTime).FirstAsync();
-        return emailVerification;
     }
 }

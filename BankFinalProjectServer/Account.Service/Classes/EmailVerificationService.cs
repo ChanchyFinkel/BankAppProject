@@ -9,11 +9,7 @@ public class EmailVerificationService : IEmailVerificationService
     {
         _emailVerificationData = emailVerificationData;
     }
-    public Task<EmailVerification> GetEmailVerification(string email)
-    {
-        return _emailVerificationData.GetEmailVerification(email);
-    }
-    public async Task AddEmailVerification(string email)
+    public async Task SendEmailVerification(string email)
     {
         Random random = new Random();
         verificationCode = random.Next(1000, 9999);

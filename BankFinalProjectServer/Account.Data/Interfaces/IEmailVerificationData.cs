@@ -3,6 +3,6 @@
     public interface IEmailVerificationData
     {
         Task<bool> AddEmailVerification(EmailVerification emailVerification);
-        Task<EmailVerification> GetEmailVerification(string email);
+        //Task<EmailVerification> GetEmailVerification(string email);
     }
 }
