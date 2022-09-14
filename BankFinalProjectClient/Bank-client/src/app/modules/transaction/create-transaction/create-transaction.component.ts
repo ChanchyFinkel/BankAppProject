@@ -38,14 +38,10 @@ export class CreateTransactionComponent implements OnInit {
     }
   }
 
-  // openSnackBar(message: string) {
-  //   this._snackBar.open(message), {
-  //     duration: 0,
-  //   };
-  // }
-
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+    this._snackBar.open(message, action,{
+      duration:4000
+    });
   }
 
   addTransaction() {

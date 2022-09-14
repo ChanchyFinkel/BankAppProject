@@ -1,17 +1,20 @@
-.dialog-content{
+.dialog-content {
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+
 a:not([href]):not([class]), a:not([href]):not([class]):hover {
     color: #4a81d3;
-    text-decoration: none;
+    text-decoration: underline;
 }
-a:hover{
+
+a:hover {
     cursor: pointer;
 }
-button{
+
+button {
     background-color: #e6f4fa;
     border-radius: 8px;
     border-color: darkgray;
@@ -19,4 +22,11 @@ button{
     padding-right: 10px;
     padding-left: 10px;
     font-weight: 500;
+}
+
+.disabled {
+    opacity: 30%;
+}
+.disabled:hover {
+    cursor: default;
 }

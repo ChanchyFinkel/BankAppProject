@@ -17,7 +17,7 @@ public class OperationsHistoryService : IOperationsHistoryService
         List<OperationsHistory> operationsHistories = await _operationsHistoryData.GetOperationsHistories(accountID);
         OperationDataListDTO operationsDataListDTO = new OperationDataListDTO();
         operationsDataListDTO.TotalRows = operationsHistories.Count;
-        operationsHistories = operationsHistories.Skip(pageSize * (page)).Take(pageSize).ToList();
+        operationsHistories = operationsHistories.Skip(pageSize * page).Take(pageSize).ToList();
         List<OperationsHistoryDTO> operationsHistoriesDTO = new List<OperationsHistoryDTO>();
         foreach (var operation in operationsHistories)
         {

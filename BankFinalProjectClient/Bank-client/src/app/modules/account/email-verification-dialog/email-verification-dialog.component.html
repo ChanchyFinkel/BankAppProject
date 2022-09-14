@@ -3,11 +3,11 @@
     <div mat-dialog-content>
         <mat-form-field appearance="fill">
             <mat-label>Verification code</mat-label>
-            <input matInput #email>
+            <input matInput #email maxlength="4" (keypress)="onkeypress($event)">
         </mat-form-field><br>
-        <a (click)="getVerificationCode()">Didn't get a code? Click here to resend the verification code</a>
+        <a [class.disabled]="disableClick" (click)="resendVerificationCode()">Didn't get a code? Click here to resend the verification code</a>
     </div>
     <div mat-dialog-actions>
-        <button mat-button [mat-dialog-close]="email.value" cdkFocusInitial>Send</button>
+        <button [disabled]="email.value.length<4" mat-button [mat-dialog-close]="email.value" cdkFocusInitial>Send</button>
     </div>
 </div>
