@@ -55,23 +55,31 @@ public class AccountData : IAccountData
         Entities.Account account = await context.Account.FirstAsync(a => a.ID == accountID);
         return account.Balance;
     }
-
-    public async Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount)
+    public async Task<string> UpdateBalancesAndAddOperationsHistories(OperationsHistory senderOperation,OperationsHistory receiverOperation)
     {
         try
         {
             using var context = _factory.CreateDbContext();
-            Entities.Account receiverAccount = await context.Account.FirstAsync(a => a.ID == recieverAccountID);
-            receiverAccount.Balance += ammount;
-            Entities.Account SenderAccount = await context.Account.FirstAsync(a => a.ID == senderAccountID);
-            SenderAccount.Balance -= ammount;
+            Entities.Account receiverAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == receiverOperation.AccountID);
+            if (receiverAccount == null)
+                return "Receiver account ID is invalid!";
+            Entities.Account senderAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == senderOperation.AccountID);
+            if (senderAccount == null)
+                return "Sender account ID is invalid!";
+            if (senderAccount.Balance < senderOperation.TransactionAmount)
+                return "You don't have enough balance!";
+            receiverAccount.Balance += receiverOperation.TransactionAmount;
+            senderAccount.Balance -= senderOperation.TransactionAmount;
+            receiverOperation.Balance = receiverAccount.Balance;
+            senderOperation.Balance = senderAccount.Balance;
+            await context.OperationsHistory.AddAsync(receiverOperation);
+            await context.OperationsHistory.AddAsync(senderOperation);
             await context.SaveChangesAsync();
-            return true;
+            return "";
         }
         catch
         {
-            return false;
+            return "Updating the data in database - failed";
         }
-
     }
 }

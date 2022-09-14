@@ -2,6 +2,7 @@ var builder = WebApplication.CreateBuilder();
 var databaseConnection = builder.Configuration.GetConnectionString("SQLConnection");
 
 #region NSB configuration
+
 var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConnection");
 
 builder.Host.UseNServiceBus(hostBuilderContext =>

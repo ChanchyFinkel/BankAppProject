@@ -29,8 +29,5 @@ public class AutoMapping:Profile
             .ForMember(dest =>
             dest.Date,
             opt => opt.MapFrom(src => src.OperationTime)).ReverseMap();
-        CreateMap<DoTransfort, OperationsHistory>().ForMember(dest =>
-            dest.TransactionAmount,
-            opt => opt.MapFrom(src => src.Ammount));
     }
 }

@@ -7,6 +7,6 @@ public interface IAccountService
     Task<bool> ExistsAccountId(int accountID);
     Task<int> GetAccountBalance(int accountID);
     Task<bool> CheckSenderBalance(int accountID, int ammount);
-    Task<bool> UpdateReceiverAndSenderBalances(int senderAccountID, int recieverAccountID, int ammount);
+    Task<string> UpdateBalancesAndAddOperationsHistories(int senderAccountID, int receiverAccountID, int ammount, int transactionID);
     Task<bool> IsExistAccountEmail(string email);
 }
