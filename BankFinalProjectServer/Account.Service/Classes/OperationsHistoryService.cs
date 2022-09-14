@@ -11,6 +11,8 @@ public class OperationsHistoryService : IOperationsHistoryService
         _mapper = mapper;
         _authService = authService;
     }
+
+
     public async Task<OperationDataListDTO> GetOperationsHistories(ClaimsPrincipal User, int pageSize, int page)
     {
         int accountID = _authService.getAccountIDFromToken(User);
