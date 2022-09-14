@@ -6,15 +6,16 @@ import { OperationsHistoryComponent } from './modules/account/operations-history
 import { LoginComponent } from './modules/auth/login/login.component';
 import { CreateTransactionComponent } from './modules/transaction/create-transaction/create-transaction.component';
 import { WrongRouteComponent } from './modules/wrong-route/wrong-route.component';
+import { AuthGuard } from './services/auth.guard';
 
 const APP_ROUTES: Routes = [
 
-  { path: "", pathMatch: "full", redirectTo: "login" },
+  { path: "", pathMatch: "full", redirectTo: "login" ,},
   { path: "login", component: LoginComponent },
-  { path: "createAnAccount", component: CreateAccountComponent},
-  { path: "accountInfo", component: AccountInfoComponent},
-  { path: "createTransaction", component:CreateTransactionComponent},
-  { path: "operationsHistory", component:OperationsHistoryComponent},
+  { path: "createAnAccount", component: CreateAccountComponent,},
+  { path: "accountInfo", component: AccountInfoComponent,canActivate: [AuthGuard]},
+  { path: "createTransaction", component:CreateTransactionComponent,canActivate: [AuthGuard]},
+  { path: "operationsHistory", component:OperationsHistoryComponent,canActivate: [AuthGuard]},
   { path: "**",pathMatch:"full", component: WrongRouteComponent}
 ];
 

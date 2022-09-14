@@ -14,14 +14,14 @@ import { TransactionService } from '../transaction.service';
 })
 export class CreateTransactionComponent implements OnInit {
 
-  constructor(private _transactionService: TransactionService, private _accountService: AccountService,private _snackBar: MatSnackBar, private _router: Router) { }
+  constructor(private _transactionService: TransactionService, private _accountService: AccountService, private _snackBar: MatSnackBar, private _router: Router) { }
 
   balance: number = 1000000;
   transactionSubscribtion!: Subscription;
   accountSubscribtion!: Subscription;
   fromAccount: number = 0;
   transaction!: Transaction;
-  durationInSeconds:number = 5;
+  durationInSeconds: number = 5;
 
   ngOnInit(): void {
     this.accountSubscribtion = this._accountService.getBalanceAccount().subscribe(balance => balance < this.balance ? this.balance = balance : '')
@@ -49,15 +49,10 @@ export class CreateTransactionComponent implements OnInit {
   }
 
   addTransaction() {
-    let authUser = sessionStorage.getItem('authUser');
-    if (authUser)
-      this.fromAccount = JSON.parse(authUser).accountID;
-    this.transaction = this.transactionForm.value;
-    this.transaction.fromAccount = this.fromAccount;
-    this.transactionForm.reset();
-    this.transactionSubscribtion = this._transactionService.addTransaction(this.transaction).subscribe(
-      () => { this.openSnackBar("The operation was successfully received","close") },
-      error =>  error.status == 401 ? this._router.navigate(['/login']) : this.openSnackBar("The operation was failed :(","close") )
+    this.transactionSubscribtion = this._transactionService.addTransaction(this.transactionForm.value).subscribe(
+      () => { this.openSnackBar("The operation was successfully received", "close") ;
+      this.transactionForm.reset();},
+      error => error.status == 401 ? this._router.navigate(['/login']) : this.openSnackBar("The operation was failed :(", "close"))
   }
 
   ngOnDestroy(): void {
