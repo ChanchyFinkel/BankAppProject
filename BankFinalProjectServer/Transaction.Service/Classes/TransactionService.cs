@@ -10,9 +10,11 @@ public class TransactionService : ITransactionService
         _transactionData = transactionData;
         _mapper = mapper;
     }
-    public async Task AddTransaction(TransactionDTO newTransaction, IMessageSession messageSession, ClaimsPrincipal? User)
+    public async Task AddTransaction(TransactionDTO newTransaction, IMessageSession messageSession, ClaimsPrincipal User)
     {
+        var accountID = User.Claims.First(x => x.Type.Equals("AccountID", StringComparison.InvariantCultureIgnoreCase)).Value;
         Data.Entities.Transaction transaction = _mapper.Map<Data.Entities.Transaction>(newTransaction);
+        transaction.FromAccount= int.Parse(accountID);
         transaction.Date = DateTime.UtcNow;
         await _transactionData.AddTransaction(transaction);
         await PublishMessage(transaction, messageSession);

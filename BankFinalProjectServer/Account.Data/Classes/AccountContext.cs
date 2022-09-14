@@ -7,5 +7,3 @@ public class AccountContext : DbContext
     public virtual DbSet<OperationsHistory> OperationsHistory { get; set; }
     public virtual DbSet<EmailVerification> EmailVerification { get; set; }
 }
-
-
