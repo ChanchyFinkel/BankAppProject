@@ -66,16 +66,15 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//var connectionString= builder.Configuration.GetConnectionString("chanchy_dbConnection");
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IAuthData, AuthData>();
 builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<IAccountData, AccountData>();
 builder.Services.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
 builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
 builder.Services.AddScoped<IEmailVerificationData, EmailVerificationData>();
 builder.Services.AddScoped<IEmailVerificationService,EmailVerificationService>();
-builder.Services.AddDbContextFactory<AccountContext>(opt => opt.UseSqlServer(databaseConnection));
+builder.Services.ExtensionsDI();
+builder.Services.ExtensionContext(databaseConnection);
 builder.Services.AddAutoMapper(typeof(Program));
 #endregion
 builder.Services.AddSwaggerGen(c =>

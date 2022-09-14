@@ -2,8 +2,8 @@
 public class OperationsHistoryService : IOperationsHistoryService
 {
     private readonly IOperationsHistoryData _operationsHistoryData;
-    private readonly IMapper _mapper;
     private readonly IAuthService _authService;
+    private readonly IMapper _mapper;
 
     public OperationsHistoryService(IOperationsHistoryData operationsHistoryData, IMapper mapper, IAuthService authService)
     {
@@ -27,9 +27,5 @@ public class OperationsHistoryService : IOperationsHistoryService
         }
         operationsDataListDTO.Operations = operationsHistoriesDTO;
         return operationsDataListDTO;
-    }
-    public Task<bool> AddOperation(OperationsHistory operation)
-    {
-        return _operationsHistoryData.AddOperation(operation);
     }
 }

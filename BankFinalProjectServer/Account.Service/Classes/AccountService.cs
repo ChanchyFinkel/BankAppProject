@@ -11,10 +11,6 @@ public class AccountService : IAccountService
         _mapper = mapper;
         _authService = authService;
     }
-    public Task<bool> IsExistAccountEmail(string email)
-    {
-        return _accountData.ExistsAccountEmail(email);
-    }
     public async Task<bool> CreateAccount(CustomerDTO customerDTO)
     {
         Customer newCustomer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
@@ -28,16 +24,6 @@ public class AccountService : IAccountService
         int accountID = _authService.getAccountIDFromToken(user);
         return _mapper.Map<AccountDTO>(await _accountData.GetAccountInfo(accountID));
     }
-    public Task<bool> ExistsAccountId(int accountID)
-    {
-        return _accountData.ExistsAccountId(accountID);
-    }
-    public async Task<bool> CheckSenderBalance(int accountID, int amount)
-    {
-        int balance = await _accountData.GetAccountBalance(accountID);
-        return balance >= amount;
-    }
-
     public Task<int> GetAccountBalance(int accountID)
     {
         return _accountData.GetAccountBalance(accountID);

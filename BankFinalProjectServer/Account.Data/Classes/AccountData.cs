@@ -37,18 +37,6 @@ public class AccountData : IAccountData
         Entities.Account account = await context.Account.Where(account => account.ID == accountNumber).Include(account => account.Customer).FirstAsync();
         return account;
     }
-    public async Task<bool> ExistsAccountEmail(string email)
-    {
-        using var context = _factory.CreateDbContext();
-        return await context.Customer.AnyAsync(c => c.Email.Equals(email));
-    }
-
-    public async Task<bool> ExistsAccountId(int accountID)
-    {
-        using var context = _factory.CreateDbContext();
-        return await context.Account.AnyAsync(a => a.ID == accountID);
-    }
-
     public async Task<int> GetAccountBalance(int accountID)
     {
         using var context = _factory.CreateDbContext();

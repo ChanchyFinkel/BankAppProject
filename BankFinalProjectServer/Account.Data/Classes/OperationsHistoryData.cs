@@ -8,20 +8,6 @@ public class OperationsHistoryData : IOperationsHistoryData
         using var db = _factory.CreateDbContext();
         db.Database.Migrate();
     }
-    public async Task<bool> AddOperation(OperationsHistory operation)
-    {
-        try
-        {
-            using var context = _factory.CreateDbContext();
-            await context.OperationsHistory.AddAsync(operation);
-            await context.SaveChangesAsync();
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
     public async Task<List<OperationsHistory>> GetOperationsHistories(int accountID)
     {
         using var context = _factory.CreateDbContext();

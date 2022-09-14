@@ -19,7 +19,7 @@ public class TransactionController : ControllerBase
     {
         try
         {
-            await _transactionService.AddTransaction(transaction, _messageSession ,null);
+            await _transactionService.AddTransaction(transaction, _messageSession ,User);
             return Accepted();
         }
         catch (Exception ex)

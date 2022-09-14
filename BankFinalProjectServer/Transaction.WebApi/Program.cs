@@ -64,8 +64,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<ITransactionService, TransactionService>();
-builder.Services.AddScoped<ITransactionData, TransactionData>();
-builder.Services.AddDbContextFactory<TransactionContext>(opt => opt.UseSqlServer(databaseConnection));
+builder.Services.ExtensionsDI();
+builder.Services.ExtensionContext(databaseConnection);
+
+
 builder.Services.AddAutoMapper(typeof(Program));
 #endregion
 builder.Services.AddSwaggerGen(c =>
@@ -128,9 +130,3 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-
-
-
-
-
-
