@@ -22,7 +22,7 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
   totalRows = 0;
   pageSize = 15;
   currentPage = 0;
-  pageSizeOptions: number[] = [10,15,20];
+  pageSizeOptions: number[] = [10, 15, 20];
   subscription!: Subscription;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,17 +37,17 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
     this.subscription = this._accountService.getOperationsHistory(this.currentPage, this.pageSize).subscribe(data => {
       if (data) {
         this.dataSource.data = data.operations;
-        this.paginator.pageIndex = this.currentPage; 
-         setTimeout(() => {
+        this.paginator.pageIndex = this.currentPage;
+        setTimeout(() => {
           this.paginator.pageIndex = this.currentPage;
           this.paginator.length = data.totalRows;
-        }) 
+        })
       }
       else {
         alert("There is no operations to show")
       }
     }, error => {
-      error.status == 401 ? this._router.navigate(['/login']) :alert("Oops! Something went wrong. Please try again later.");
+      error.status == 401 ? this._router.navigate(['/login']) : alert("Oops! Something went wrong. Please try again later.");
     })
   }
 
@@ -60,6 +60,21 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
   openDialog(accountNumber: number) {
     this.dialog.open(AccoutHolderInfoComponent, {
       data: accountNumber,
+    });
+  }
+
+  OpenInPDFFile() {
+    this.subscription = this._accountService.CreateOperationsHistoriesPDF().subscribe(data => {
+      console.log(data);
+      console.log(typeof data)
+      console.log(data instanceof Blob)
+      // var blob = new Blob([data.arrayBuffer.toString()], { type: "string" });
+      // var newBlob = new Blob([data]);
+      // console.log(newBlob)
+      var link = document.createElement('a');
+      link.href = URL.createObjectURL(data);
+      link.download = "Report.pdf";
+      link.click();
     });
   }
 

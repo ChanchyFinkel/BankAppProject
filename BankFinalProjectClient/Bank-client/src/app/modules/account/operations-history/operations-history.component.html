@@ -4,6 +4,7 @@
         <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
     </mat-form-field> -->
     <h1>Operations History</h1>
+    <button (click)="OpenInPDFFile()">PDF</button>
     <div class="mat-elevation-z8 demo-table">
         <table mat-table [dataSource]="dataSource">
         <!-- <table mat-table [dataSource]="dataSource" matSort> -->
