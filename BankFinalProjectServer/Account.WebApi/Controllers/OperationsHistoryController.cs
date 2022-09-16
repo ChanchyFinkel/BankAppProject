@@ -34,8 +34,8 @@ public class OperationsHistoryController : ControllerBase
         try
         {
             byte[] file = await _operationsHistoryService.CreateOperationsHistoriesPDF(month, year, _converter, User);
-            var res = File(file, "application/pdf", "OperationsHistories.pdf");
-            return Ok(res);
+            //var res = File(file, "application/pdf", "OperationsHistories.pdf");
+            return Ok(file);
         }
         catch (Exception ex)
         {

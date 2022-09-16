@@ -81,3 +81,13 @@ th.mat-header-cell{
   font-weight: 500;
   color: black;
 }
+button{
+  background-color: #e6f4fa;
+  border-radius: 8px;
+  border-color: darkgray;
+  line-height: 2;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+  font-weight: 500;
+}

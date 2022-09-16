@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { OperationHistory } from 'src/app/models/operation-history.model';
 import { AccountService } from '../account.service';
 import { AccoutHolderInfoComponent } from '../accout-holder-info/accout-holder-info.component';
+import { DownloadAsPdfDialogComponent } from '../download-as-pdf-dialog/download-as-pdf-dialog.component';
 
 @Component({
   selector: 'app-operations-history',
@@ -63,19 +64,8 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
     });
   }
 
-  OpenInPDFFile() {
-    this.subscription = this._accountService.CreateOperationsHistoriesPDF().subscribe(data => {
-      console.log(data);
-      console.log(typeof data)
-      console.log(data instanceof Blob)
-      // var blob = new Blob([data.arrayBuffer.toString()], { type: "string" });
-      // var newBlob = new Blob([data]);
-      // console.log(newBlob)
-      var link = document.createElement('a');
-      link.href = URL.createObjectURL(data);
-      link.download = "Report.pdf";
-      link.click();
-    });
+  openDialogDateForDownload() {
+    this.dialog.open(DownloadAsPdfDialogComponent);
   }
 
   ngOnDestroy(): void {
