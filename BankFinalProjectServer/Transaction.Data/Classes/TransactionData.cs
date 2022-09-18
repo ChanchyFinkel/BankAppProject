@@ -22,7 +22,7 @@ public class TransactionData : ITransactionData
         }
     }
 
-    public async Task<bool> UpdateTransactionStatus(int transactionID, Status transactionStatus, string? failureReason)
+    public async Task UpdateTransactionStatus(int transactionID, Status transactionStatus, string? failureReason)
     {
         try
         {
@@ -30,11 +30,10 @@ public class TransactionData : ITransactionData
             Entities.Transaction transaction = await context.Transaction.FirstAsync(t => t.ID == transactionID);
             transaction.Status = transactionStatus;
             await context.SaveChangesAsync();
-            return true;
         }
-        catch
+        catch(Exception ex)
         {
-            return false;
+            throw ex;
         }
     }
 }

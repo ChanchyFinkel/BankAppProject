@@ -10,6 +10,7 @@ import { MenuComponent } from './menu/menu.component';
 import { UserService } from './services/user.service';
 import { InterceptorService } from './services/interceptor.service';
 import { TransactionModule } from './modules/transaction/transaction.module';
+import { OperationsHistoryModule } from './modules/operation-history/operations-history.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TransactionModule } from './modules/transaction/transaction.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AccountModule,
+    OperationsHistoryModule,
     AuthModule,
     TransactionModule
   ],  providers: [

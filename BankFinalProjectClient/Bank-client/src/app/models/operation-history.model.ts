@@ -1,6 +1,6 @@
 export interface OperationHistory{
     debit:boolean,
-    accountNumber:number,
+    secondSideAccountID:number,
     amount:number,
     balance:number,
     date:Date

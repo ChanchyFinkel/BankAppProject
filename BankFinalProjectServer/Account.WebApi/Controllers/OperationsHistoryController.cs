@@ -30,12 +30,11 @@ public class OperationsHistoryController : ControllerBase
 
     [HttpGet]
     [Route("GetOperationsHistoryAsPDF/{month}/{year}")]
-    public async Task<IActionResult> GetOperationsHistoryAsPDF(int month, int year)
+    public async Task<ActionResult<byte[]>> GetOperationsHistoryAsPDF(int month, int year)
     {
         try
         {
             byte[] file = await _operationsHistoryService.CreateOperationsHistoryPDF(month, year, _converter, User);
-            //var res = File(file, "application/pdf", "OperationsHistories.pdf");
             return Ok(file);
         }
         catch (Exception ex)

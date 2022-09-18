@@ -21,9 +21,9 @@ public class AccountData : IAccountData
             await context.SaveChangesAsync();
             return true;
         }
-        catch
+        catch(Exception ex)
         {
-            return false;
+            throw ex;
         }
     }
     public async Task<Entities.Account> GetAccountInfo(int accountID)

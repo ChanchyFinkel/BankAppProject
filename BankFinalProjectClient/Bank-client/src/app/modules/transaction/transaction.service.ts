@@ -13,6 +13,6 @@ export class TransactionService{
   constructor(private _http:HttpClient) { }
 
   addTransaction(transaction: Transaction):Observable<void>{
-    return this._http.post<void>(`${this.baseUrl}AddTransaction`,transaction)
+    return this._http.post<void>(`${this.baseUrl}AddTransaction`,transaction);
   }
 }

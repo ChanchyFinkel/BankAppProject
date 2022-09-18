@@ -44,11 +44,11 @@ export class EmailVerificationDialogComponent implements OnInit, OnDestroy {
   resendVerificationCode() {
     if (!this.disableClick) {
       this.getVerificationCode();
-      if (this.countClicks === 0) {
+      if (this.countClicks == 0) {
         this.firstClickTime = Date.now();
       }
       this.countClicks++;
-      if (this.countClicks === this.maximumEnableClicks) {
+      if (this.countClicks == this.maximumEnableClicks) {
         this.countClicks = 0;
         if (new Date(this.firstClickTime + this.timeRange * 60000) > new Date()) {
           this.disableClick = true;

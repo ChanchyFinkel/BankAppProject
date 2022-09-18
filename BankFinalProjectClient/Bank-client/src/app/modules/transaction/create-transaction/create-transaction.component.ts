@@ -21,7 +21,6 @@ export class CreateTransactionComponent implements OnInit {
   accountSubscribtion!: Subscription;
   fromAccount: number = 0;
   transaction!: Transaction;
-  durationInSeconds: number = 5;
 
   ngOnInit(): void {
     this.accountSubscribtion = this._accountService.getBalanceAccount().subscribe(balance => balance < this.balance ? this.balance = balance : '')
@@ -55,5 +54,4 @@ export class CreateTransactionComponent implements OnInit {
     this.transactionSubscribtion?.unsubscribe();
     this.accountSubscribtion.unsubscribe();
   }
-
 }

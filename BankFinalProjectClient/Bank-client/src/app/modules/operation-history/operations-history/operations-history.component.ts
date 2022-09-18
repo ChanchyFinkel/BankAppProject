@@ -5,9 +5,9 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { OperationHistory } from 'src/app/models/operation-history.model';
-import { AccountService } from '../account.service';
-import { AccoutHolderInfoComponent } from '../accout-holder-info/accout-holder-info.component';
 import { DownloadAsPdfDialogComponent } from '../download-as-pdf-dialog/download-as-pdf-dialog.component';
+import { OperationsHistoryService } from '../operations-history.service';
+import { SecondSideAccountInfoComponent } from '../second-side-account-info/second-side-account-info.component';
 
 @Component({
   selector: 'app-operations-history',
@@ -16,7 +16,7 @@ import { DownloadAsPdfDialogComponent } from '../download-as-pdf-dialog/download
 })
 export class OperationsHistoryComponent implements OnInit, OnDestroy {
 
-  constructor(private _accountService: AccountService, public dialog: MatDialog, private _router: Router) { }
+  constructor(private _operationsHistoryService: OperationsHistoryService, public dialog: MatDialog, private _router: Router) { }
 
   columnsToDisplay: string[] = ['IconType', 'Date', 'From/to Account', 'Debit/Credit', 'Balance'];
   dataSource: MatTableDataSource<OperationHistory> = new MatTableDataSource();
@@ -35,7 +35,7 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
     this.dataSource.paginator = this.paginator;
   }
   getOpeartionsHistory(): void {
-    this.subscription = this._accountService.getOperationsHistory(this.currentPage, this.pageSize).subscribe(data => {
+    this.subscription = this._operationsHistoryService.getOperationsHistory(this.currentPage, this.pageSize).subscribe(data => {
       if (data) {
         this.dataSource.data = data.operations;
         this.paginator.pageIndex = this.currentPage;
@@ -59,7 +59,7 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
   }
 
   openDialog(accountNumber: number) {
-    this.dialog.open(AccoutHolderInfoComponent, {
+    this.dialog.open(SecondSideAccountInfoComponent, {
       data: accountNumber,
     });
   }

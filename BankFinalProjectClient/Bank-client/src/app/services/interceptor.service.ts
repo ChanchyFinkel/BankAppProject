@@ -22,7 +22,7 @@ export class InterceptorService implements HttpInterceptor, OnDestroy {
         this.token = data.token;
       }
     });
-    if (this.token) {
+    if (this.token!="") {
       const tokenizedReq = req.clone({ headers: req.headers.set('Authorization', 'Bearer ' + this.token) });
       return next.handle(tokenizedReq);
     }

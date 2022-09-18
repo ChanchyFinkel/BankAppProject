@@ -17,7 +17,7 @@ public class AuthController : ControllerBase
         try
         {
             AuthDTO authDTO = await _authService.Login(loginDTO);
-            return authDTO != null ? Ok(authDTO) : BadRequest();
+            return authDTO != null ? Ok(authDTO) : Unauthorized();
         }
         catch (Exception ex)
         {

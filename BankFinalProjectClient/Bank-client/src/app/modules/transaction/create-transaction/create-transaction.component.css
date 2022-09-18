@@ -16,7 +16,6 @@ mat-card-title{
     white-space: nowrap;
     margin-top: 20px;
     text-align: center;
-    /* margin-left: 0; */
 }
 .mat-card>:first-child{
     justify-content: center;
@@ -35,12 +34,4 @@ button{
 .comment{
     color: gray;
     font-size: 12px;
-}
-.mat-snack-bar-container {
-    color: black !important;
-    background-color: #f8fff5 !important;
-}
-snack-bar-container{
-    color: black !important;
-    background-color: #f8fff5 !important;
 }

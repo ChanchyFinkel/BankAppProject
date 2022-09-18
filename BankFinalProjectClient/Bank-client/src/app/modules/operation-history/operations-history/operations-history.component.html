@@ -32,7 +32,7 @@
 
             <ng-container matColumnDef="From/to Account">
                 <th mat-header-cell *matHeaderCellDef> Account Number</th>
-                <td mat-cell *matCellDef="let row"> {{row.accountNumber}} </td>
+                <td mat-cell *matCellDef="let row"> {{row.secondSideAccountID}} </td>
             </ng-container>
 
             <ng-container matColumnDef="Debit/Credit">
@@ -50,11 +50,8 @@
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (dblclick)="openDialog(row.accountNumber)">
+            <tr mat-row *matRowDef="let row; columns: columnsToDisplay;" (dblclick)="openDialog(row.secondSideAccountID)">
             </tr>
-            <!-- <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
-            </tr> -->
         </table>
         <mat-paginator #paginator [length]="totalRows" [pageIndex]="currentPage" [pageSize]="pageSize"
             [pageSizeOptions]="pageSizeOptions" (page)="pageChanged($event)" aria-label="Select page">

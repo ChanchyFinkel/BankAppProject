@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import * as _moment from 'moment';
 import { Moment } from 'moment';
 import { Subscription } from 'rxjs';
-import { AccountService } from '../account.service';
+import { OperationsHistoryService } from '../operations-history.service';
 
 const moment = _moment;
 
@@ -42,7 +42,7 @@ export class DownloadAsPdfDialogComponent implements OnInit {
 
   subscription!: Subscription;
 
-  constructor(private _accountService: AccountService, private _snackBar: MatSnackBar ,private _dialogRef: MatDialogRef<DownloadAsPdfDialogComponent>) { }
+  constructor(private _operationsHistoryService: OperationsHistoryService, private _snackBar: MatSnackBar ,private _dialogRef: MatDialogRef<DownloadAsPdfDialogComponent>) { }
 
   ngOnInit(): void {
   }
@@ -60,7 +60,7 @@ export class DownloadAsPdfDialogComponent implements OnInit {
       this.openSnackBar("Date isn't valid!", "close");
     }
     else {
-      this.subscription = this._accountService.CreateOperationsHistoriesPDF(this.date.value.month() + 1, this.date.value.year()).subscribe(data => {
+      this.subscription = this._operationsHistoryService.CreateOperationsHistoriesPDF(this.date.value.month() + 1, this.date.value.year()).subscribe(data => {
         const byteCharacters = atob(data);
         const byteNumbers = new Array(byteCharacters.length);
         for (let i = 0; i < byteCharacters.length; i++) {
@@ -73,6 +73,8 @@ export class DownloadAsPdfDialogComponent implements OnInit {
         link.download = "OperationHistories.pdf";
         link.click();
         this._dialogRef.close();
+      }, error=>{
+        this.openSnackBar("An error occured, Please try again", "close");
       });
     }
   }

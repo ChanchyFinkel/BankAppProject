@@ -14,7 +14,7 @@ public class TransactionService : ITransactionService
     {
         var accountID = User.Claims.First(x => x.Type.Equals("AccountID", StringComparison.InvariantCultureIgnoreCase)).Value;
         Data.Entities.Transaction transaction = _mapper.Map<Data.Entities.Transaction>(newTransaction);
-        transaction.FromAccount= int.Parse(accountID);
+        transaction.FromAccount = int.Parse(accountID);
         transaction.Date = DateTime.UtcNow;
         await _transactionData.AddTransaction(transaction);
         await PublishMessage(transaction, messageSession);
@@ -34,7 +34,7 @@ public class TransactionService : ITransactionService
 
     public Task UpdateTransactionStatus(int transactionID, bool transactionStatus, string? failureReason)
     {
-        Status status = transactionStatus? Status.SUCCESS:Status.FAIL;
-        return _transactionData.UpdateTransactionStatus(transactionID, status,failureReason);
+        Status status = transactionStatus ? Status.SUCCESS : Status.FAIL;
+        return _transactionData.UpdateTransactionStatus(transactionID, status, failureReason);
     }
 }

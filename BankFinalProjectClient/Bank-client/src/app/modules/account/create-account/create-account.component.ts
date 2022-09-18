@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Customer } from 'src/app/models/customer.model';
@@ -19,7 +20,7 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
   loading!: boolean;
   subscription!: Subscription;
 
-  constructor(private _accountService: AccountService, private _router: Router,public dialog: MatDialog) { }
+  constructor(private _accountService: AccountService, private _router: Router,public dialog: MatDialog, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -29,7 +30,13 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
     "lastName": new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
     "email": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(100), Validators.email]),
     "password": new FormControl("", [Validators.required, Validators.minLength(6), Validators.maxLength(25)]),
-  })
+  });
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action, {
+      duration: 4000
+    });
+  }
 
   openDialogForVerificationCode() {
     const dialogRef = this.dialog.open(EmailVerificationDialogComponent, {
@@ -45,13 +52,13 @@ export class CreateAccountComponent implements OnInit, OnDestroy {
 
   createAnAccount() {
     this.loading = true;
-    this.subscription = this._accountService.createAnAccount(this.customer).subscribe((data: any) => {
+    this.subscription = this._accountService.createAnAccount(this.customer).subscribe(data => {
       this.loading = false;
       if (data) {
-        alert("Account created successfully!");
+      this.openSnackBar("Account created successfully!", "close");
         this._router.navigate(['/login']);
       }
-    }, (error: { message: string; }) => alert("Oops! Something went wrong! try again later!"));
+    },error =>this.openSnackBar("Oops! Something went wrong! try again later!", "close"));
   }
 
   ngOnDestroy(): void {

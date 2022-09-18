@@ -1,13 +1,11 @@
 <div class="body">
   <div class="login-form">
     <div class="login-form-text">
-      <!-- Sign in title -->
       <div class="sign-in-title">
         <mat-icon class="user-icon">account_circle</mat-icon>
         <h1>Sign In</h1>
       </div>
       <br>
-      <!-- Login Form -->
       <form [formGroup]="loginForm">
         <div>
           <mat-form-field appearance="fill">
@@ -19,7 +17,6 @@
         <div>
           <mat-form-field appearance="fill">
             <mat-label>Enter your Password</mat-label>
-
             <input matInput [type]="hide ? 'password' : 'text'" id="password" formControlName="password">
             <mat-icon matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
               {{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -32,9 +29,6 @@
           <div class="statusProcces">Loading...</div>
           <mat-progress-bar mode="buffer"></mat-progress-bar>
         </div>
-        <!-- <div *ngIf="!loading">
-          <div class="statusProcces">Login procees successfully!</div>
-        </div> -->
       </form>
     </div>
   </div>

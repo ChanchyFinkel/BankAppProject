@@ -2,5 +2,5 @@
 public interface ITransactionData
 {
     Task AddTransaction(Entities.Transaction transaction);
-    Task<bool> UpdateTransactionStatus(int transactionID,Status transactionStatus,string? failureReason);
+    Task UpdateTransactionStatus(int transactionID,Status transactionStatus,string? failureReason);
 }
