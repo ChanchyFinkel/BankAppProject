@@ -4,16 +4,22 @@ public class AccountService : IAccountService
     private readonly IAccountData _accountData;
     private readonly IMapper _mapper;
     private readonly IAuthService _authService;
+    private readonly IPasswordHashHelper _passwordHashHelper;
+    private const int nIterations = 1000;
+    private const int nHash = 8;
 
-    public AccountService(IAccountData accountData, IMapper mapper, IAuthService authService)
+    public AccountService(IAccountData accountData, IMapper mapper, IAuthService authService, IPasswordHashHelper passwordHashHelper)
     {
         _accountData = accountData;
         _mapper = mapper;
         _authService = authService;
+        _passwordHashHelper = passwordHashHelper;
     }
     public async Task<bool> CreateAccount(CustomerDTO customerDTO)
     {
         Customer newCustomer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
+        newCustomer.Salt = _passwordHashHelper.GenerateSalt(8);
+        newCustomer.Password = _passwordHashHelper.HashPassword(newCustomer.Password, newCustomer.Salt, nIterations, nHash);
         Data.Entities.Account newAccount = new Data.Entities.Account();
         newAccount.Customer = newCustomer;
         newAccount.OpenDate = DateTime.UtcNow;

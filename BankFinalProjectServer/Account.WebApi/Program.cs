@@ -73,6 +73,7 @@ builder.Services.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
 builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
 builder.Services.AddScoped<IEmailVerificationData, EmailVerificationData>();
 builder.Services.AddScoped<IEmailVerificationService,EmailVerificationService>();
+builder.Services.AddScoped<IPasswordHashHelper, PasswordHashHelper>();
 builder.Services.ExtensionsDI();
 builder.Services.ExtensionContext(databaseConnection);
 builder.Services.AddAutoMapper(typeof(Program));

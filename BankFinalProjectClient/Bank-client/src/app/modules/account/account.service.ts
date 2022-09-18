@@ -34,7 +34,11 @@ export class AccountService {
   getAccountHolderInfo(accountNumber:number): Observable<AccountHolderInfo> {
     return this._http.get<AccountHolderInfo>(`${this.baseUrl}GetAccountHolderInfo/${accountNumber}`)
   }
-  getVerificationCode(email:string): Observable<void>{
-    return this._http.get<void>(`api/EmailVerification/SendEmailVerification/${email}`);
+
+  getVerificationCode(email: string):Observable<void> {
+    return this._http.post<void>(`api/EmailVerification/SendEmailVerification/`,JSON.stringify(email),{headers: {'Content-Type': 'application/json'}})
   }
+  // getVerificationCode(email:string): Observable<void>{
+  //   return this._http.post<void>(`api/EmailVerification/SendEmailVerification/${JSON.stringify(email)},{headers: {'Content-Type': 'application/json'}}}`);
+  // }
 }

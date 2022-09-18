@@ -1,20 +1,29 @@
-﻿namespace Account.Service.Classes;
+﻿
+
+namespace Account.Service.Classes;
 public class AuthService : IAuthService
 {
     private readonly IAuthData _authData;
     private readonly IConfiguration _configuration;
-    public AuthService(IAuthData authData, IConfiguration configuration)
+    private readonly IPasswordHashHelper _passwordHashHelper;
+    private const int nIterations= 1000;
+    private const int nHash = 8;
+
+    public AuthService(IAuthData authData, IConfiguration configuration, IPasswordHashHelper passwordHashHelper)
     {
         _authData = authData;
         _configuration = configuration;
+        _passwordHashHelper=passwordHashHelper;
     }
     public async Task<AuthDTO> Login(LoginDTO loginDTO)
     {
-        int accountID = await _authData.Login(loginDTO.Email, loginDTO.Password);
-        if (accountID == 0)
+        Data.Entities.Account account = await _authData.Login(loginDTO.Email);
+        string Hashedpassword = _passwordHashHelper.HashPassword(loginDTO.Password, account.Customer.Salt, nIterations, nHash);
+
+        if (Hashedpassword.Equals(account.Customer.Password.TrimEnd()) != true)
             return null;
-        string token = CreateToken(loginDTO.Email, accountID);
-        AuthDTO authDTO = new AuthDTO() { AccountID = accountID, Token = token };
+        string token = CreateToken(loginDTO.Email, account.ID);
+        AuthDTO authDTO = new AuthDTO() { AccountID = account.ID, Token = token };
         return authDTO;
     }
     public int getAccountIDFromToken(ClaimsPrincipal User) {

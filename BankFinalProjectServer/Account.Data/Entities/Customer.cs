@@ -17,4 +17,6 @@ public class Customer
     [Required]
     [MaxLength(25)]
     public string Password { get; set; }
+    [MaxLength(25)]
+    public string Salt { get; set; }
 }
