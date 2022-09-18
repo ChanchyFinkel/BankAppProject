@@ -1,5 +1,5 @@
 ﻿namespace Account.DTO;
-public class AccountHolderDTO
+public class SecondSideAccountDTO
 {
     public string FirstName { get; set; }
     public string LastName { get; set; }

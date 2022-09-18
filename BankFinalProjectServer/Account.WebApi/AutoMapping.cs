@@ -13,7 +13,7 @@ public class AutoMapping:Profile
         .ForMember(dest =>
             dest.LastName,
             opt => opt.MapFrom(src => src.Customer.LastName));
-        CreateMap<Data.Entities.Account, AccountHolderDTO>()
+        CreateMap<Data.Entities.Account, SecondSideAccountDTO>()
            .ForMember(dest =>
            dest.FirstName,
            opt => opt.MapFrom(src => src.Customer.FirstName))

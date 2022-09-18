@@ -3,7 +3,7 @@ public interface IAccountService
 {
     Task<bool> CreateAccount(CustomerDTO AccountDTO);
     Task<AccountDTO> GetAccountInfo(ClaimsPrincipal user);
-    Task<AccountHolderDTO> GetAccountHolderInfo(int accountNumber);
-    Task<int> GetAccountBalance(int accountID);
-    Task<string> UpdateBalancesAndAddOperationsHistories(int senderAccountID, int receiverAccountID, int ammount, int transactionID);
+    Task<SecondSideAccountDTO> GetSecondSideAccountInfo(int accountNumber);
+    Task<int> GetAccountBalance(ClaimsPrincipal user);
+    Task<string> UpdateBalancesAndAddOperationsHistory(int senderAccountID, int receiverAccountID, int ammount, int transactionID);
 }

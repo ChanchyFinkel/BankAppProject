@@ -3,7 +3,7 @@ public class LoginDTO
 {
     [Required]
     [EmailAddress]
-    [MinLength(4)]
+    [MinLength(5)]
     [MaxLength(40)]
     public string Email { get; set; }
     [Required]

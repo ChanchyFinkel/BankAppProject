@@ -8,13 +8,13 @@ public class OperationsHistoryData : IOperationsHistoryData
         using var db = _factory.CreateDbContext();
         db.Database.Migrate();
     }
-    public async Task<List<OperationsHistory>> GetOperationsHistories(int accountID)
+    public async Task<List<OperationsHistory>> GetOperationsHistoryByAccountId(int accountID)
     {
         using var context = _factory.CreateDbContext();
         List<OperationsHistory> result = await context.OperationsHistory.Where(operation=>operation.AccountID==accountID).OrderByDescending(o => o.OperationTime).ToListAsync();
         return result;
     }
-    public async Task<int> GetOperationAccountID(int transactionID,int accountID)
+    public async Task<int> GetSecondSideAccountID(int transactionID,int accountID)
     {
         var context = _factory.CreateDbContext();
         var res = await context.OperationsHistory.FirstAsync(o => o.TransactionID == transactionID && o.AccountID != accountID);

@@ -9,6 +9,7 @@ public class AuthController : ControllerBase
     {
         _authService = authService;
     }
+
     [HttpPost]
     [Route("Login")]
     public async Task<ActionResult<AuthDTO>> Login([FromBody] LoginDTO loginDTO)
@@ -16,7 +17,7 @@ public class AuthController : ControllerBase
         try
         {
             AuthDTO authDTO = await _authService.Login(loginDTO);
-            return authDTO != null ? Ok(authDTO) : Unauthorized();
+            return authDTO != null ? Ok(authDTO) : BadRequest();
         }
         catch (Exception ex)
         {

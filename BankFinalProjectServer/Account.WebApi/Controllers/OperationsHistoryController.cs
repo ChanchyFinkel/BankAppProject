@@ -14,12 +14,13 @@ public class OperationsHistoryController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetOperationsHistories/{pageSize}/{page}")]
-    public async Task<ActionResult<OperationDataListDTO>> GetOperationsHistories( int pageSize, int page)
+    [Route("GetOperationsHistory/{pageSize}/{page}")]
+    public async Task<ActionResult<OperationDataListDTO>> GetOperationsHistory(int pageSize, int page)
     {
         try
         {
-            return Ok(await _operationsHistoryService.GetOperationsHistories(User, pageSize, page));
+            OperationDataListDTO operationDataListDTO = await _operationsHistoryService.GetOperationsHistory(User, pageSize, page);
+            return operationDataListDTO.TotalRows == 0 ? NoContent() : Ok(operationDataListDTO);
         }
         catch (Exception ex)
         {
@@ -28,12 +29,12 @@ public class OperationsHistoryController : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetOperationsHistoriesAsPDF/{month}/{year}")]
-    public async Task<IActionResult> CreateOperationsHistoriesPDF(int month,int year)
+    [Route("GetOperationsHistoryAsPDF/{month}/{year}")]
+    public async Task<IActionResult> GetOperationsHistoryAsPDF(int month, int year)
     {
         try
         {
-            byte[] file = await _operationsHistoryService.CreateOperationsHistoriesPDF(month, year, _converter, User);
+            byte[] file = await _operationsHistoryService.CreateOperationsHistoryPDF(month, year, _converter, User);
             //var res = File(file, "application/pdf", "OperationsHistories.pdf");
             return Ok(file);
         }

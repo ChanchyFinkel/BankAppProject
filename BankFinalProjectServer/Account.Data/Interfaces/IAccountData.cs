@@ -4,7 +4,6 @@ public interface IAccountData
 {
     Task<bool> CreateAccount(Entities.Account account, Customer customer, int verificationCode);
     Task<Entities.Account> GetAccountInfo(int accountID);
-    Task<Entities.Account> GetAccountHolderInfo(int accountNumber);
     Task<int> GetAccountBalance(int accountID);
-    Task<string> UpdateBalancesAndAddOperationsHistories(OperationsHistory senderOperation, OperationsHistory receiverOperation);
+    Task<string> UpdateBalancesAndAddOperationsHistory(OperationsHistory senderOperation, OperationsHistory receiverOperation);
 }

@@ -24,7 +24,7 @@ export class AccountService {
   }
 
   getOperationsHistory(currentPage: number, pageSize: number): Observable<OperationDataList> {
-    return this._http.get<OperationDataList>(`api/OperationsHistory/GetOperationsHistories/${pageSize}/${currentPage}`)
+    return this._http.get<OperationDataList>(`api/OperationsHistory/GetOperationsHistory/${pageSize}/${currentPage}`)
   }
 
   getBalanceAccount(): Observable<number> {
@@ -32,7 +32,7 @@ export class AccountService {
   }
 
   getAccountHolderInfo(accountNumber:number): Observable<AccountHolderInfo> {
-    return this._http.get<AccountHolderInfo>(`${this.baseUrl}GetAccountHolderInfo/${accountNumber}`)
+    return this._http.get<AccountHolderInfo>(`${this.baseUrl}GetSecondSideAccountInfo/${accountNumber}`)
   }
 
   getVerificationCode(email: string):Observable<void> {
@@ -43,6 +43,6 @@ export class AccountService {
   // }
 
   CreateOperationsHistoriesPDF(month:number,year: number): Observable<any>{
-    return this._http.get(`api/OperationsHistory/GetOperationsHistoriesAsPDF/${month}/${year}`);
+    return this._http.get(`api/OperationsHistory/GetOperationsHistoryAsPDF/${month}/${year}`);
   }
 }

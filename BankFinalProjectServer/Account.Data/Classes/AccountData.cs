@@ -8,7 +8,7 @@ public class AccountData : IAccountData
         using var db = _factory.CreateDbContext();
         db.Database.Migrate();
     }
-    public async Task<bool> CreateAccount(Entities.Account account,Customer customer,int verificationCode)
+    public async Task<bool> CreateAccount(Entities.Account account, Customer customer, int verificationCode)
     {
         try
         {
@@ -31,27 +31,22 @@ public class AccountData : IAccountData
         using var context = _factory.CreateDbContext();
         return await context.Account.Where(account => account.ID == accountID).Include(account => account.Customer).FirstAsync();
     }
-    public async Task<Entities.Account> GetAccountHolderInfo(int accountNumber)
-    {
-        using var context = _factory.CreateDbContext();
-        Entities.Account account = await context.Account.Where(account => account.ID == accountNumber).Include(account => account.Customer).FirstAsync();
-        return account;
-    }
+
     public async Task<int> GetAccountBalance(int accountID)
     {
         using var context = _factory.CreateDbContext();
         Entities.Account account = await context.Account.FirstAsync(a => a.ID == accountID);
         return account.Balance;
     }
-    public async Task<string> UpdateBalancesAndAddOperationsHistories(OperationsHistory senderOperation,OperationsHistory receiverOperation)
+    public async Task<string> UpdateBalancesAndAddOperationsHistory(OperationsHistory senderOperation, OperationsHistory receiverOperation)
     {
         try
         {
             using var context = _factory.CreateDbContext();
-            Entities.Account receiverAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == receiverOperation.AccountID);
+            var receiverAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == receiverOperation.AccountID);
             if (receiverAccount == null)
                 return "Receiver account ID is invalid!";
-            Entities.Account senderAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == senderOperation.AccountID);
+            var senderAccount = await context.Account.FirstOrDefaultAsync(a => a.ID == senderOperation.AccountID);
             if (senderAccount == null)
                 return "Sender account ID is invalid!";
             if (senderAccount.Balance < senderOperation.TransactionAmount)

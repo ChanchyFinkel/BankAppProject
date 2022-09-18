@@ -15,7 +15,7 @@ public class AccountService : IAccountService
         _authService = authService;
         _passwordHashHelper = passwordHashHelper;
     }
-    public async Task<bool> CreateAccount(CustomerDTO customerDTO)
+    public Task<bool> CreateAccount(CustomerDTO customerDTO)
     {
         Customer newCustomer = _mapper.Map<CustomerDTO, Customer>(customerDTO);
         newCustomer.Salt = _passwordHashHelper.GenerateSalt(8);
@@ -23,26 +23,27 @@ public class AccountService : IAccountService
         Data.Entities.Account newAccount = new Data.Entities.Account();
         newAccount.Customer = newCustomer;
         newAccount.OpenDate = DateTime.UtcNow;
-        return await _accountData.CreateAccount(newAccount, newCustomer, customerDTO.VerificationCode);
+        return _accountData.CreateAccount(newAccount, newCustomer, customerDTO.VerificationCode);
     }
     public async Task<AccountDTO> GetAccountInfo(ClaimsPrincipal user)
     {
         int accountID = _authService.getAccountIDFromToken(user);
-        return _mapper.Map<AccountDTO>(await _accountData.GetAccountInfo(accountID));
+        return _mapper.Map<Data.Entities.Account, AccountDTO>(await _accountData.GetAccountInfo(accountID));
     }
-    public Task<int> GetAccountBalance(int accountID)
+    public Task<int> GetAccountBalance(ClaimsPrincipal user)
     {
+        int accountID = _authService.getAccountIDFromToken(user);
         return _accountData.GetAccountBalance(accountID);
     }
-    public Task<string> UpdateBalancesAndAddOperationsHistories(int senderAccountID, int receiverAccountID, int ammount, int transactionID)
+    public Task<string> UpdateBalancesAndAddOperationsHistory(int senderAccountID, int receiverAccountID, int ammount, int transactionID)
     {
         OperationsHistory senderOperation = new OperationsHistory() { TransactionID = transactionID, TransactionAmount = ammount, AccountID = senderAccountID, Debit = true, OperationTime = DateTime.UtcNow };
         OperationsHistory receiverOperation = new OperationsHistory() { TransactionID = transactionID, TransactionAmount = ammount, AccountID = receiverAccountID, Debit = false, OperationTime = DateTime.UtcNow };
-        return _accountData.UpdateBalancesAndAddOperationsHistories(senderOperation, receiverOperation);
+        return _accountData.UpdateBalancesAndAddOperationsHistory(senderOperation, receiverOperation);
     }
 
-    public async Task<AccountHolderDTO> GetAccountHolderInfo(int accountNumber)
+    public async Task<SecondSideAccountDTO> GetSecondSideAccountInfo(int accountID)
     {
-        return _mapper.Map<AccountHolderDTO>(await _accountData.GetAccountHolderInfo(accountNumber));
+        return _mapper.Map<Data.Entities.Account,SecondSideAccountDTO>(await _accountData.GetAccountInfo(accountID));
     }
 }

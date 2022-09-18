@@ -36,7 +36,7 @@ export class LoginComponent implements OnDestroy {
   };
 
   createAnAccount() {
-    this._router.navigate(['/createAnAccount']);
+    this._router.navigate(['/account/operationsHistory']);
   }
 
   ngOnDestroy(): void {

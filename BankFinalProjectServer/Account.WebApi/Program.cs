@@ -24,9 +24,6 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
     transport.ConnectionString(rabbitMQConnection);
     transport.UseConventionalRoutingTopology(QueueType.Quorum);
 
-    //var subscriptions = persistence.SubscriptionSettings();
-    //subscriptions.CacheFor(TimeSpan.FromMinutes(1));
-
     var conventions = endpointConfiguration.Conventions();
     conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
     conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
@@ -36,14 +33,7 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
 
 #endregion
 
-//var endpointInstance = await NServiceBus.Endpoint.Start(endpointConfiguration).ConfigureAwait(false);
-
-//Console.WriteLine("waiting for messages...");
-//Console.ReadLine();
-
-//await endpointInstance.Stop();
-
-
+#region add JWT configurations
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -59,26 +49,25 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = false
     };
 });
+#endregion
 
 #region Add services to the container.
 builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAuthData, AuthData>();
 builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
 builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
-builder.Services.AddScoped<IEmailVerificationData, EmailVerificationData>();
 builder.Services.AddScoped<IEmailVerificationService,EmailVerificationService>();
 builder.Services.AddScoped<IPasswordHashHelper, PasswordHashHelper>();
 builder.Services.ExtensionsDI();
 builder.Services.ExtensionContext(databaseConnection);
 builder.Services.AddAutoMapper(typeof(Program));
 #endregion
+
+#region Add swagger configuration
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "BankApp", Version = "v1" });
@@ -107,16 +96,49 @@ builder.Services.AddSwaggerGen(c =>
                     }
                 });
 });
+#endregion
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", p =>
+    {
+        p.AllowAnyOrigin()
+        .AllowAnyHeader()
+        .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 app.UseHandlerExecptionMiddleware();
+app.Use(async (context, next) =>
+{
+    context.Response.GetTypedHeaders().CacheControl =
+        new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+        {
+            Public = true,
+            MaxAge = TimeSpan.FromSeconds(1)
+        };
+    context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+        new string[] { "Accept-Encoding" };
+
+    context.Response.Headers.Add(
+        "Content-Security-Policy",
+        "script-src 'self'; " +
+        "style-src 'self' ; " +
+        "img-src 'self'");
+
+    await next();
+});
+
+app.UseStaticFiles();
+
+app.UseCors("AllowAll");
 
 app.UseRouting();
 

@@ -4,12 +4,10 @@ namespace Account.WebApi.Controllers;
 [ApiController]
 public class AccountController : ControllerBase
 {
-    private readonly IAccountService _AccountService;
-    private readonly IAuthService _authService;
-    public AccountController(IAccountService AccountService, IAuthService authService)
+    private readonly IAccountService _accountService;
+    public AccountController(IAccountService accountService)
     {
-        _AccountService = AccountService;
-        _authService = authService;
+        _accountService = accountService;
     }
 
     [HttpPost]
@@ -18,7 +16,7 @@ public class AccountController : ControllerBase
     {
         try
         {
-            bool succsess = await _AccountService.CreateAccount(customerDTO);
+            bool succsess = await _accountService.CreateAccount(customerDTO);
             return !succsess ? BadRequest(succsess) : Ok(succsess);
         }
         catch (Exception ex)
@@ -34,7 +32,7 @@ public class AccountController : ControllerBase
     {
         try
         {
-            AccountDTO accountDTO = await _AccountService.GetAccountInfo(User);
+            AccountDTO accountDTO = await _accountService.GetAccountInfo(User);
             return accountDTO != null ? Ok(accountDTO) : BadRequest();
         }
         catch (Exception ex)
@@ -45,13 +43,13 @@ public class AccountController : ControllerBase
 
     [Authorize]
     [HttpGet]
-    [Route("GetAccountHolderInfo/{accountNumber}")]
-    public async Task<ActionResult<AccountHolderDTO>> GetAccountHolderInfo(int accountNumber)
+    [Route("GetSecondSideAccountInfo/{accountID}")]
+    public async Task<ActionResult<SecondSideAccountDTO>> GetSecondSideAccountInfo(int accountID)
     {
         try
         {
-            AccountHolderDTO accountHolderDTO = await _AccountService.GetAccountHolderInfo(accountNumber);
-            return accountHolderDTO != null ? Ok(accountHolderDTO) : BadRequest();
+            SecondSideAccountDTO secondSideAccountDTO = await _accountService.GetSecondSideAccountInfo(accountID);
+            return secondSideAccountDTO != null ? Ok(secondSideAccountDTO) : BadRequest();
         }
         catch (Exception ex)
         {
@@ -66,8 +64,7 @@ public class AccountController : ControllerBase
     {
         try
         {
-            int accountID = _authService.getAccountIDFromToken(User);
-            int accountBalance = await _AccountService.GetAccountBalance(accountID);
+            int accountBalance = await _accountService.GetAccountBalance(User);
             return accountBalance != 0 ? Ok(accountBalance) : BadRequest();
         }
         catch (Exception ex)

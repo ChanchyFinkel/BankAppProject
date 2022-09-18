@@ -12,10 +12,11 @@ const APP_ROUTES: Routes = [
 
   { path: "", pathMatch: "full", redirectTo: "login" ,},
   { path: "login", component: LoginComponent },
-  { path: "createAnAccount", component: CreateAccountComponent,},
-  { path: "accountInfo", component: AccountInfoComponent,canActivate: [AuthGuard]},
-  { path: "createTransaction", component:CreateTransactionComponent,canActivate: [AuthGuard]},
-  { path: "operationsHistory", component:OperationsHistoryComponent,canActivate: [AuthGuard]},
+  { path: "createAccount", component: CreateAccountComponent},
+  { path: "account", loadChildren: () => import("./modules/account/account.module").then(m => m.AccountModule) },
+  { path: "transaction", loadChildren: () => import("./modules/transaction/transaction.module").then(m => m.TransactionModule) },
+  //{ path: "accountInfo", component: AccountInfoComponent,canActivate: [AuthGuard]},
+  //{ path: "createTransaction", component:CreateTransactionComponent,canActivate: [AuthGuard]},
   { path: "**",pathMatch:"full", component: WrongRouteComponent}
 ];
 

@@ -6,8 +6,6 @@ var rabbitMQConnection = builder.Configuration.GetConnectionString("RabbitMQConn
 
 builder.Host.UseNServiceBus(hostBuilderContext =>
 {
-    //Console.Title = "Transaction";
-
     var endpointConfiguration = new EndpointConfiguration("Transaction");
     endpointConfiguration.EnableInstallers();
     endpointConfiguration.EnableOutbox();
@@ -28,9 +26,6 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
     var routing = transport.Routing();
     routing.RouteToEndpoint(typeof(DoTransfort), "Account");
 
-    //var subscriptions = persistence.SubscriptionSettings();
-    //subscriptions.CacheFor(TimeSpan.FromMinutes(1));
-
     var conventions = endpointConfiguration.Conventions();
     conventions.DefiningCommandsAs(type => type.Namespace == "Messages.NSB.Commands");
     conventions.DefiningEventsAs(type => type.Namespace == "Messages.NSB.Events");
@@ -40,7 +35,7 @@ builder.Host.UseNServiceBus(hostBuilderContext =>
 
 #endregion
 
-
+#region add JWT configurations
 builder.Services.AddAuthentication(x =>
 {
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,6 +51,7 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = false
     };
 });
+#endregion
 
 #region Add services to the container.
 
@@ -67,9 +63,10 @@ builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.ExtensionsDI();
 builder.Services.ExtensionContext(databaseConnection);
 
-
 builder.Services.AddAutoMapper(typeof(Program));
 #endregion
+
+#region Add swagger configuration
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Transaction", Version = "v1" });
@@ -98,6 +95,7 @@ builder.Services.AddSwaggerGen(c =>
                     }
                 });
 });
+#endregion
 
 builder.Services.AddCors(options =>
 {
@@ -111,13 +109,33 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 app.UseHandlerExecptionMiddleware();
+
+
+app.Use(async (context, next) =>
+{
+    context.Response.GetTypedHeaders().CacheControl =
+        new Microsoft.Net.Http.Headers.CacheControlHeaderValue()
+        {
+            Public = true,
+            MaxAge = TimeSpan.FromSeconds(1)
+        };
+    context.Response.Headers[Microsoft.Net.Http.Headers.HeaderNames.Vary] =
+        new string[] { "Accept-Encoding" };
+
+    context.Response.Headers.Add(
+        "Content-Security-Policy",
+        "script-src 'self'; " +
+        "style-src 'self' ; " +
+        "img-src 'self'");
+
+    await next();
+});
 
 app.UseCors("AllowAll");
 

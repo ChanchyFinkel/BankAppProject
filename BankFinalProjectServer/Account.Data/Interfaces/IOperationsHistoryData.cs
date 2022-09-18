@@ -2,7 +2,7 @@
 {
     public interface IOperationsHistoryData
     {
-        Task<List<OperationsHistory>> GetOperationsHistories(int accountID);
-        Task<int> GetOperationAccountID(int transactionID, int accountID);
+        Task<List<OperationsHistory>> GetOperationsHistoryByAccountId(int accountID);
+        Task<int> GetSecondSideAccountID(int transactionID, int accountID);
     }
 }

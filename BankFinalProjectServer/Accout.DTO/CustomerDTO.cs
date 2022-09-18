@@ -18,5 +18,6 @@ public class CustomerDTO
     [MaxLength(25)]
     public string Password { get; set; }
     [Required]
+    [Range(1000,9999)]
     public int VerificationCode { get; set; }
 }

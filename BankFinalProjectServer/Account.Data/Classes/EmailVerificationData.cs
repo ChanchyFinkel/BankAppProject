@@ -14,14 +14,14 @@ public class EmailVerificationData : IEmailVerificationData
         try
         {
             var context = _factory.CreateDbContext();
-            bool existAccount = await context.Customer.AnyAsync(c => c.Email.Equals(emailVerification.Email));
-            if (existAccount)
+            bool existsAccount = await context.Customer.AnyAsync(c => c.Email.Equals(emailVerification.Email));
+            if (existsAccount)
                 return false;
-            EmailVerification e= await context.EmailVerification.FirstOrDefaultAsync(c => c.Email.Equals(emailVerification.Email));
-            if (e != null)
+            var existsEmailVerification= await context.EmailVerification.FirstOrDefaultAsync(c => c.Email.Equals(emailVerification.Email));
+            if (existsEmailVerification != null)
             {
-                e.ExpirationTime = emailVerification.ExpirationTime;
-                e.VerificationCode = emailVerification.VerificationCode;
+                existsEmailVerification.ExpirationTime = emailVerification.ExpirationTime;
+                existsEmailVerification.VerificationCode = emailVerification.VerificationCode;
             }
             else
             {

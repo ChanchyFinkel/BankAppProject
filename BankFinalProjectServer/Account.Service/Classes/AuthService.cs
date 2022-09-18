@@ -1,6 +1,4 @@
-﻿
-
-namespace Account.Service.Classes;
+﻿namespace Account.Service.Classes;
 public class AuthService : IAuthService
 {
     private readonly IAuthData _authData;
@@ -22,7 +20,7 @@ public class AuthService : IAuthService
 
         if (Hashedpassword.Equals(account.Customer.Password.TrimEnd()) != true)
             return null;
-        string token = CreateToken(loginDTO.Email, account.ID);
+        string token = GenerateAccessToken(loginDTO.Email, account.ID);
         AuthDTO authDTO = new AuthDTO() { AccountID = account.ID, Token = token };
         return authDTO;
     }
@@ -31,7 +29,7 @@ public class AuthService : IAuthService
         return int.Parse(accountID); 
     }
 
-    private string CreateToken(string email, int accountID)
+    private string GenerateAccessToken(string email, int accountID)
     {
         JwtSecurityToken token;
         var claims = new[] {

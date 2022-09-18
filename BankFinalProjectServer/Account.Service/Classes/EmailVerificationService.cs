@@ -9,7 +9,7 @@ public class EmailVerificationService : IEmailVerificationService
     {
         _emailVerificationData = emailVerificationData;
     }
-    public async Task SendEmailVerification(string email)
+    public async Task CreateEmailVerification(string email)
     {
         Random random = new Random();
         verificationCode = random.Next(1000, 9999);
@@ -17,10 +17,10 @@ public class EmailVerificationService : IEmailVerificationService
         bool success = await _emailVerificationData.AddEmailVerification(emailVerification);
         if (success)
         {
-            sendEmailVerfication(email);
+            SendEmailVerfication(email);
         }
     }
-    private void sendEmailVerfication(string email)
+    private void SendEmailVerfication(string email)
     {
         MailMessage message = new MailMessage();
         message.From = new MailAddress("mytravelProject22@gmail.com");

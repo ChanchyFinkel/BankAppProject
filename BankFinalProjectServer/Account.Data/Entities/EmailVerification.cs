@@ -1,7 +1,7 @@
 ﻿namespace Account.Data.Entities;
 public class EmailVerification
 {
-    [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    [Key]
     [MaxLength(40)]
     public string Email { get; set; }
     [Required]
