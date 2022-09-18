@@ -12,3 +12,5 @@ global using System.Net.Mail;
 global using Account.Data.Classes;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
+global using DinkToPdf.Contracts;
+global using DinkToPdf;

@@ -20,3 +20,5 @@ global using Messages.NSB.Commands;
 global using Messages.NSB.Events;
 global using NServiceBus.Logging;
 global using Account.Service;
+global using DinkToPdf;
+global using DinkToPdf.Contracts;

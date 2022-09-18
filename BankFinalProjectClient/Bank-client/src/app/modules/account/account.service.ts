@@ -41,4 +41,8 @@ export class AccountService {
   // getVerificationCode(email:string): Observable<void>{
   //   return this._http.post<void>(`api/EmailVerification/SendEmailVerification/${JSON.stringify(email)},{headers: {'Content-Type': 'application/json'}}}`);
   // }
+
+  CreateOperationsHistoriesPDF(month:number,year: number): Observable<any>{
+    return this._http.get(`api/OperationsHistory/GetOperationsHistoriesAsPDF/${month}/${year}`);
+  }
 }

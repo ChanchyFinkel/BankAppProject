@@ -7,6 +7,7 @@ import { Subscription } from 'rxjs';
 import { OperationHistory } from 'src/app/models/operation-history.model';
 import { AccountService } from '../account.service';
 import { AccoutHolderInfoComponent } from '../accout-holder-info/accout-holder-info.component';
+import { DownloadAsPdfDialogComponent } from '../download-as-pdf-dialog/download-as-pdf-dialog.component';
 
 @Component({
   selector: 'app-operations-history',
@@ -22,7 +23,7 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
   totalRows = 0;
   pageSize = 15;
   currentPage = 0;
-  pageSizeOptions: number[] = [10,15,20];
+  pageSizeOptions: number[] = [10, 15, 20];
   subscription!: Subscription;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -37,17 +38,17 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
     this.subscription = this._accountService.getOperationsHistory(this.currentPage, this.pageSize).subscribe(data => {
       if (data) {
         this.dataSource.data = data.operations;
-        this.paginator.pageIndex = this.currentPage; 
-         setTimeout(() => {
+        this.paginator.pageIndex = this.currentPage;
+        setTimeout(() => {
           this.paginator.pageIndex = this.currentPage;
           this.paginator.length = data.totalRows;
-        }) 
+        })
       }
       else {
         alert("There is no operations to show")
       }
     }, error => {
-      error.status == 401 ? this._router.navigate(['/login']) :alert("Oops! Something went wrong. Please try again later.");
+      error.status == 401 ? this._router.navigate(['/login']) : alert("Oops! Something went wrong. Please try again later.");
     })
   }
 
@@ -61,6 +62,10 @@ export class OperationsHistoryComponent implements OnInit, OnDestroy {
     this.dialog.open(AccoutHolderInfoComponent, {
       data: accountNumber,
     });
+  }
+
+  openDialogDateForDownload() {
+    this.dialog.open(DownloadAsPdfDialogComponent);
   }
 
   ngOnDestroy(): void {
