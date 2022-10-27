@@ -59,7 +59,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<ITransactionService, TransactionService>();
+builder.Services.AddSingleton<ITransactionService, TransactionService>();
 builder.Services.ExtensionsDI();
 builder.Services.ExtensionContext(databaseConnection);
 
@@ -114,8 +114,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHandlerExecptionMiddleware();
-
 
 app.Use(async (context, next) =>
 {

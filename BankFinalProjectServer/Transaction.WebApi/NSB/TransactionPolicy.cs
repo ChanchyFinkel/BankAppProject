@@ -2,8 +2,8 @@
 
 public class TransactionPolicy : Saga<TransactionPolicyData>, IAmStartedByMessages<TransactionStarted>, IHandleMessages<TransfortDone>
 {
-    static ILog log = LogManager.GetLogger<TransactionPolicy>();
     ITransactionService _transactionService;
+    static ILog _log = LogManager.GetLogger<TransactionPolicy>();
     public TransactionPolicy(ITransactionService transactionService)
     {
         _transactionService = transactionService;
@@ -11,7 +11,7 @@ public class TransactionPolicy : Saga<TransactionPolicyData>, IAmStartedByMessag
 
     public Task Handle(TransactionStarted message, IMessageHandlerContext context)
     {
-        log.Info($"TransactionStarted message received.");
+        _log.Info($"TransactionStarted message received.");
         DoTransfort doTransfort = new DoTransfort()
         {
             TransactionID = message.TransactionID,
@@ -25,7 +25,7 @@ public class TransactionPolicy : Saga<TransactionPolicyData>, IAmStartedByMessag
     public async Task Handle(TransfortDone message, IMessageHandlerContext context)
     {
         await _transactionService.UpdateTransactionStatus(message.TransactionID, message.Success,message.FailureReason);
-        log.Info("Saga Completed!");
+        _log.Info("Saga Completed!");
         await Task.CompletedTask;
     }
 

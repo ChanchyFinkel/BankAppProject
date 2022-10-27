@@ -10,30 +10,16 @@ public class TransactionData : ITransactionData
     }
     public async Task AddTransaction(Entities.Transaction transaction)
     {
-        try
-        {
-            using var context = _factory.CreateDbContext();
-            await context.Transaction.AddAsync(transaction);
-            await context.SaveChangesAsync();
-        }
-        catch(Exception ex)
-        {
-            throw ex;
-        }
+        using var context = _factory.CreateDbContext();
+        await context.Transaction.AddAsync(transaction);
+        await context.SaveChangesAsync();
     }
 
     public async Task UpdateTransactionStatus(int transactionID, Status transactionStatus, string? failureReason)
     {
-        try
-        {
-            using var context = _factory.CreateDbContext();
-            Entities.Transaction transaction = await context.Transaction.FirstAsync(t => t.ID == transactionID);
-            transaction.Status = transactionStatus;
-            await context.SaveChangesAsync();
-        }
-        catch(Exception ex)
-        {
-            throw ex;
-        }
+        using var context = _factory.CreateDbContext();
+        Entities.Transaction transaction = await context.Transaction.FirstAsync(t => t.ID == transactionID);
+        transaction.Status = transactionStatus;
+        await context.SaveChangesAsync();
     }
 }

@@ -3,10 +3,10 @@ public static class ExtensionConfiguration
 {
     public static void ExtensionsDI(this IServiceCollection service)
     {
-        service.AddScoped<IAuthData,AuthData>();
-        service.AddScoped<IAccountData, AccountData>();
-        service.AddScoped<IOperationsHistoryData, OperationsHistoryData>();
-        service.AddScoped<IEmailVerificationData, EmailVerificationData>();
+        service.AddSingleton<IAuthData,AuthData>();
+        service.AddSingleton<IAccountData, AccountData>();
+        service.AddSingleton<IOperationsHistoryData, OperationsHistoryData>();
+        service.AddSingleton<IEmailVerificationData, EmailVerificationData>();
 
     }
     public static void ExtensionContext(this IServiceCollection service, string connectionString)

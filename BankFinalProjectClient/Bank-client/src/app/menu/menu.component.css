@@ -11,12 +11,16 @@ ul {
   overflow: hidden;
   position: fixed;
   width: 100%;
-  top: 1vw;
+  top: 0vw;
   left: 1vw;
   right: 1vw;
   width: 98vw;
-  border-radius: 15px;
   background-color: #cacaca;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
 
@@ -25,9 +29,13 @@ li a {
   display: block;
   color: white;
   text-align: center;
-  padding: 8px 6px;
   text-decoration: none;
   font-weight: 300;
+  padding-right: 7vw;
+  padding-left: 7vw;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
 }
 
 li a:hover:not(.active) {

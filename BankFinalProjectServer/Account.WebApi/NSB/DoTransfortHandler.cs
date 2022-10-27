@@ -1,7 +1,7 @@
 ﻿namespace Account.WebApi.NSB;
 public class DoTransfortHandler : IHandleMessages<DoTransfort>
 {
-    static ILog log = LogManager.GetLogger<DoTransfort>();
+    static ILog _log = LogManager.GetLogger<DoTransfortHandler>();
     private readonly IAccountService _accountService;
     public DoTransfortHandler(IAccountService accountService)
     {
@@ -9,7 +9,7 @@ public class DoTransfortHandler : IHandleMessages<DoTransfort>
     }
     public async Task Handle(DoTransfort message, IMessageHandlerContext context)
     {
-        log.Info("DoTransfort message received.");
+        _log.Info("DoTransfort message received.");
         string failureReason=await _accountService.UpdateBalancesAndAddOperationsHistory(message.FromAccount, message.ToAccount, message.Ammount,message.TransactionID);
         TransfortDone transfortDone = new TransfortDone() { TransactionID = message.TransactionID };
         if (failureReason.Equals(""))

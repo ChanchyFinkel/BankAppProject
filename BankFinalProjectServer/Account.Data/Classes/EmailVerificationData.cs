@@ -11,28 +11,21 @@ public class EmailVerificationData : IEmailVerificationData
     }
     public async Task<bool> AddEmailVerification(EmailVerification emailVerification)
     {
-        try
+        var context = _factory.CreateDbContext();
+        bool existsAccount = await context.Customer.AnyAsync(c => c.Email.Equals(emailVerification.Email));
+        if (existsAccount)
+            return false;
+        var existsEmailVerification = await context.EmailVerification.FirstOrDefaultAsync(c => c.Email.Equals(emailVerification.Email));
+        if (existsEmailVerification != null)
         {
-            var context = _factory.CreateDbContext();
-            bool existsAccount = await context.Customer.AnyAsync(c => c.Email.Equals(emailVerification.Email));
-            if (existsAccount)
-                return false;
-            var existsEmailVerification= await context.EmailVerification.FirstOrDefaultAsync(c => c.Email.Equals(emailVerification.Email));
-            if (existsEmailVerification != null)
-            {
-                existsEmailVerification.ExpirationTime = emailVerification.ExpirationTime;
-                existsEmailVerification.VerificationCode = emailVerification.VerificationCode;
-            }
-            else
-            {
-                await context.AddAsync(emailVerification);
-            }
-            await context.SaveChangesAsync();
-            return true;
+            existsEmailVerification.ExpirationTime = emailVerification.ExpirationTime;
+            existsEmailVerification.VerificationCode = emailVerification.VerificationCode;
         }
-        catch(Exception ex)
+        else
         {
-            throw ex;
+            await context.AddAsync(emailVerification);
         }
+        await context.SaveChangesAsync();
+        return true;
     }
 }

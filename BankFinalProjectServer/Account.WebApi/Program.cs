@@ -57,11 +57,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
-builder.Services.AddScoped<IOperationsHistoryService, OperationsHistoryService>();
-builder.Services.AddScoped<IEmailVerificationService,EmailVerificationService>();
-builder.Services.AddScoped<IPasswordHashHelper, PasswordHashHelper>();
+builder.Services.AddSingleton<IAuthService, AuthService>();
+builder.Services.AddSingleton<IAccountService, AccountService>();
+builder.Services.AddSingleton<IOperationsHistoryService, OperationsHistoryService>();
+builder.Services.AddSingleton<IEmailVerificationService,EmailVerificationService>();
+builder.Services.AddSingleton<IPasswordHashHelper, PasswordHashHelper>();
 builder.Services.ExtensionsDI();
 builder.Services.ExtensionContext(databaseConnection);
 builder.Services.AddAutoMapper(typeof(Program));
@@ -70,7 +70,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 #region Add swagger configuration
 builder.Services.AddSwaggerGen(c =>
 {
-    c.SwaggerDoc("v1", new OpenApiInfo { Title = "BankApp", Version = "v1" });
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Account", Version = "v1" });
     // To Enable authorization using Swagger (JWT)
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {
@@ -115,7 +115,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseHandlerExecptionMiddleware();
+
 app.Use(async (context, next) =>
 {
     context.Response.GetTypedHeaders().CacheControl =

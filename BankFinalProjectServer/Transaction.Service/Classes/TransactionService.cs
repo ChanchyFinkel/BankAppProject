@@ -3,8 +3,7 @@ public class TransactionService : ITransactionService
 {
     private readonly ITransactionData _transactionData;
     private readonly IMapper _mapper;
-
-    static ILog log = LogManager.GetLogger<TransactionService>();
+    static ILog _log = LogManager.GetLogger<TransactionService>();
     public TransactionService(ITransactionData transactionData, IMapper mapper)
     {
         _transactionData = transactionData;
@@ -28,7 +27,7 @@ public class TransactionService : ITransactionService
             FromAccount = transaction.FromAccount,
             Ammount = transaction.Ammount
         };
-        log.Info($"Sending TransactionStarted event, TransactionID = {_event.TransactionID}");
+        _log.Info($"Sending TransactionStarted event, TransactionID = {_event.TransactionID}");
         return context.Publish(_event);
     }
 

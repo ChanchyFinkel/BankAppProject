@@ -17,7 +17,6 @@ public class AuthService : IAuthService
     {
         Data.Entities.Account account = await _authData.Login(loginDTO.Email);
         string Hashedpassword = _passwordHashHelper.HashPassword(loginDTO.Password, account.Customer.Salt, nIterations, nHash);
-
         if (Hashedpassword.Equals(account.Customer.Password.TrimEnd()) != true)
             return null;
         string token = GenerateAccessToken(loginDTO.Email, account.ID);

@@ -1,7 +1,6 @@
-﻿namespace Account.Data.Interfaces
+﻿namespace Account.Data.Interfaces;
+
+public interface IEmailVerificationData
 {
-    public interface IEmailVerificationData
-    {
-        Task<bool> AddEmailVerification(EmailVerification emailVerification);
-    }
+    Task<bool> AddEmailVerification(EmailVerification emailVerification);
 }

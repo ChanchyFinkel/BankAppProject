@@ -10,28 +10,20 @@ public class AccountData : IAccountData
     }
     public async Task<bool> CreateAccount(Entities.Account account, Customer customer, int verificationCode)
     {
-        try
-        {
-            using var context = _factory.CreateDbContext();
-            EmailVerification emailVerification = await context.EmailVerification.FirstAsync(e => e.Email.Equals(customer.Email));
-            if (emailVerification == null || emailVerification.ExpirationTime < DateTime.UtcNow || emailVerification.VerificationCode != verificationCode)
-                return false;
-            await context.Customer.AddAsync(customer);
-            await context.Account.AddAsync(account);
-            await context.SaveChangesAsync();
-            return true;
-        }
-        catch(Exception ex)
-        {
-            throw ex;
-        }
+        using var context = _factory.CreateDbContext();
+        EmailVerification emailVerification = await context.EmailVerification.FirstAsync(e => e.Email.Equals(customer.Email));
+        if (emailVerification == null || emailVerification.ExpirationTime < DateTime.UtcNow || emailVerification.VerificationCode != verificationCode)
+            return false;
+        await context.Customer.AddAsync(customer);
+        await context.Account.AddAsync(account);
+        await context.SaveChangesAsync();
+        return true;
     }
     public async Task<Entities.Account> GetAccountInfo(int accountID)
     {
         using var context = _factory.CreateDbContext();
         return await context.Account.Where(account => account.ID == accountID).Include(account => account.Customer).FirstAsync();
     }
-
     public async Task<int> GetAccountBalance(int accountID)
     {
         using var context = _factory.CreateDbContext();

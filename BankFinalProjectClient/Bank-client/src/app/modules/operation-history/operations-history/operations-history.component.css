@@ -76,12 +76,14 @@ h1 {
   text-align: center;
   font-size: 27px;
 }
-th.mat-header-cell{
+
+th.mat-header-cell {
   font-size: 16px;
   font-weight: 500;
   color: black;
 }
-button{
+
+button {
   background-color: #e6f4fa;
   border-radius: 8px;
   border-color: darkgray;
@@ -90,4 +92,11 @@ button{
   padding-left: 10px;
   margin-bottom: 10px;
   font-weight: 500;
+}
+.mat-table-sticky {
+  position: sticky !important;
+  top: 86px !important;
+}
+ng-container{
+  top: 200px !important;
 }

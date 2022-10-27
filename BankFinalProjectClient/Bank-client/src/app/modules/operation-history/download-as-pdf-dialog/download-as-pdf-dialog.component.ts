@@ -60,6 +60,8 @@ export class DownloadAsPdfDialogComponent implements OnInit {
       this.openSnackBar("Date isn't valid!", "close");
     }
     else {
+      this.openSnackBar("The download is already in progress", "close");
+      // this._dialogRef.close();
       this.subscription = this._operationsHistoryService.CreateOperationsHistoriesPDF(this.date.value.month() + 1, this.date.value.year()).subscribe(data => {
         const byteCharacters = atob(data);
         const byteNumbers = new Array(byteCharacters.length);

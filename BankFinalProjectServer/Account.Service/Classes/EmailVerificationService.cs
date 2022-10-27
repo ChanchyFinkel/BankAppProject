@@ -26,7 +26,7 @@ public class EmailVerificationService : IEmailVerificationService
         message.From = new MailAddress("mytravelProject22@gmail.com");
         message.To.Add(new MailAddress(email));
         message.Subject = "Verfication code send from BankApp";
-        message.Body = $" Your verfication code is {verificationCode} The code is valid for {experationTime} minutes ";
+        message.Body = $" Your verfication code is {verificationCode}\n The code is valid for {experationTime} minutes ";
         message.BodyEncoding = Encoding.UTF8;
         message.IsBodyHtml = true;
         SmtpClient client = new SmtpClient("smtp.gmail.com", 587); //Gmail smtp    
@@ -35,15 +35,6 @@ public class EmailVerificationService : IEmailVerificationService
         client.EnableSsl = true;
         client.UseDefaultCredentials = false;
         client.Credentials = basicCredential1;
-        try
-        {
-            client.Send(message);
-        }
-
-        catch (Exception ex)
-        {
-            throw ex;
-        }
+        client.Send(message);
     }
-
 }

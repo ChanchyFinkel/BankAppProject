@@ -23,30 +23,39 @@ export class CreateTransactionComponent implements OnInit {
   transaction!: Transaction;
 
   ngOnInit(): void {
-    this.accountSubscribtion = this._accountService.getBalanceAccount().subscribe(balance => balance < this.balance ? this.balance = balance : '')
+    this.accountSubscribtion = this._accountService.getBalanceAccount().subscribe(balance => balance < this.balance ? this.balance = balance : '');
   }
 
   transactionForm: FormGroup = new FormGroup({
     "toAccount": new FormControl("", [Validators.required, Validators.pattern("[1-90-9]*"), Validators.min(100000)]),
-    "ammount": new FormControl("", [Validators.required, Validators.pattern("[1-90-9]*"), Validators.min(1), Validators.max(1000000)]),
+    "ammount": new FormControl("", [Validators.required, Validators.pattern("[1-90-9]*"), Validators.min(1), Validators.max(this.balance)]),
   });
 
-  onkeypress(event: KeyboardEvent): void {
+  onKeyPress(event: KeyboardEvent): void {
     if (event.key < '0' || event.key > '9') {
       event.preventDefault();
     }
   }
 
+  onAmmountKeyPress(event: KeyboardEvent): void {
+    if (event.key < '0' || event.key > '9' || this.transactionForm.controls["ammount"].value + parseInt(event.key) > this.balance) {
+      event.preventDefault();
+    }
+  }
+
   openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action,{
-      duration:4000
+    this._snackBar.open(message, action, {
+      duration: 4000
     });
   }
 
   addTransaction() {
     this.transactionSubscribtion = this._transactionService.addTransaction(this.transactionForm.value).subscribe(
-      () => { this.openSnackBar("The operation was successfully received", "close") ;
-      this.transactionForm.reset();},
+      () => {
+        this.openSnackBar("The operation was successfully received", "close");
+        this.balance-=this.transactionForm.controls['ammount'].value;
+        this.transactionForm.reset();
+      },
       error => error.status == 401 ? this._router.navigate(['/login']) : this.openSnackBar("The operation was failed :(", "close"))
   }
 

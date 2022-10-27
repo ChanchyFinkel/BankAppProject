@@ -3,7 +3,7 @@ public static class ExtensionConfiguration
 {
     public static void ExtensionsDI(this IServiceCollection service)
     {
-        service.AddScoped<ITransactionData, TransactionData>();
+        service.AddSingleton<ITransactionData, TransactionData>();
     }
     public static void ExtensionContext(this IServiceCollection service, string connectionString)
     {

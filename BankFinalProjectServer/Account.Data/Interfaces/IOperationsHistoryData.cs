@@ -1,8 +1,7 @@
-﻿namespace Account.Data.Interfaces
+﻿namespace Account.Data.Interfaces;
+
+public interface IOperationsHistoryData
 {
-    public interface IOperationsHistoryData
-    {
-        Task<List<OperationsHistory>> GetOperationsHistoryByAccountId(int accountID);
-        Task<int> GetSecondSideAccountID(int transactionID, int accountID);
-    }
+    Task<List<OperationsHistory>> GetOperationsHistoryByAccountId(int accountID);
+    Task<int> GetSecondSideAccountID(int transactionID, int accountID);
 }
